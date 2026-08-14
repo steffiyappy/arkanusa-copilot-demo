@@ -131,6 +131,14 @@ li{margin-bottom:6px;font-size:14.5px}
 .qrow{margin-top:12px;font-size:14.5px}
 .qrow b{color:var(--navy2);display:block;font-size:11px;letter-spacing:1.2px;
   text-transform:uppercase;color:var(--soft);margin-bottom:3px}
+.qrow.honest{background:#FDF6EC;border-left:3px solid var(--amber);
+  padding:10px 14px;border-radius:0 8px 8px 0}
+
+/* ---------- execution mode ---------- */
+.mode{display:inline-block;font-size:11.5px;font-weight:600;padding:4px 11px;
+  border-radius:20px;letter-spacing:.3px}
+.mode.live{background:#E6F4EA;color:#14602A;border:1px solid #B7E0C4}
+.mode.prerun{background:#FDF3E3;color:#8A5A12;border:1px solid #EFD9AE}
 
 /* ---------- chain ---------- */
 .chain{counter-reset:step}
@@ -163,10 +171,10 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <header><div class='wrap'>
 <div class='badge'><span class='dot'></span>Microsoft 365 Copilot</div>
 <h1>Arkanusa Group<br><em>Microsoft 365 Copilot demonstration hub</em></h1>
-<p class='lede'>One business question, answered nine ways. Only one of them is a chat window.</p>
+<p class='lede'>One business question, carried across nine surfaces. The model is not what differs.</p>
 <div class='meta'>
 <div><strong>9</strong>segments</div>
-<div><strong>65 min</strong>demo runtime</div>
+<div><strong>57 min</strong>demo runtime</div>
 <div><strong>4</strong>narrative acts</div>
 <div><strong>31</strong>linked data tables</div>
 <div><strong>19 Aug</strong>session date</div>
@@ -192,9 +200,11 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 </nav>
 <main>
 <section id='framing'><h2><span class='num'>01</span>Framing</h2>
-<p class='sub'>The audience already has good models. Several teams pay for them. So the demonstration does not argue about model quality, it assumes parity and then shows the four things a standalone assistant structurally cannot do: see the work, act inside the work, be governed like the work, and scale as part of the work.</p>
-<div class='note'><b>Parity, not superiority.</b> Do not argue that the model is better. Argue that the model is the commodity. Every serious assistant now reasons well, and the audience already knows that because they are paying for two of them. The difference is what the model is attached to.</div>
-<div class='note good'><b>Give credit first.</b> Be straight with them about where the tools they already pay for are genuinely strong: raw model access, fast experimentation, developer ergonomics, and a low barrier for an individual who wants an answer right now. Conceding that openly is what buys you the right to make the rest of the argument.</div>
+<p class='sub'>The audience already has good models. Several teams pay for them. So the demonstration does not argue about model quality, it establishes parity early and then spends its time on the four things that actually vary: how much of the work the assistant can reach without an integration project, whether the output lands in the file or in the chat, whose identity it acts as, and what the estate looks like when twenty three companies each make their own choice.</p>
+<div class='note'><b>Parity, not superiority.</b> Do not claim the model is better, and do not call models a commodity either. This audience pays for two of them precisely because they know models differ by task. The accurate position is that frontier quality is now table stakes and task dependent, that Copilot itself offers model choice, and that on the tasks shown today the quality is not the variable. What varies is what the model is attached to and what happens around it.</div>
+<div class='note good'><b>Be accurate about the competition.</b> Be accurate about what the tools they already pay for can now do, because getting this wrong is the fastest way to lose the room. ChatGPT Enterprise has company knowledge, connectors, apps and agents. Claude has enterprise connectors, MCP, and works inside Word, Excel, PowerPoint and Outlook. Both have enterprise controls. Anyone who tells this audience that a competitor cannot reach enterprise data or cannot act in an application is about six months out of date, and someone in the room will know it.</div>
+<div class='note warn'><b>On running it live.</b> Five segments run fully live. The rest are pre-run with one live follow-up prompt, because generation latency is the most common way a demonstration of this kind fails. Pre-running is not cheating and you should say openly that you prepared it. What you must not do is stand in silence watching a progress indicator for four minutes.</div>
+<div class='note hot'><b>Before you show segment nine.</b> Position Scout carefully. Confirm your own preview entitlement and the preview terms before you show it, and do not present it as something the customer can procure on Monday. If you cannot stand behind an availability answer, cut the segment and close on scheduled and event driven tasks in Cowork instead, which makes the same point about moving from asking to being told.</div>
 <div class='card tight'><div class='lbl'>The fictional account</div>
 <p style='font-size:14.5px'>Everything in this hub uses <b>Arkanusa Group</b>, a fictional diversified holding company with 23 portfolio companies across 6 clusters. The figures are internally consistent and every claim in the demonstration is provable from the supplied dataset.</p>
 <div class='pillrow'>
@@ -210,47 +220,48 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='act'>
 <div class='lbl'>Act 1 &middot; segments 1, 2</div>
 <h4>The question arrives</h4>
-<p style='font-size:14.5px;color:var(--muted)'>A real question lands. Copilot turns scattered source material into finished artefacts, then shows it can reason across the whole work estate rather than a pasted excerpt.</p>
-<div class='pivot'>Pivot: This is the point at which a standalone assistant needs you to paste the context in. Copilot already has it, trimmed to what the user is allowed to see.</div>
+<p style='font-size:14.5px;color:var(--muted)'>A real question lands. Copilot turns scattered source material into finished artefacts, then shows how much of the work estate it can reach without anyone building an integration.</p>
+<div class='pivot'>Pivot: Their current tools can reach enterprise data too, through connectors somebody configured. The question to leave hanging is what that reach cost to build and who maintains it.</div>
 </div>
 <div class='act'>
 <div class='lbl'>Act 2 &middot; segments 3, 4</div>
 <h4>The judgement</h4>
 <p style='font-size:14.5px;color:var(--muted)'>Depth of reasoning, twice. First Researcher pulls a weak executive briefing apart. Then it convenes a council on a live strategic decision.</p>
-<div class='pivot'>Pivot: This is the parity moment. The reasoning is as good as anything the audience is paying for elsewhere, and it is reading their documents rather than a paste.</div>
+<div class='pivot'>Pivot: This is the parity moment, and it is the act where competitors are strongest. Do not oversell it. Establish that quality is not the variable and move on.</div>
 </div>
 <div class='act'>
 <div class='lbl'>Act 3 &middot; segments 5, 6, 7</div>
 <h4>The work</h4>
-<p style='font-size:14.5px;color:var(--muted)'>The work happens where the work already is: inside Excel, inside the meeting, and then handed to an agent that anyone in the business can build.</p>
-<div class='pivot'>Pivot: Nothing here is a chat window. This is the part that does not port to a browser tab.</div>
+<p style='font-size:14.5px;color:var(--muted)'>The work happens where the work already is: inside Excel, inside the meeting, and then handed to an agent, with the identity and audit trail shown rather than asserted.</p>
+<div class='pivot'>Pivot: Segment seven is where the argument is actually won, because it is the only place governance is demonstrated instead of described.</div>
 </div>
 <div class='act'>
 <div class='lbl'>Act 4 &middot; segments 8, 9</div>
 <h4>The scale</h4>
 <p style='font-size:14.5px;color:var(--muted)'>From one answer to a whole workstream. Cowork produces a multi-artefact pack against live data and live web research. Scout carries it into the operating rhythm.</p>
-<div class='pivot'>Pivot: The question stops being what can it write, and becomes how much of the job can it carry.</div>
+<div class='pivot'>Pivot: The question stops being what can it write, and becomes what the estate looks like when every subsidiary answers this question separately.</div>
 </div>
 </section>
 <section id='runofshow'><h2><span class='num'>03</span>Run of show</h2>
-<p class='sub'>65 minutes of demonstration. Allow 90 minutes with introduction, questions and close.</p>
-<table><thead><tr><th>#</th><th>Act</th><th>Segment</th><th>Surface</th><th>Mins</th><th>Cumulative</th></tr></thead><tbody>
-<tr><td class='mins'>1</td><td class='actc'>Act 1</td><td><b>Copilot Chat with agent mode</b></td><td>Microsoft 365 Copilot app, agent mode. Word, Excel and PowerPoint output.</td><td class='mins'>8</td><td class='mins'>8</td></tr>
-<tr><td class='mins'>2</td><td class='actc'>Act 1</td><td><b>Microsoft 365 Copilot and Work IQ</b></td><td>Microsoft 365 Copilot, grounded across mail, chat, meetings and files.</td><td class='mins'>7</td><td class='mins'>15</td></tr>
-<tr><td class='mins'>3</td><td class='actc'>Act 2</td><td><b>Researcher: critique the daily briefing</b></td><td>Researcher agent in Microsoft 365 Copilot.</td><td class='mins'>7</td><td class='mins'>22</td></tr>
-<tr><td class='mins'>4</td><td class='actc'>Act 2</td><td><b>Researcher council: IPO or strategic partner</b></td><td>Researcher, multi-perspective reasoning on a live decision.</td><td class='mins'>8</td><td class='mins'>30</td></tr>
-<tr><td class='mins'>5</td><td class='actc'>Act 3</td><td><b>Edit in the app: Excel</b></td><td>Copilot in Excel, on a live driver-based model.</td><td class='mins'>6</td><td class='mins'>36</td></tr>
-<tr><td class='mins'>6</td><td class='actc'>Act 3</td><td><b>Copilot in Teams: meeting recap</b></td><td>Copilot in Microsoft Teams, meeting recap and follow-up.</td><td class='mins'>6</td><td class='mins'>42</td></tr>
-<tr><td class='mins'>7</td><td class='actc'>Act 3</td><td><b>Agent Builder</b></td><td>Agent built in Microsoft 365 Copilot over governance documents.</td><td class='mins'>7</td><td class='mins'>49</td></tr>
-<tr><td class='mins'>8</td><td class='actc'>Act 4</td><td><b>Cowork: multi-artefact pack with live data and web</b></td><td>Microsoft Copilot Cowork, with browser use and the analytics workspace.</td><td class='mins'>10</td><td class='mins'>59</td></tr>
-<tr><td class='mins'>9</td><td class='actc'>Act 4</td><td><b>Scout</b></td><td>Microsoft Scout on the desktop.</td><td class='mins'>6</td><td class='mins'>65</td></tr>
+<p class='sub'>57 minutes of demonstration. Allow 90 minutes with introduction, questions and close.</p>
+<table><thead><tr><th>#</th><th>Act</th><th>Segment</th><th>How it runs</th><th>Mins</th><th>Cumulative</th></tr></thead><tbody>
+<tr><td class='mins'>1</td><td class='actc'>Act 1</td><td><b>Copilot Chat with agent mode</b><br><span style='font-size:12px;color:var(--soft)'>Microsoft 365 Copilot app, agent mode. Word, Excel and PowerPoint output.</span></td><td><span class='mode prerun'>Pre-run the Word artefact. Finish the deck live.</span></td><td class='mins'>7</td><td class='mins'>7</td></tr>
+<tr><td class='mins'>2</td><td class='actc'>Act 1</td><td><b>Microsoft 365 Copilot and Work IQ</b><br><span style='font-size:12px;color:var(--soft)'>Microsoft 365 Copilot, grounded across mail, chat, meetings and files.</span></td><td><span class='mode live'>Fully live. This is the segment that must not be pre-run.</span></td><td class='mins'>8</td><td class='mins'>15</td></tr>
+<tr><td class='mins'>3</td><td class='actc'>Act 2</td><td><b>Researcher: critique the daily briefing</b><br><span style='font-size:12px;color:var(--soft)'>Researcher agent in Microsoft 365 Copilot.</span></td><td><span class='mode live'>Fully live. Short prompts, reliable latency.</span></td><td class='mins'>7</td><td class='mins'>22</td></tr>
+<tr><td class='mins'>4</td><td class='actc'>Act 2</td><td><b>Researcher council: IPO or strategic partner</b><br><span style='font-size:12px;color:var(--soft)'>Researcher, multi-perspective reasoning on a live decision.</span></td><td><span class='mode prerun'>Pre-run the council. Run the third prompt live.</span></td><td class='mins'>5</td><td class='mins'>27</td></tr>
+<tr><td class='mins'>5</td><td class='actc'>Act 3</td><td><b>Edit in the app: Excel</b><br><span style='font-size:12px;color:var(--soft)'>Copilot in Excel, on a live driver-based model.</span></td><td><span class='mode live'>Fully live.</span></td><td class='mins'>6</td><td class='mins'>33</td></tr>
+<tr><td class='mins'>6</td><td class='actc'>Act 3</td><td><b>Copilot in Teams: meeting recap</b><br><span style='font-size:12px;color:var(--soft)'>Copilot in Microsoft Teams, meeting recap and follow-up.</span></td><td><span class='mode live'>Fully live on a recorded meeting.</span></td><td class='mins'>5</td><td class='mins'>38</td></tr>
+<tr><td class='mins'>7</td><td class='actc'>Act 3</td><td><b>Agent Builder</b><br><span style='font-size:12px;color:var(--soft)'>Agent built in Microsoft 365 Copilot over governance documents.</span></td><td><span class='mode live'>Fully live. The most important segment in the session.</span></td><td class='mins'>9</td><td class='mins'>47</td></tr>
+<tr><td class='mins'>8</td><td class='actc'>Act 4</td><td><b>Cowork: multi-artefact pack with live data and web</b><br><span style='font-size:12px;color:var(--soft)'>Microsoft Copilot Cowork, with browser use and the analytics workspace.</span></td><td><span class='mode prerun'>Pre-run the pack. Run the disproof prompt live.</span></td><td class='mins'>6</td><td class='mins'>53</td></tr>
+<tr><td class='mins'>9</td><td class='actc'>Act 4</td><td><b>Scout</b><br><span style='font-size:12px;color:var(--soft)'>Microsoft Scout on the desktop.</span></td><td><span class='mode prerun'>Pre-configured. Show the watch and its last output.</span></td><td class='mins'>4</td><td class='mins'>57</td></tr>
 </tbody></table></section>
 <section id='seg1'><div class='seg'>
 <div class='seg-top'>
 <div class='seg-no'>1</div><div>
 <h4>Copilot Chat with agent mode</h4><div class='surf'>Microsoft 365 Copilot app, agent mode. Word, Excel and PowerPoint output.</div></div>
-<div class='seg-time'><b>8</b>minutes</div></div>
+<div class='seg-time'><b>7</b>minutes</div></div>
 <div class='seg-body'>
+<div class='mode prerun' style='margin-bottom:14px'>Pre-run the Word artefact. Finish the deck live.</div>
 <div class='goal'>Turn a pile of unstructured working notes into three finished artefacts without leaving the assistant.</div>
 <div class='lbl'>Prompts</div>
 <div class="prompt"><button class="copy" data-t="Read the working notes on the Infrastructure and Engineering cluster. They are unordered. Turn them into a four page board paper with a clear recommendation, a one paragraph executive summary at the top, and every figure attributed to its source. Do not add anything the notes do not support." onclick="cp(this)">Copy</button>Read the working notes on the Infrastructure and Engineering cluster. They are unordered. Turn them into a four page board paper with a clear recommendation, a one paragraph executive summary at the top, and every figure attributed to its source. Do not add anything the notes do not support.</div>
@@ -274,14 +285,15 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <span class='file'>IE_Board_Pack_Section4_DRAFT_INCOMPLETE.pptx</span>
 </div>
 <div class='note warn'><b>If it goes wrong.</b> If agent mode is slow, run the Word prompt only and show the pre-built evidence appendix from the demo files instead.</div>
-<div class='note'><b>The differentiator in this segment.</b> A standalone assistant can do this too, if you paste everything in. Note how much you did not paste.</div>
+<div class='note'><b>The differentiator in this segment.</b> A competitor with connectors can do much of this. What to point at is how little you pasted, and that the deck was edited in place rather than produced as something to copy back in.</div>
 </div></div></section>
 <section id='seg2'><div class='seg'>
 <div class='seg-top'>
 <div class='seg-no'>2</div><div>
 <h4>Microsoft 365 Copilot and Work IQ</h4><div class='surf'>Microsoft 365 Copilot, grounded across mail, chat, meetings and files.</div></div>
-<div class='seg-time'><b>7</b>minutes</div></div>
+<div class='seg-time'><b>8</b>minutes</div></div>
 <div class='seg-body'>
+<div class='mode live' style='margin-bottom:14px'>Fully live. This is the segment that must not be pre-run.</div>
 <div class='goal'>Show reasoning across the whole work estate, with permission trimming intact.</div>
 <div class='lbl'>Prompts</div>
 <div class="prompt"><button class="copy" data-t="Pull together everything across my documents about the Infrastructure and Engineering margin position. Give me a timeline of who knew what and when, and cite the source for each entry." onclick="cp(this)">Copy</button>Pull together everything across my documents about the Infrastructure and Engineering margin position. Give me a timeline of who knew what and when, and cite the source for each entry.</div>
@@ -303,8 +315,8 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <span class='file'>Group_Bid_Committee_Minutes_Extracts.docx</span>
 <span class='file'>CRO_Memo_Fixed_Price_Concentration.docx</span>
 </div>
-<div class='note warn'><b>If it goes wrong.</b> If tenant grounding is unavailable, upload the two documents and run the same three prompts. Say openly that you are simulating the estate.</div>
-<div class='note'><b>The differentiator in this segment.</b> This is the structural difference. The answer quality depends on reach, and reach depends on being inside the tenant with the user&#x27;s permissions applied.</div>
+<div class='note warn'><b>If it goes wrong.</b> Do not fall back to uploading the documents. Uploading turns this into exactly the pasted-context demonstration the segment exists to beat. If tenant grounding fails, play a capture recorded that morning and say so.</div>
+<div class='note'><b>The differentiator in this segment.</b> Reach without an integration project, with permission trimming applied at retrieval. Competitors reach enterprise data through configured connectors, which is real but scoped and maintained. The difference is default reach and the effort behind it.</div>
 </div></div></section>
 <section id='seg3'><div class='seg'>
 <div class='seg-top'>
@@ -312,6 +324,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <h4>Researcher: critique the daily briefing</h4><div class='surf'>Researcher agent in Microsoft 365 Copilot.</div></div>
 <div class='seg-time'><b>7</b>minutes</div></div>
 <div class='seg-body'>
+<div class='mode live' style='margin-bottom:14px'>Fully live. Short prompts, reliable latency.</div>
 <div class='goal'>Show reasoning depth applied to the customer&#x27;s own writing, not to a public dataset.</div>
 <div class='lbl'>Prompts</div>
 <div class="prompt"><button class="copy" data-t="This is a draft daily briefing for the group chief executive. Critique it. Do not rewrite it yet. Tell me where it is weak, where a claim is asserted without evidence, where the ordering buries something important, and where the reader is left without a decision to make." onclick="cp(this)">Copy</button>This is a draft daily briefing for the group chief executive. Critique it. Do not rewrite it yet. Tell me where it is weak, where a claim is asserted without evidence, where the ordering buries something important, and where the reader is left without a decision to make.</div>
@@ -334,14 +347,15 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <span class='file'>Group_CEO_Daily_Briefing_19Aug2026_DRAFT.docx</span>
 </div>
 <div class='note warn'><b>If it goes wrong.</b> Presenter answer key is in the demo files. If the model misses a finding, prompt for it directly rather than pretending it found it.</div>
-<div class='note'><b>The differentiator in this segment.</b> Any strong model can critique text. Only this one is reading the briefing that was actually going to be sent, in the place it was going to be sent from.</div>
+<div class='note'><b>The differentiator in this segment.</b> Be honest here. Strong models all critique text well and this is where competitors are most competitive. The point worth making is only that it is reading the briefing that was actually going to be sent.</div>
 </div></div></section>
 <section id='seg4'><div class='seg'>
 <div class='seg-top'>
 <div class='seg-no'>4</div><div>
 <h4>Researcher council: IPO or strategic partner</h4><div class='surf'>Researcher, multi-perspective reasoning on a live decision.</div></div>
-<div class='seg-time'><b>8</b>minutes</div></div>
+<div class='seg-time'><b>5</b>minutes</div></div>
 <div class='seg-body'>
+<div class='mode prerun' style='margin-bottom:14px'>Pre-run the council. Run the third prompt live.</div>
 <div class='goal'>Show structured disagreement on a decision that matters to a holding company, grounded in the customer&#x27;s own numbers.</div>
 <div class='lbl'>Prompts</div>
 <div class="prompt"><button class="copy" data-t="Convene a council on this question. Give me four distinct positions: an investment banker optimising for proceeds, a state shareholder optimising for policy control, a risk officer optimising for downside, and an operator optimising for the business itself. Each must argue from the numbers in the pack, and each must name the single fact that would change their mind." onclick="cp(this)">Copy</button>Convene a council on this question. Give me four distinct positions: an investment banker optimising for proceeds, a state shareholder optimising for policy control, a risk officer optimising for downside, and an operator optimising for the business itself. Each must argue from the numbers in the pack, and each must name the single fact that would change their mind.</div>
@@ -364,7 +378,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <span class='file'>Industrial_Estates_Valuation_Pack.xlsx</span>
 </div>
 <div class='note warn'><b>If it goes wrong.</b> If the council format is unavailable, run the same prompt as a single request for four labelled positions.</div>
-<div class='note'><b>The differentiator in this segment.</b> Reasoning parity is the assumption here, not the claim. The claim is that it is reasoning over the actual valuation pack.</div>
+<div class='note'><b>The differentiator in this segment.</b> Reasoning parity is the assumption, not the claim. Spend the time on the disagreement map, which is the artefact an executive committee wants, then move on. Do not linger where the competition is strongest.</div>
 </div></div></section>
 <section id='seg5'><div class='seg'>
 <div class='seg-top'>
@@ -372,6 +386,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <h4>Edit in the app: Excel</h4><div class='surf'>Copilot in Excel, on a live driver-based model.</div></div>
 <div class='seg-time'><b>6</b>minutes</div></div>
 <div class='seg-body'>
+<div class='mode live' style='margin-bottom:14px'>Fully live.</div>
 <div class='goal'>Show work happening inside the file, with formulas intact.</div>
 <div class='lbl'>Prompts</div>
 <div class="prompt"><button class="copy" data-t="Explain what this model does and which inputs actually move the answer. Rank the drivers by how much a ten percent change in each moves FY2028 EBITDA." onclick="cp(this)">Copy</button>Explain what this model does and which inputs actually move the answer. Rank the drivers by how much a ten percent change in each moves FY2028 EBITDA.</div>
@@ -392,15 +407,16 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='lbl'>Files</div><div class='files'>
 <span class='file'>Arkanusa_IE_Turnaround_Scenario_Model.xlsx</span>
 </div>
-<div class='note warn'><b>If it goes wrong.</b> If Copilot in Excel is unavailable, run the same prompts against the uploaded workbook in the Copilot app and note the difference in where the output lands.</div>
-<div class='note'><b>The differentiator in this segment.</b> The output is a changed file, not a message. That is the whole point of this segment.</div>
+<div class='note warn'><b>If it goes wrong.</b> Do not fall back to running this in the chat app. The whole claim is that the output lands in the file. If Copilot in Excel fails, skip to segment six and return if it recovers.</div>
+<div class='note'><b>The differentiator in this segment.</b> Native editing with versioning, co-authoring and sensitivity labels intact, because the file never leaves the estate. Competitors also have Office add-ins, so claim fidelity and the absence of an export and reimport step, not exclusivity.</div>
 </div></div></section>
 <section id='seg6'><div class='seg'>
 <div class='seg-top'>
 <div class='seg-no'>6</div><div>
 <h4>Copilot in Teams: meeting recap</h4><div class='surf'>Copilot in Microsoft Teams, meeting recap and follow-up.</div></div>
-<div class='seg-time'><b>6</b>minutes</div></div>
+<div class='seg-time'><b>5</b>minutes</div></div>
 <div class='seg-body'>
+<div class='mode live' style='margin-bottom:14px'>Fully live on a recorded meeting.</div>
 <div class='goal'>Show the meeting turning into accountable actions without anyone taking minutes.</div>
 <div class='lbl'>Prompts</div>
 <div class="prompt"><button class="copy" data-t="Summarise this meeting for someone who did not attend. Separate what was decided from what was discussed but left open." onclick="cp(this)">Copy</button>Summarise this meeting for someone who did not attend. Separate what was decided from what was discussed but left open.</div>
@@ -423,30 +439,36 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <span class='file'>Portfolio_Performance_Committee_Agenda_and_Prereads.docx</span>
 </div>
 <div class='note warn'><b>If it goes wrong.</b> Use a previously recorded meeting with transcription on. Confirm transcription and recap policy before the session.</div>
-<div class='note'><b>The differentiator in this segment.</b> This one does not exist outside the meeting platform. There is no prompt that replaces being in the room.</div>
+<div class='note'><b>The differentiator in this segment.</b> Meeting context with speaker and timestamp citation, inside the platform that already holds the recording, the transcript and the permissions. Transcript analysis exists elsewhere. Getting the transcript there is the work.</div>
 </div></div></section>
 <section id='seg7'><div class='seg'>
 <div class='seg-top'>
 <div class='seg-no'>7</div><div>
 <h4>Agent Builder</h4><div class='surf'>Agent built in Microsoft 365 Copilot over governance documents.</div></div>
-<div class='seg-time'><b>7</b>minutes</div></div>
+<div class='seg-time'><b>9</b>minutes</div></div>
 <div class='seg-body'>
+<div class='mode live' style='margin-bottom:14px'>Fully live. The most important segment in the session.</div>
 <div class='goal'>Show a business user, not a developer, building something governed and reusable.</div>
 <div class='lbl'>Prompts</div>
 <div class="prompt"><button class="copy" data-t="Build the agent live. Name it Bid Governance Adviser. Knowledge: the contract governance standard, the delegation of authority and the approval thresholds workbook. Instruction: answer only from these documents, always cite the clause, and say plainly when a proposed bid breaches a control." onclick="cp(this)">Copy</button>Build the agent live. Name it Bid Governance Adviser. Knowledge: the contract governance standard, the delegation of authority and the approval thresholds workbook. Instruction: answer only from these documents, always cite the clause, and say plainly when a proposed bid breaches a control.</div>
 <div class="prompt"><button class="copy" data-t="Test it: a fixed price bid of 180 billion rupiah to a regional government client, with 5 percent contingency. Who approves it, and does it breach anything?" onclick="cp(this)">Copy</button>Test it: a fixed price bid of 180 billion rupiah to a regional government client, with 5 percent contingency. Who approves it, and does it breach anything?</div>
 <div class="prompt"><button class="copy" data-t="Test it again: we want to waive the independent estimate review to meet a tender deadline. Can we, and who can authorise that?" onclick="cp(this)">Copy</button>Test it again: we want to waive the independent estimate review to meet a tender deadline. Can we, and who can authorise that?</div>
-<div class="prompt"><button class="copy" data-t="A subsidiary is at 47 percent fixed price share of its order book and wants to bid more. What does the standard require?" onclick="cp(this)">Copy</button>A subsidiary is at 47 percent fixed price share of its order book and wants to bid more. What does the standard require?</div>
+<div class="prompt"><button class="copy" data-t="PROOF, NOT ASSERTION. Now sign in as a second user who does not have access to the delegation of authority document, and ask the same approval question. Show the room that the answer changes." onclick="cp(this)">Copy</button>PROOF, NOT ASSERTION. Now sign in as a second user who does not have access to the delegation of authority document, and ask the same approval question. Show the room that the answer changes.</div>
+<div class="prompt"><button class="copy" data-t="Now open the admin surface. Show this agent in the inventory, who owns it, what it can reach, and the Purview audit record of the prompts you just ran." onclick="cp(this)">Copy</button>Now open the admin surface. Show this agent in the inventory, who owns it, what it can reach, and the Purview audit record of the prompts you just ran.</div>
 <div class='two'>
 <div><div class='lbl'>Talk track</div><ul>
 <li>Build it in front of them. The build is the demonstration, not the agent.</li>
 <li>The second test should return a breach: 5 percent contingency against an 8 percent minimum.</li>
 <li>The third test is the important one. The correct answer is that the review cannot be waived at all.</li>
+<li>The fourth and fifth prompts are why this segment is nine minutes rather than seven. Everything else in the session can be argued about. A permission boundary that visibly changes the answer, and an audit record you can point at, cannot.</li>
+<li>Say plainly that this is a declarative agent on the user&#x27;s identity. If asked about custom engine agents, say they need their own security and lifecycle design. Do not bluff this.</li>
 </ul></div>
 <div><div class='lbl'>What to watch for</div><ul>
 <li>It cites the clause reference, not a paraphrase.</li>
 <li>It refuses the waiver rather than finding a way to be helpful.</li>
 <li>It applies the more restrictive of two overlapping thresholds.</li>
+<li>The second identity gets a materially different answer, because retrieval is trimmed to what that user can open.</li>
+<li>The agent appears in the inventory with a named owner, and the prompts appear in the audit record.</li>
 </ul></div>
 </div>
 <div class='lbl'>Files</div><div class='files'>
@@ -454,15 +476,16 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <span class='file'>Group_Delegation_of_Authority_Rev7.docx</span>
 <span class='file'>Bid_Approval_Thresholds.xlsx</span>
 </div>
-<div class='note warn'><b>If it goes wrong.</b> Have the agent pre-built in a second window. Build the first half live, then switch.</div>
-<div class='note'><b>The differentiator in this segment.</b> The agent inherits tenant identity, permissions and audit. Ask what the equivalent looks like when the assistant sits outside the estate.</div>
+<div class='note warn'><b>If it goes wrong.</b> Have the agent pre-built in a second window and the second identity already signed in on a second device. If the admin surface is slow, use a screenshot captured that morning and say that is what it is.</div>
+<div class='note'><b>The differentiator in this segment.</b> The only segment where governance is demonstrated rather than described. Be precise: this is a declarative agent running on the user&#x27;s identity. Custom engine agents need their own security and lifecycle design, and saying so is what makes the rest credible.</div>
 </div></div></section>
 <section id='seg8'><div class='seg'>
 <div class='seg-top'>
 <div class='seg-no'>8</div><div>
 <h4>Cowork: multi-artefact pack with live data and web</h4><div class='surf'>Microsoft Copilot Cowork, with browser use and the analytics workspace.</div></div>
-<div class='seg-time'><b>10</b>minutes</div></div>
+<div class='seg-time'><b>6</b>minutes</div></div>
 <div class='seg-body'>
+<div class='mode prerun' style='margin-bottom:14px'>Pre-run the pack. Run the disproof prompt live.</div>
 <div class='goal'>Show a whole workstream delivered, not a single answer.</div>
 <div class='lbl'>Prompts</div>
 <div class="prompt"><button class="copy" data-t="Take the working brief. Produce all five artefacts it asks for. Use the receivables pack and the contract data in the workspace for the evidence, and go and find current published construction cost indices to test the inflation explanation against an independent source." onclick="cp(this)">Copy</button>Take the working brief. Produce all five artefacts it asks for. Use the receivables pack and the contract data in the workspace for the evidence, and go and find current published construction cost indices to test the inflation explanation against an independent source.</div>
@@ -486,14 +509,15 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <span class='file'>Fabric IQ dataset, 31 tables</span>
 </div>
 <div class='note warn'><b>If it goes wrong.</b> Pre-run the pack the night before and keep the outputs ready. Run the disproof prompt live, since it is the shortest and most reliable.</div>
-<div class='note'><b>The differentiator in this segment.</b> Multi-artefact, multi-source, and every output lands in the estate where it is governed, retained and discoverable.</div>
+<div class='note'><b>The differentiator in this segment.</b> Multi-artefact, multi-source, with outputs landing in OneDrive and SharePoint under existing policy. Note honestly that Cowork&#x27;s Purview coverage is still maturing and that web research leaves the tenant by design.</div>
 </div></div></section>
 <section id='seg9'><div class='seg'>
 <div class='seg-top'>
 <div class='seg-no'>9</div><div>
 <h4>Scout</h4><div class='surf'>Microsoft Scout on the desktop.</div></div>
-<div class='seg-time'><b>6</b>minutes</div></div>
+<div class='seg-time'><b>4</b>minutes</div></div>
 <div class='seg-body'>
+<div class='mode prerun' style='margin-bottom:14px'>Pre-configured. Show the watch and its last output.</div>
 <div class='goal'>Show the shift from asking to being told.</div>
 <div class='lbl'>Prompts</div>
 <div class="prompt"><button class="copy" data-t="Watch the Infrastructure and Engineering position. Tell me when any contract moves into forecast negative gross margin, when any subsidiary passes 45 percent fixed price share, and when receivables over 180 days move by more than 10 percent in a month." onclick="cp(this)">Copy</button>Watch the Infrastructure and Engineering position. Tell me when any contract moves into forecast negative gross margin, when any subsidiary passes 45 percent fixed price share, and when receivables over 180 days move by more than 10 percent in a month.</div>
@@ -515,59 +539,66 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <span class='file'>Scout_Scenario_Runsheet.md</span>
 </div>
 <div class='note warn'><b>If it goes wrong.</b> Show a previously configured automation and its last output.</div>
-<div class='note'><b>The differentiator in this segment.</b> This is the end state of the argument. The assistant stops being a place you go and becomes part of how the organisation runs.</div>
+<div class='note'><b>The differentiator in this segment.</b> The shift from asking to being told. Scheduled and event driven work is not unique to Microsoft, so make the point about the operating rhythm rather than about the feature.</div>
 </div></div></section>
 <section id='questions'><h2><span class='num'>04</span>The five questions that decide it</h2>
 <p class='sub'>Do not present a feature comparison. Give them five questions to ask of any assistant, including the ones they already pay for, and let the answers do the work.</p>
 <div class='q'>
-<h4><span>1.</span>Can it see my work?</h4>
-<div class='qrow'><b>Why it decides the outcome</b>An assistant that cannot see the work needs the work pasted into it. That is a tax on every single use, and it is paid by the person with the least time.</div>
-<div class='qrow'><b>How Microsoft 365 Copilot answers</b>Grounded across mail, chat, meetings, files and line of business data, with the user&#x27;s own permissions applied to every retrieval.</div>
-<div class='qrow'><b>What to invite them to ask</b>Ask what happens when the answer depends on a document the user has not found yet, and on a meeting they were not in.</div>
+<h4><span>1.</span>How much of the work can it reach without a project?</h4>
+<div class='qrow'><b>Why it decides the outcome</b>Every assistant can reach enterprise data now. The question is what it costs to get there. Reach through configured connectors is real reach, but it is scoped to what somebody configured, and it has to be maintained.</div>
+<div class='qrow'><b>How Microsoft 365 Copilot answers</b>First party access to the Microsoft Graph, so mail, chat, meetings, files and the relationships between them are available by default rather than by integration project, with the user&#x27;s own permissions applied at retrieval.</div>
+<div class='qrow honest'><b>Where you must be honest</b>Line of business data outside Microsoft 365 still needs connectors, and content the user cannot open is content Copilot cannot use. This is a difference of default reach and integration effort, not a difference between access and no access.</div>
+<div class='qrow'><b>What to invite them to ask</b>Ask what it took to make their current tool see last Thursday&#x27;s meeting, and who maintains that.</div>
 <div class='qrow'><b>Proved in</b>Segment 2 &middot; Microsoft 365 Copilot and Work IQ</div>
 </div>
 <div class='q'>
-<h4><span>2.</span>Can it act where I work?</h4>
+<h4><span>2.</span>Does the work land in the file, or in the chat?</h4>
 <div class='qrow'><b>Why it decides the outcome</b>Most knowledge work is not producing text. It is changing a model, revising a deck, or turning a meeting into commitments.</div>
-<div class='qrow'><b>How Microsoft 365 Copilot answers</b>Works inside Word, Excel, PowerPoint, Outlook and Teams. The output is a changed file or a scheduled action, not a message to copy.</div>
-<div class='qrow'><b>What to invite them to ask</b>Ask how many steps sit between the answer appearing and the file actually being updated.</div>
+<div class='qrow'><b>How Microsoft 365 Copilot answers</b>Native editing inside Word, Excel, PowerPoint and Outlook, with versioning, co-authoring, sensitivity labels and permissions preserved because the file never leaves the estate.</div>
+<div class='qrow honest'><b>Where you must be honest</b>Competitors also have Office add-ins and can write to files. The claim is fidelity and the absence of an export and reimport step, not exclusivity.</div>
+<div class='qrow'><b>What to invite them to ask</b>Ask what happens to a sensitivity label on a document when it goes out to an assistant and comes back.</div>
 <div class='qrow'><b>Proved in</b>Segment 5 &middot; Edit in the app: Excel</div>
 </div>
 <div class='q'>
-<h4><span>3.</span>Who can it act as, and who approved that?</h4>
+<h4><span>3.</span>When an agent acts, whose identity is it using?</h4>
 <div class='qrow'><b>Why it decides the outcome</b>The moment an assistant takes action rather than giving advice, identity stops being a detail and becomes the control.</div>
-<div class='qrow'><b>How Microsoft 365 Copilot answers</b>Agents run with tenant identity, inherit permissions, and are created, approved and retired through admin controls the organisation already operates.</div>
-<div class='qrow'><b>What to invite them to ask</b>Ask who provisioned the agent, whose data it can reach, and how it is decommissioned when its owner leaves.</div>
+<div class='qrow'><b>How Microsoft 365 Copilot answers</b>The declarative agent demonstrated here runs on the user&#x27;s identity and cannot reach anything that user cannot reach. It is created, inventoried and retired through the same admin controls the organisation already operates.</div>
+<div class='qrow honest'><b>Where you must be honest</b>This is true of declarative agents. Custom engine agents and agents that use their own service connections need their own security and lifecycle design, and that work is not automatic. Say so rather than let them discover it.</div>
+<div class='qrow'><b>What to invite them to ask</b>Ask, for any assistant they use, which agents exist today, who approved each one, and what happens to them when the owner leaves.</div>
 <div class='qrow'><b>Proved in</b>Segment 7 &middot; Agent Builder</div>
 </div>
 <div class='q'>
-<h4><span>4.</span>Where does my data go, and can I prove it?</h4>
+<h4><span>4.</span>Can you evidence what it did, six weeks later?</h4>
 <div class='qrow'><b>Why it decides the outcome</b>For a state linked group this is not an IT question. It is a question the audit board will ask, and the answer has to be evidenced rather than asserted.</div>
-<div class='qrow'><b>How Microsoft 365 Copilot answers</b>Prompts and responses stay within the tenant boundary under enterprise data protection, and are subject to the same compliance, retention, eDiscovery and audit tooling as the rest of the estate.</div>
-<div class='qrow'><b>What to invite them to ask</b>Ask to see the audit record of a prompt from six weeks ago, and whether it can be placed under legal hold.</div>
+<div class='qrow'><b>How Microsoft 365 Copilot answers</b>Prompts and responses are handled under Microsoft 365 contractual commitments, are not used to train foundation models, and are subject to the same Purview audit, retention, eDiscovery and legal hold tooling as the rest of the estate.</div>
+<div class='qrow honest'><b>Where you must be honest</b>Competitor governance exists. Microsoft now offers Purview connectors that bring some of it into scope, with the Claude connector in preview. The honest claim is depth and native sensitivity label and DLP integration, and that competitor governance requires separate configuration and still has gaps. Note also that Cowork&#x27;s Purview coverage is not yet complete, and that web queries and third party agents leave the tenant by design.</div>
+<div class='qrow'><b>What to invite them to ask</b>Ask them to produce the audit record of a prompt from six weeks ago and place it under legal hold, in whichever tool they use.</div>
 <div class='qrow'><b>Proved in</b>Segment 7 &middot; Agent Builder</div>
 </div>
 <div class='q'>
-<h4><span>5.</span>What happens when I want five hundred of these?</h4>
-<div class='qrow'><b>Why it decides the outcome</b>One team with a subscription is an experiment. Twenty three companies with different tools is a governance problem and a procurement problem at the same time.</div>
-<div class='qrow'><b>How Microsoft 365 Copilot answers</b>One licence, one identity model, one compliance boundary, one admin surface, across every portfolio company.</div>
-<div class='qrow'><b>What to invite them to ask</b>Ask what the estate looks like in eighteen months if each subsidiary picks its own assistant.</div>
+<h4><span>5.</span>What does this look like across twenty three companies?</h4>
+<div class='qrow'><b>Why it decides the outcome</b>One team with a subscription is an experiment. Twenty three companies choosing separately is a governance problem and a procurement problem at the same time.</div>
+<div class='qrow'><b>How Microsoft 365 Copilot answers</b>A common control architecture: one identity model, one policy and compliance framework, and one admin surface per tenant, with the option to consolidate rather than federate twenty three separate decisions.</div>
+<div class='qrow honest'><b>Where you must be honest</b>Do not claim one licence covers everyone. Licensing is per user, Cowork is usage based, and agent and analytics consumption is metered. If the group runs several tenants, and on six email estates it very likely does, those remain separate boundaries until a tenant consolidation project says otherwise. The opportunity is consolidation, not a claim that consolidation has already happened.</div>
+<div class='qrow'><b>What to invite them to ask</b>Ask what their estate looks like in eighteen months if each subsidiary picks its own assistant, and who reconciles it.</div>
 <div class='qrow'><b>Proved in</b>Segment 8 &middot; Cowork: multi-artefact pack with live data and web</div>
 </div>
 </section>
 <section id='data'><h2><span class='num'>05</span>The data story</h2>
 <p class='sub'>Presenter reference. This is what the dataset proves and the order in which it proves it.</p>
 <div class='note hot'><b>The headline.</b> Infrastructure and Engineering EBITDA margin fell from 11.4 percent in FY2024 to 8.2 percent in FY2025 to 3.1 percent in FY2026 H1, while revenue grew 20 percent. The cluster reports the cause as construction material inflation. The data does not support that.</div>
-<div class='note warn'><b>The decoy: Construction material cost inflation.</b> Composite material and labour inflation over the period was 6.3 percent. It applies equally to cost-plus work, whose gross margin held at 9.5 percent while fixed-price work fell to minus 10.7 percent. A cost shock that hits one contract type and spares the other sitting next to it is not a cost shock.</div>
+<div class='note warn'><b>The challenge you will get, and must concede.</b> The strongest challenge from the room: cost plus contracts pass inflation straight to the customer, so of course their margin held. That objection is correct and should be conceded immediately. It is why the argument does not rest on that comparison.</div>
+<div class='note good'><b>What actually survives that challenge.</b> Inflation is real but insufficient, and the naive test for it is wrong. Comparing fixed price against cost plus proves nothing on its own, because cost plus passes input inflation to the client while fixed price absorbs it, so a common cost shock would produce exactly that divergence. Two tests survive that objection. First, size: composite input inflation over the whole period was 6.3 percent against a fixed price cost variance of 19.0 percent, so even assuming full absorption and zero recovery, roughly 12.7 percentage points, or about IDR 3,025 bn of forecast cost, is not inflation. Second, a within-type control: mean cost variance on fixed price work climbs with the period in which it was bid, from 11.5 percent for work bid in FY2023, through 16.2 and 17.3 percent, to 20.8 percent at the mandate peak. Every one of those groups absorbs input inflation identically and their delivery periods overlap. What changed is how they were bid.</div>
 <div class='card'><h3>The chain, in the order the data reveals it</h3>
 <div class='chain'>
 <div class='step'><div class='n'>1</div><div><b>Incentive</b><p>The FY2024 growth mandate rewarded order book intake, not delivered margin. Bid win rate rose from 22.4 percent to 41.3 percent.</p></div></div>
-<div class='step'><div class='n'>2</div><div><b>Mix</b><p>The win rate was bought by moving to fixed-price lump-sum turnkey terms. LSTK share of won order value rose from 31 percent to 68 percent.</p></div></div>
-<div class='step'><div class='n'>3</div><div><b>Execution</b><p>LSTK contracts run a mean cost variance of plus 19.0 percent against bid and a gross margin of minus 10.7 percent. Cost-plus contracts run plus 2.3 percent variance and plus 9.5 percent margin.</p></div></div>
-<div class='step'><div class='n'>4</div><div><b>Concentration</b><p>Wisma Karya holds 72 percent of LSTK exposure by value. Regional government clients hold 64 percent of LSTK contract value.</p></div></div>
-<div class='step'><div class='n'>5</div><div><b>Cash</b><p>Regional government days sales outstanding is 192 days against 60 days for private clients, and public sector settlement has slowed every year since FY2023. Receivables over 180 days grew from IDR 96 bn at December 2024 to IDR 623 bn at June 2026.</p></div></div>
+<div class='step'><div class='n'>2</div><div><b>Mix</b><p>The win rate was bought by moving to fixed price lump sum turnkey terms. LSTK share of won order value rose from 31 percent to 68 percent, which moved cost overrun risk from the client to the group.</p></div></div>
+<div class='step'><div class='n'>3</div><div><b>Execution</b><p>Fixed price cost variance runs plus 19.0 percent against bid. Within that single contract type, variance climbs with the period in which the work was bid: 11.5 percent for FY2023, 16.2 and 17.3 percent through FY2024, and 20.8 percent at the FY2025 peak. Gross margin on the same series falls from plus 0.6 percent to minus 13.4 percent. That is a bidding effect, not a price effect.</p></div></div>
+<div class='step'><div class='n'>4</div><div><b>Governance</b><p>The decisions behind that gap are on the record. The tender discount ceiling was raised from 4 to 8 percent in July 2024 with no compensating change to independent estimate review, and contingency minimums were waived, including on the single worst contract.</p></div></div>
+<div class='step'><div class='n'>5</div><div><b>Concentration</b><p>Wisma Karya holds 72 percent of fixed price exposure by value and regional government clients hold 64 percent of it, so entity, contract type and counterparty risk all landed in the same place.</p></div></div>
+<div class='step'><div class='n'>6</div><div><b>Cash</b><p>Regional government days sales outstanding is 192 days against 60 days for private clients, and public sector settlement has slowed every year since FY2023. Receivables over 180 days grew from IDR 96 bn at December 2024 to IDR 623 bn at June 2026.</p></div></div>
 </div></div>
-<div class='note good'><b>The verdict.</b> This is a bidding discipline and incentive design problem that became a working capital problem. Repricing steel will not fix it. Changing what the bid committee is allowed to sign, and what the growth mandate rewards, will.</div>
+<div class='note good'><b>The verdict.</b> Inflation contributed. It cannot carry the explanation. A change in what the organisation rewarded moved risk onto the balance sheet, governance controls that would have priced that risk were relaxed at the same moment, and the cash consequence arrived about eighteen months later. Repricing steel does not reach any of that.</div>
 <div class='card'><h3>Answer key</h3><div class='keys'>
 <div class='keyf'><b>11.4%</b><span>Cluster margin FY2024</span></div>
 <div class='keyf'><b>8.2%</b><span>Cluster margin FY2025</span></div>
@@ -576,14 +607,17 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='keyf'><b>41.3%</b><span>Bid win rate at peak</span></div>
 <div class='keyf'><b>31%</b><span>Fixed price share of orders, before</span></div>
 <div class='keyf'><b>68%</b><span>Fixed price share of orders, after</span></div>
-<div class='keyf'><b>+19.0%</b><span>Fixed price cost variance</span></div>
+<div class='keyf'><b>+19.0%</b><span>Fixed price cost variance, all</span></div>
+<div class='keyf'><b>+11.5%</b><span>Fixed price variance, bid FY2023</span></div>
+<div class='keyf'><b>+20.8%</b><span>Fixed price variance, bid at peak</span></div>
+<div class='keyf'><b>6.3%</b><span>Composite input inflation, whole period</span></div>
+<div class='keyf'><b>12.7 percentage points</b><span>Variance inflation cannot explain</span></div>
 <div class='keyf'><b>+2.3%</b><span>Cost plus cost variance</span></div>
 <div class='keyf'><b>-10.7%</b><span>Fixed price gross margin</span></div>
 <div class='keyf'><b>+9.5%</b><span>Cost plus gross margin</span></div>
 <div class='keyf'><b>72%</b><span>One subsidiary&#x27;s share of fixed price</span></div>
 <div class='keyf'><b>192 days</b><span>Regional government DSO</span></div>
 <div class='keyf'><b>60 days</b><span>Private client DSO</span></div>
-<div class='keyf'><b>6.3%</b><span>Composite material inflation</span></div>
 <div class='keyf'><b>+34.2%</b><span>Worst single contract variance</span></div>
 <div class='keyf'><b>IDR 96 bn &rarr; 623 bn</b><span>Receivables over 180 days, Dec 2024 to Jun 2026</span></div>
 </div>
