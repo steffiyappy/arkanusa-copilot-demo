@@ -1,0 +1,658 @@
+<!DOCTYPE html><html lang='en'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<meta name='robots' content='noindex,nofollow'>
+<title>Arkanusa Group — Microsoft 365 Copilot demonstration hub</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#16233F;--navy2:#1F2D55;--blue:#0078D4;--teal:#00A8A8;
+  --amber:#D9822B;--red:#C0392B;--green:#1E7E34;
+  --bg:#F5F7FB;--card:#FFFFFF;--line:#E1E7F0;
+  --text:#16233F;--muted:#5F6B80;--soft:#8593AA;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);
+  color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ---------- layout ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.shell{display:grid;grid-template-columns:236px 1fr;gap:36px;align-items:start}
+@media(max-width:1000px){.shell{grid-template-columns:1fr}nav.side{display:none}}
+
+/* ---------- header ---------- */
+header{background:linear-gradient(135deg,#101B33 0%,#1F2D55 45%,#0B5A9E 100%);
+  color:#fff;padding:52px 0 46px;position:relative;overflow:hidden}
+header::after{content:'';position:absolute;right:-120px;top:-120px;width:420px;
+  height:420px;border-radius:50%;background:rgba(0,168,168,.16);filter:blur(70px)}
+.badge{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.22);border-radius:40px;padding:6px 16px;
+  font-size:11.5px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;
+  color:rgba(255,255,255,.9);margin-bottom:18px}
+.dot{width:8px;height:8px;border-radius:50%;background:#00E5C0;box-shadow:0 0 10px #00E5C0}
+header h1{font-size:38px;font-weight:700;line-height:1.14;margin-bottom:10px;position:relative}
+header h1 em{font-style:normal;color:#5FE3D6}
+header p.lede{font-size:16.5px;color:rgba(255,255,255,.82);max-width:760px;position:relative}
+.meta{display:flex;flex-wrap:wrap;gap:26px;margin-top:26px;position:relative}
+.meta div{font-size:13px;color:rgba(255,255,255,.62)}
+.meta strong{display:block;font-size:19px;color:#fff;font-weight:700;margin-bottom:1px}
+
+/* ---------- nav ---------- */
+nav.side{position:sticky;top:20px;padding-top:34px}
+nav.side a{display:block;padding:7px 12px;font-size:13.5px;color:var(--muted);
+  border-left:2px solid transparent;border-radius:0 6px 6px 0}
+nav.side a:hover{background:#EBF1F9;color:var(--navy);text-decoration:none}
+nav.side a.on{border-left-color:var(--blue);color:var(--navy);font-weight:600;background:#EBF1F9}
+nav.side .grp{font-size:10.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--soft);margin:20px 0 7px 12px}
+
+/* ---------- sections ---------- */
+main{padding:34px 0 90px}
+section{margin-bottom:52px;scroll-margin-top:20px}
+h2{font-size:25px;font-weight:700;color:var(--navy);margin-bottom:8px;letter-spacing:-.2px}
+h2 .num{color:var(--teal);font-weight:700;margin-right:9px}
+.sub{color:var(--muted);font-size:15px;margin-bottom:22px;max-width:820px}
+h3{font-size:17px;font-weight:700;color:var(--navy2);margin:26px 0 10px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:13px;
+  padding:24px 26px;margin-bottom:16px;box-shadow:0 1px 3px rgba(22,35,63,.05)}
+.card.tight{padding:18px 22px}
+
+/* ---------- callouts ---------- */
+.note{border-left:3px solid var(--blue);background:#EFF6FD;padding:14px 18px;
+  border-radius:0 9px 9px 0;margin:16px 0;font-size:14.5px}
+.note.warn{border-left-color:var(--amber);background:#FDF6EC}
+.note.good{border-left-color:var(--green);background:#EDF7F0}
+.note.hot{border-left-color:var(--red);background:#FCF0EF}
+.note b{color:var(--navy)}
+
+/* ---------- acts ---------- */
+.act{background:var(--card);border:1px solid var(--line);border-radius:13px;
+  padding:22px 24px;margin-bottom:14px;border-top:3px solid var(--teal)}
+.act .lbl{font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;
+  color:var(--teal);margin-bottom:5px}
+.act h4{font-size:19px;color:var(--navy);margin-bottom:9px;font-weight:700}
+.act .pivot{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);
+  font-size:14px;color:var(--muted);font-style:italic}
+
+/* ---------- run of show ---------- */
+table{width:100%;border-collapse:collapse;font-size:14px;background:var(--card);
+  border-radius:11px;overflow:hidden;border:1px solid var(--line)}
+th{background:var(--navy);color:#fff;text-align:left;padding:11px 14px;
+  font-size:12px;font-weight:600;letter-spacing:.4px}
+td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:#FAFBFD}
+td.mins{font-variant-numeric:tabular-nums;font-weight:600;color:var(--blue);white-space:nowrap}
+td.actc{font-size:12px;color:var(--soft);white-space:nowrap}
+
+/* ---------- segment ---------- */
+.seg{background:var(--card);border:1px solid var(--line);border-radius:13px;
+  margin-bottom:20px;overflow:hidden}
+.seg-top{display:flex;align-items:flex-start;gap:16px;padding:20px 24px;
+  background:linear-gradient(135deg,#1F2D55 0%,#2A4272 100%);color:#fff}
+.seg-no{flex:0 0 44px;height:44px;border-radius:11px;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.24);display:flex;align-items:center;
+  justify-content:center;font-size:18px;font-weight:700}
+.seg-top h4{font-size:19px;font-weight:700;margin-bottom:3px}
+.seg-top .surf{font-size:13px;color:rgba(255,255,255,.72)}
+.seg-time{margin-left:auto;text-align:right;font-size:12px;color:rgba(255,255,255,.7)}
+.seg-time b{display:block;font-size:19px;color:#5FE3D6}
+.seg-body{padding:22px 24px}
+.goal{font-size:15px;color:var(--navy);font-weight:600;margin-bottom:16px}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:820px){.two{grid-template-columns:1fr}}
+.lbl{font-size:10.5px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;
+  color:var(--soft);margin:16px 0 7px}
+ul{margin-left:18px}
+li{margin-bottom:6px;font-size:14.5px}
+
+/* ---------- prompts ---------- */
+.prompt{position:relative;background:#F7F9FC;border:1px solid var(--line);
+  border-left:3px solid var(--teal);border-radius:0 9px 9px 0;padding:13px 52px 13px 16px;
+  margin-bottom:9px;font-size:14px;color:#243450}
+.copy{position:absolute;right:8px;top:8px;background:#fff;border:1px solid var(--line);
+  border-radius:6px;padding:4px 9px;font-size:11px;color:var(--muted);cursor:pointer;
+  font-family:inherit;transition:all .15s}
+.copy:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.copy.ok{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* ---------- files ---------- */
+.files{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
+.file{background:#EEF3FA;border:1px solid #DCE5F2;border-radius:6px;padding:4px 10px;
+  font-size:12px;color:var(--navy2);font-family:Consolas,monospace}
+
+/* ---------- questions ---------- */
+.q{background:var(--card);border:1px solid var(--line);border-radius:13px;
+  padding:22px 24px;margin-bottom:14px;border-left:4px solid var(--blue)}
+.q h4{font-size:18px;color:var(--navy);margin-bottom:10px;font-weight:700}
+.q h4 span{color:var(--blue);margin-right:8px}
+.qrow{margin-top:12px;font-size:14.5px}
+.qrow b{color:var(--navy2);display:block;font-size:11px;letter-spacing:1.2px;
+  text-transform:uppercase;color:var(--soft);margin-bottom:3px}
+
+/* ---------- chain ---------- */
+.chain{counter-reset:step}
+.step{display:flex;gap:16px;padding:15px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:none}
+.step .n{flex:0 0 34px;height:34px;border-radius:9px;background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.step b{display:block;color:var(--navy);margin-bottom:2px}
+.step p{font-size:14.5px;color:var(--muted)}
+
+/* ---------- key figures ---------- */
+.keys{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:10px}
+.keyf{background:#F7F9FC;border:1px solid var(--line);border-radius:9px;padding:12px 14px}
+.keyf b{display:block;font-size:20px;color:var(--navy);font-variant-numeric:tabular-nums}
+.keyf span{font-size:12px;color:var(--muted)}
+
+/* ---------- checklist ---------- */
+.chk{background:var(--card);border:1px solid var(--line);border-radius:11px;
+  padding:18px 22px;margin-bottom:12px}
+.chk h4{font-size:15px;color:var(--navy);margin-bottom:9px;font-weight:700}
+.chk label{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:14.5px;
+  cursor:pointer}
+.chk input{margin-top:5px;accent-color:var(--blue);flex:0 0 auto}
+
+footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);font-size:12.5px}
+.pillrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.pill{background:#EEF3FA;border:1px solid #DCE5F2;border-radius:20px;padding:4px 13px;
+  font-size:12px;color:var(--navy2)}
+</style></head><body>
+<header><div class='wrap'>
+<div class='badge'><span class='dot'></span>Microsoft 365 Copilot</div>
+<h1>Arkanusa Group<br><em>Microsoft 365 Copilot demonstration hub</em></h1>
+<p class='lede'>One business question, answered nine ways. Only one of them is a chat window.</p>
+<div class='meta'>
+<div><strong>9</strong>segments</div>
+<div><strong>65 min</strong>demo runtime</div>
+<div><strong>4</strong>narrative acts</div>
+<div><strong>27</strong>linked data tables</div>
+<div><strong>19 Aug</strong>session date</div>
+</div></div></header>
+<div class='wrap'><div class='shell'>
+<nav class='side'>
+<div class='grp'>Prepare</div>
+<a href='#framing'>Framing</a><a href='#story'>Storyboard</a><a href='#runofshow'>Run of show</a>
+<div class='grp'>Deliver</div>
+<a href='#seg1'>1. Copilot Chat with agent mode</a>
+<a href='#seg2'>2. Microsoft 365 Copilot and Work IQ</a>
+<a href='#seg3'>3. Researcher: critique the daily briefing</a>
+<a href='#seg4'>4. Researcher council: IPO or strategic partner</a>
+<a href='#seg5'>5. Edit in the app: Excel</a>
+<a href='#seg6'>6. Copilot in Teams: meeting recap</a>
+<a href='#seg7'>7. Agent Builder</a>
+<a href='#seg8'>8. Cowork: multi-artefact pack with live data and web</a>
+<a href='#seg9'>9. Scout</a>
+<div class='grp'>Argue</div>
+<a href='#questions'>The five questions</a>
+<div class='grp'>Reference</div>
+<a href='#data'>The data story</a><a href='#files'>Demo files</a><a href='#checklist'>Checklist</a>
+</nav>
+<main>
+<section id='framing'><h2><span class='num'>01</span>Framing</h2>
+<p class='sub'>The audience already has good models. Several teams pay for them. So the demonstration does not argue about model quality, it assumes parity and then shows the four things a standalone assistant structurally cannot do: see the work, act inside the work, be governed like the work, and scale as part of the work.</p>
+<div class='note'><b>Parity, not superiority.</b> Do not argue that the model is better. Argue that the model is the commodity. Every serious assistant now reasons well, and the audience already knows that because they are paying for two of them. The difference is what the model is attached to.</div>
+<div class='note good'><b>Give credit first.</b> Be straight with them about where the tools they already pay for are genuinely strong: raw model access, fast experimentation, developer ergonomics, and a low barrier for an individual who wants an answer right now. Conceding that openly is what buys you the right to make the rest of the argument.</div>
+<div class='card tight'><div class='lbl'>The fictional account</div>
+<p style='font-size:14.5px'>Everything in this hub uses <b>Arkanusa Group</b>, a fictional diversified holding company with 23 portfolio companies across 6 clusters. The figures are internally consistent and every claim in the demonstration is provable from the supplied dataset.</p>
+<div class='pillrow'>
+<span class='pill'>Financial Services</span>
+<span class='pill'>Special Situations and Asset Recovery</span>
+<span class='pill'>Industrial Estates</span>
+<span class='pill'>Infrastructure and Engineering</span>
+<span class='pill'>Media, Publishing and Creative</span>
+<span class='pill'>Manufacturing and Technology</span>
+</div></div></section>
+<section id='story'><h2><span class='num'>02</span>Storyboard</h2>
+<p class='sub'>Four acts. Each act ends on the pivot that a standalone assistant cannot follow.</p>
+<div class='act'>
+<div class='lbl'>Act 1 &middot; segments 1, 2</div>
+<h4>The question arrives</h4>
+<p style='font-size:14.5px;color:var(--muted)'>A real question lands. Copilot turns scattered source material into finished artefacts, then shows it can reason across the whole work estate rather than a pasted excerpt.</p>
+<div class='pivot'>Pivot: This is the point at which a standalone assistant needs you to paste the context in. Copilot already has it, trimmed to what the user is allowed to see.</div>
+</div>
+<div class='act'>
+<div class='lbl'>Act 2 &middot; segments 3, 4</div>
+<h4>The judgement</h4>
+<p style='font-size:14.5px;color:var(--muted)'>Depth of reasoning, twice. First Researcher pulls a weak executive briefing apart. Then it convenes a council on a live strategic decision.</p>
+<div class='pivot'>Pivot: This is the parity moment. The reasoning is as good as anything the audience is paying for elsewhere, and it is reading their documents rather than a paste.</div>
+</div>
+<div class='act'>
+<div class='lbl'>Act 3 &middot; segments 5, 6, 7</div>
+<h4>The work</h4>
+<p style='font-size:14.5px;color:var(--muted)'>The work happens where the work already is: inside Excel, inside the meeting, and then handed to an agent that anyone in the business can build.</p>
+<div class='pivot'>Pivot: Nothing here is a chat window. This is the part that does not port to a browser tab.</div>
+</div>
+<div class='act'>
+<div class='lbl'>Act 4 &middot; segments 8, 9</div>
+<h4>The scale</h4>
+<p style='font-size:14.5px;color:var(--muted)'>From one answer to a whole workstream. Cowork produces a multi-artefact pack against live data and live web research. Scout carries it into the operating rhythm.</p>
+<div class='pivot'>Pivot: The question stops being what can it write, and becomes how much of the job can it carry.</div>
+</div>
+</section>
+<section id='runofshow'><h2><span class='num'>03</span>Run of show</h2>
+<p class='sub'>65 minutes of demonstration. Allow 90 minutes with introduction, questions and close.</p>
+<table><thead><tr><th>#</th><th>Act</th><th>Segment</th><th>Surface</th><th>Mins</th><th>Cumulative</th></tr></thead><tbody>
+<tr><td class='mins'>1</td><td class='actc'>Act 1</td><td><b>Copilot Chat with agent mode</b></td><td>Microsoft 365 Copilot app, agent mode. Word, Excel and PowerPoint output.</td><td class='mins'>8</td><td class='mins'>8</td></tr>
+<tr><td class='mins'>2</td><td class='actc'>Act 1</td><td><b>Microsoft 365 Copilot and Work IQ</b></td><td>Microsoft 365 Copilot, grounded across mail, chat, meetings and files.</td><td class='mins'>7</td><td class='mins'>15</td></tr>
+<tr><td class='mins'>3</td><td class='actc'>Act 2</td><td><b>Researcher: critique the daily briefing</b></td><td>Researcher agent in Microsoft 365 Copilot.</td><td class='mins'>7</td><td class='mins'>22</td></tr>
+<tr><td class='mins'>4</td><td class='actc'>Act 2</td><td><b>Researcher council: IPO or strategic partner</b></td><td>Researcher, multi-perspective reasoning on a live decision.</td><td class='mins'>8</td><td class='mins'>30</td></tr>
+<tr><td class='mins'>5</td><td class='actc'>Act 3</td><td><b>Edit in the app: Excel</b></td><td>Copilot in Excel, on a live driver-based model.</td><td class='mins'>6</td><td class='mins'>36</td></tr>
+<tr><td class='mins'>6</td><td class='actc'>Act 3</td><td><b>Copilot in Teams: meeting recap</b></td><td>Copilot in Microsoft Teams, meeting recap and follow-up.</td><td class='mins'>6</td><td class='mins'>42</td></tr>
+<tr><td class='mins'>7</td><td class='actc'>Act 3</td><td><b>Agent Builder</b></td><td>Agent built in Microsoft 365 Copilot over governance documents.</td><td class='mins'>7</td><td class='mins'>49</td></tr>
+<tr><td class='mins'>8</td><td class='actc'>Act 4</td><td><b>Cowork: multi-artefact pack with live data and web</b></td><td>Microsoft Copilot Cowork, with browser use and the analytics workspace.</td><td class='mins'>10</td><td class='mins'>59</td></tr>
+<tr><td class='mins'>9</td><td class='actc'>Act 4</td><td><b>Scout</b></td><td>Microsoft Scout on the desktop.</td><td class='mins'>6</td><td class='mins'>65</td></tr>
+</tbody></table></section>
+<section id='seg1'><div class='seg'>
+<div class='seg-top'>
+<div class='seg-no'>1</div><div>
+<h4>Copilot Chat with agent mode</h4><div class='surf'>Microsoft 365 Copilot app, agent mode. Word, Excel and PowerPoint output.</div></div>
+<div class='seg-time'><b>8</b>minutes</div></div>
+<div class='seg-body'>
+<div class='goal'>Turn a pile of unstructured working notes into three finished artefacts without leaving the assistant.</div>
+<div class='lbl'>Prompts</div>
+<div class="prompt"><button class="copy" data-t="Read the working notes on the Infrastructure and Engineering cluster. They are unordered. Turn them into a four page board paper with a clear recommendation, a one paragraph executive summary at the top, and every figure attributed to its source. Do not add anything the notes do not support." onclick="cp(this)">Copy</button>Read the working notes on the Infrastructure and Engineering cluster. They are unordered. Turn them into a four page board paper with a clear recommendation, a one paragraph executive summary at the top, and every figure attributed to its source. Do not add anything the notes do not support.</div>
+<div class="prompt"><button class="copy" data-t="Using the Portfolio Review Pack, build me an evidence appendix in Excel. One sheet for contract mix, one for cost variance by contract type, one for concentration, one for receivables ageing. Add a summary sheet at the front that states in one line what each sheet proves." onclick="cp(this)">Copy</button>Using the Portfolio Review Pack, build me an evidence appendix in Excel. One sheet for contract mix, one for cost variance by contract type, one for concentration, one for receivables ageing. Add a summary sheet at the front that states in one line what each sheet proves.</div>
+<div class="prompt"><button class="copy" data-t="The board deck stops at the symptom and has three placeholder slides. Finish it. Replace the placeholders with the analysis from the working notes, and rewrite the final slide so it asks the board for a specific decision." onclick="cp(this)">Copy</button>The board deck stops at the symptom and has three placeholder slides. Finish it. Replace the placeholders with the analysis from the working notes, and rewrite the final slide so it asks the board for a specific decision.</div>
+<div class='two'>
+<div><div class='lbl'>Talk track</div><ul>
+<li>Open with the notes. Scroll them so the room sees they are a mess. Say plainly that this is what real source material looks like.</li>
+<li>Run the Word prompt first. While it works, say what you asked for that most people forget to ask for: attribution, and a prohibition on inventing.</li>
+<li>Do not read the output aloud. Scroll to one specific number and trace it back to the note it came from.</li>
+</ul></div>
+<div><div class='lbl'>What to watch for</div><ul>
+<li>The paper reorders the notes into the sequence a board needs rather than the sequence they were written in.</li>
+<li>Figures carry their source. Nothing is invented.</li>
+<li>The deck&#x27;s placeholder slides are replaced with real analysis, not filler.</li>
+</ul></div>
+</div>
+<div class='lbl'>Files</div><div class='files'>
+<span class='file'>IE_Cluster_Working_Notes_UNSTRUCTURED.docx</span>
+<span class='file'>Arkanusa_FY2026H1_Portfolio_Review_Pack.xlsx</span>
+<span class='file'>IE_Board_Pack_Section4_DRAFT_INCOMPLETE.pptx</span>
+</div>
+<div class='note warn'><b>If it goes wrong.</b> If agent mode is slow, run the Word prompt only and show the pre-built evidence appendix from the demo files instead.</div>
+<div class='note'><b>The differentiator in this segment.</b> A standalone assistant can do this too, if you paste everything in. Note how much you did not paste.</div>
+</div></div></section>
+<section id='seg2'><div class='seg'>
+<div class='seg-top'>
+<div class='seg-no'>2</div><div>
+<h4>Microsoft 365 Copilot and Work IQ</h4><div class='surf'>Microsoft 365 Copilot, grounded across mail, chat, meetings and files.</div></div>
+<div class='seg-time'><b>7</b>minutes</div></div>
+<div class='seg-body'>
+<div class='goal'>Show reasoning across the whole work estate, with permission trimming intact.</div>
+<div class='lbl'>Prompts</div>
+<div class="prompt"><button class="copy" data-t="Pull together everything across my documents about the Infrastructure and Engineering margin position. Give me a timeline of who knew what and when, and cite the source for each entry." onclick="cp(this)">Copy</button>Pull together everything across my documents about the Infrastructure and Engineering margin position. Give me a timeline of who knew what and when, and cite the source for each entry.</div>
+<div class="prompt"><button class="copy" data-t="Was this risk raised before it became a problem? If it was, tell me who raised it, on what date, what they specifically asked for, and what happened to each of their requests." onclick="cp(this)">Copy</button>Was this risk raised before it became a problem? If it was, tell me who raised it, on what date, what they specifically asked for, and what happened to each of their requests.</div>
+<div class="prompt"><button class="copy" data-t="Now tell me what is missing. What would you need to see, that you cannot currently find, to be confident about the cause?" onclick="cp(this)">Copy</button>Now tell me what is missing. What would you need to see, that you cannot currently find, to be confident about the cause?</div>
+<div class='two'>
+<div><div class='lbl'>Talk track</div><ul>
+<li>Frame it before you run it: the question is not can it write, it is what can it see.</li>
+<li>The timeline answer is the moment. It stitches a committee minute, a risk memo and a management account into one narrative.</li>
+<li>The third prompt is the credibility play. A tool that tells you what it does not know is a tool you can put in front of a board.</li>
+</ul></div>
+<div><div class='lbl'>What to watch for</div><ul>
+<li>It finds the February 2025 risk memo and connects it to the May 2026 committee item.</li>
+<li>It notes that four specific requests were made and none implemented.</li>
+<li>Every claim carries a source you can click.</li>
+</ul></div>
+</div>
+<div class='lbl'>Files</div><div class='files'>
+<span class='file'>Group_Bid_Committee_Minutes_Extracts.docx</span>
+<span class='file'>CRO_Memo_Fixed_Price_Concentration.docx</span>
+</div>
+<div class='note warn'><b>If it goes wrong.</b> If tenant grounding is unavailable, upload the two documents and run the same three prompts. Say openly that you are simulating the estate.</div>
+<div class='note'><b>The differentiator in this segment.</b> This is the structural difference. The answer quality depends on reach, and reach depends on being inside the tenant with the user&#x27;s permissions applied.</div>
+</div></div></section>
+<section id='seg3'><div class='seg'>
+<div class='seg-top'>
+<div class='seg-no'>3</div><div>
+<h4>Researcher: critique the daily briefing</h4><div class='surf'>Researcher agent in Microsoft 365 Copilot.</div></div>
+<div class='seg-time'><b>7</b>minutes</div></div>
+<div class='seg-body'>
+<div class='goal'>Show reasoning depth applied to the customer&#x27;s own writing, not to a public dataset.</div>
+<div class='lbl'>Prompts</div>
+<div class="prompt"><button class="copy" data-t="This is a draft daily briefing for the group chief executive. Critique it. Do not rewrite it yet. Tell me where it is weak, where a claim is asserted without evidence, where the ordering buries something important, and where the reader is left without a decision to make." onclick="cp(this)">Copy</button>This is a draft daily briefing for the group chief executive. Critique it. Do not rewrite it yet. Tell me where it is weak, where a claim is asserted without evidence, where the ordering buries something important, and where the reader is left without a decision to make.</div>
+<div class="prompt"><button class="copy" data-t="Which single sentence in this briefing is most likely to be wrong, and what evidence would settle it either way?" onclick="cp(this)">Copy</button>Which single sentence in this briefing is most likely to be wrong, and what evidence would settle it either way?</div>
+<div class="prompt"><button class="copy" data-t="Now rewrite it. Lead with the item that threatens the full year result. Keep it to one page. Every claim either carries a source or is marked as unverified. End with the specific decisions you are asking the chief executive to make today." onclick="cp(this)">Copy</button>Now rewrite it. Lead with the item that threatens the full year result. Keep it to one page. Every claim either carries a source or is marked as unverified. End with the specific decisions you are asking the chief executive to make today.</div>
+<div class='two'>
+<div><div class='lbl'>Talk track</div><ul>
+<li>Say what the briefing is before you run it: eight sections, reads fine, and is quietly useless.</li>
+<li>Let the critique land without narrating it. Then pick the two findings the room reacts to.</li>
+<li>The second prompt is the sharpest. It goes after the causal claim about material costs.</li>
+</ul></div>
+<div><div class='lbl'>What to watch for</div><ul>
+<li>It finds the buried lede in section six.</li>
+<li>It challenges the material cost explanation as asserted rather than evidenced.</li>
+<li>It spots the stale occupancy figure quoted at May among July numbers.</li>
+<li>It notes that the briefing asks the chief executive for nothing.</li>
+</ul></div>
+</div>
+<div class='lbl'>Files</div><div class='files'>
+<span class='file'>Group_CEO_Daily_Briefing_19Aug2026_DRAFT.docx</span>
+</div>
+<div class='note warn'><b>If it goes wrong.</b> Presenter answer key is in the demo files. If the model misses a finding, prompt for it directly rather than pretending it found it.</div>
+<div class='note'><b>The differentiator in this segment.</b> Any strong model can critique text. Only this one is reading the briefing that was actually going to be sent, in the place it was going to be sent from.</div>
+</div></div></section>
+<section id='seg4'><div class='seg'>
+<div class='seg-top'>
+<div class='seg-no'>4</div><div>
+<h4>Researcher council: IPO or strategic partner</h4><div class='surf'>Researcher, multi-perspective reasoning on a live decision.</div></div>
+<div class='seg-time'><b>8</b>minutes</div></div>
+<div class='seg-body'>
+<div class='goal'>Show structured disagreement on a decision that matters to a holding company, grounded in the customer&#x27;s own numbers.</div>
+<div class='lbl'>Prompts</div>
+<div class="prompt"><button class="copy" data-t="Convene a council on this question. Give me four distinct positions: an investment banker optimising for proceeds, a state shareholder optimising for policy control, a risk officer optimising for downside, and an operator optimising for the business itself. Each must argue from the numbers in the pack, and each must name the single fact that would change their mind." onclick="cp(this)">Copy</button>Convene a council on this question. Give me four distinct positions: an investment banker optimising for proceeds, a state shareholder optimising for policy control, a risk officer optimising for downside, and an operator optimising for the business itself. Each must argue from the numbers in the pack, and each must name the single fact that would change their mind.</div>
+<div class="prompt"><button class="copy" data-t="Where do the four genuinely disagree, and where are they only using different words for the same position?" onclick="cp(this)">Copy</button>Where do the four genuinely disagree, and where are they only using different words for the same position?</div>
+<div class="prompt"><button class="copy" data-t="The preparer recommends deferring the transaction decision until the Infrastructure remediation plan is funded. Steel-man that recommendation, then give me the strongest case against it." onclick="cp(this)">Copy</button>The preparer recommends deferring the transaction decision until the Infrastructure remediation plan is funded. Steel-man that recommendation, then give me the strongest case against it.</div>
+<div class='two'>
+<div><div class='lbl'>Talk track</div><ul>
+<li>Introduce the decision in one sentence. Do not read the brief.</li>
+<li>When the council returns, go straight to the disagreement map. That is the artefact an executive committee actually wants.</li>
+<li>Close on the third prompt. The point is that it will argue against the house view when the evidence supports it.</li>
+</ul></div>
+<div><div class='lbl'>What to watch for</div><ul>
+<li>Each position argues from a figure in the pack, not from generalities.</li>
+<li>It separates real disagreement from vocabulary.</li>
+<li>It surfaces the uncomfortable framing: selling the highest margin asset to fund the lowest margin one.</li>
+</ul></div>
+</div>
+<div class='lbl'>Files</div><div class='files'>
+<span class='file'>Industrial_Estates_Strategic_Options_Brief.docx</span>
+<span class='file'>Industrial_Estates_Valuation_Pack.xlsx</span>
+</div>
+<div class='note warn'><b>If it goes wrong.</b> If the council format is unavailable, run the same prompt as a single request for four labelled positions.</div>
+<div class='note'><b>The differentiator in this segment.</b> Reasoning parity is the assumption here, not the claim. The claim is that it is reasoning over the actual valuation pack.</div>
+</div></div></section>
+<section id='seg5'><div class='seg'>
+<div class='seg-top'>
+<div class='seg-no'>5</div><div>
+<h4>Edit in the app: Excel</h4><div class='surf'>Copilot in Excel, on a live driver-based model.</div></div>
+<div class='seg-time'><b>6</b>minutes</div></div>
+<div class='seg-body'>
+<div class='goal'>Show work happening inside the file, with formulas intact.</div>
+<div class='lbl'>Prompts</div>
+<div class="prompt"><button class="copy" data-t="Explain what this model does and which inputs actually move the answer. Rank the drivers by how much a ten percent change in each moves FY2028 EBITDA." onclick="cp(this)">Copy</button>Explain what this model does and which inputs actually move the answer. Rank the drivers by how much a ten percent change in each moves FY2028 EBITDA.</div>
+<div class="prompt"><button class="copy" data-t="Build me a downside case. Fixed price share falls only to 50 percent instead of 25, cost variance improves only to 15 percent, and regional government payment terms do not improve at all. Show the result next to the current case." onclick="cp(this)">Copy</button>Build me a downside case. Fixed price share falls only to 50 percent instead of 25, cost variance improves only to 15 percent, and regional government payment terms do not improve at all. Show the result next to the current case.</div>
+<div class="prompt"><button class="copy" data-t="Add a short written commentary under the projection explaining, in plain language a non-financial board member would follow, why the cash released figure is larger than the profit improvement." onclick="cp(this)">Copy</button>Add a short written commentary under the projection explaining, in plain language a non-financial board member would follow, why the cash released figure is larger than the profit improvement.</div>
+<div class='two'>
+<div><div class='lbl'>Talk track</div><ul>
+<li>Show the Drivers sheet first. Amber cells are inputs, everything else is a formula.</li>
+<li>Run the sensitivity prompt. The answer that matters is that contract mix beats every other lever.</li>
+<li>The third prompt is the one finance teams feel. It writes the commentary that nobody has time to write.</li>
+</ul></div>
+<div><div class='lbl'>What to watch for</div><ul>
+<li>It reads the formula chain rather than just the values.</li>
+<li>The downside case is written into the sheet, not described in chat.</li>
+<li>Cash released exceeds the EBITDA improvement, and it explains why.</li>
+</ul></div>
+</div>
+<div class='lbl'>Files</div><div class='files'>
+<span class='file'>Arkanusa_IE_Turnaround_Scenario_Model.xlsx</span>
+</div>
+<div class='note warn'><b>If it goes wrong.</b> If Copilot in Excel is unavailable, run the same prompts against the uploaded workbook in the Copilot app and note the difference in where the output lands.</div>
+<div class='note'><b>The differentiator in this segment.</b> The output is a changed file, not a message. That is the whole point of this segment.</div>
+</div></div></section>
+<section id='seg6'><div class='seg'>
+<div class='seg-top'>
+<div class='seg-no'>6</div><div>
+<h4>Copilot in Teams: meeting recap</h4><div class='surf'>Copilot in Microsoft Teams, meeting recap and follow-up.</div></div>
+<div class='seg-time'><b>6</b>minutes</div></div>
+<div class='seg-body'>
+<div class='goal'>Show the meeting turning into accountable actions without anyone taking minutes.</div>
+<div class='lbl'>Prompts</div>
+<div class="prompt"><button class="copy" data-t="Summarise this meeting for someone who did not attend. Separate what was decided from what was discussed but left open." onclick="cp(this)">Copy</button>Summarise this meeting for someone who did not attend. Separate what was decided from what was discussed but left open.</div>
+<div class="prompt"><button class="copy" data-t="List every action, who owns it, and the date it is due. Flag any action that was assigned without a named owner or without a date." onclick="cp(this)">Copy</button>List every action, who owns it, and the date it is due. Flag any action that was assigned without a named owner or without a date.</div>
+<div class="prompt"><button class="copy" data-t="Two decisions were sought in the pre-read. For each one, tell me whether it was actually decided, deferred, or never reached." onclick="cp(this)">Copy</button>Two decisions were sought in the pre-read. For each one, tell me whether it was actually decided, deferred, or never reached.</div>
+<div class="prompt"><button class="copy" data-t="Draft the follow-up note to the committee. Neutral tone, no blame, and make the open items impossible to miss." onclick="cp(this)">Copy</button>Draft the follow-up note to the committee. Neutral tone, no blame, and make the open items impossible to miss.</div>
+<div class='two'>
+<div><div class='lbl'>Talk track</div><ul>
+<li>Run the recap on a short live or recorded committee conversation.</li>
+<li>The flagging prompt is the one that gets the nod. Every organisation has actions with no owner.</li>
+<li>Show the draft follow-up but do not send it. Say that you are not sending it.</li>
+</ul></div>
+<div><div class='lbl'>What to watch for</div><ul>
+<li>Decisions are separated from discussion.</li>
+<li>Ownerless or dateless actions are called out rather than quietly recorded.</li>
+<li>It notices when a sought decision was never actually reached.</li>
+</ul></div>
+</div>
+<div class='lbl'>Files</div><div class='files'>
+<span class='file'>Portfolio_Performance_Committee_Agenda_and_Prereads.docx</span>
+</div>
+<div class='note warn'><b>If it goes wrong.</b> Use a previously recorded meeting with transcription on. Confirm transcription and recap policy before the session.</div>
+<div class='note'><b>The differentiator in this segment.</b> This one does not exist outside the meeting platform. There is no prompt that replaces being in the room.</div>
+</div></div></section>
+<section id='seg7'><div class='seg'>
+<div class='seg-top'>
+<div class='seg-no'>7</div><div>
+<h4>Agent Builder</h4><div class='surf'>Agent built in Microsoft 365 Copilot over governance documents.</div></div>
+<div class='seg-time'><b>7</b>minutes</div></div>
+<div class='seg-body'>
+<div class='goal'>Show a business user, not a developer, building something governed and reusable.</div>
+<div class='lbl'>Prompts</div>
+<div class="prompt"><button class="copy" data-t="Build the agent live. Name it Bid Governance Adviser. Knowledge: the contract governance standard, the delegation of authority and the approval thresholds workbook. Instruction: answer only from these documents, always cite the clause, and say plainly when a proposed bid breaches a control." onclick="cp(this)">Copy</button>Build the agent live. Name it Bid Governance Adviser. Knowledge: the contract governance standard, the delegation of authority and the approval thresholds workbook. Instruction: answer only from these documents, always cite the clause, and say plainly when a proposed bid breaches a control.</div>
+<div class="prompt"><button class="copy" data-t="Test it: a fixed price bid of 180 billion rupiah to a regional government client, with 5 percent contingency. Who approves it, and does it breach anything?" onclick="cp(this)">Copy</button>Test it: a fixed price bid of 180 billion rupiah to a regional government client, with 5 percent contingency. Who approves it, and does it breach anything?</div>
+<div class="prompt"><button class="copy" data-t="Test it again: we want to waive the independent estimate review to meet a tender deadline. Can we, and who can authorise that?" onclick="cp(this)">Copy</button>Test it again: we want to waive the independent estimate review to meet a tender deadline. Can we, and who can authorise that?</div>
+<div class="prompt"><button class="copy" data-t="A subsidiary is at 47 percent fixed price share of its order book and wants to bid more. What does the standard require?" onclick="cp(this)">Copy</button>A subsidiary is at 47 percent fixed price share of its order book and wants to bid more. What does the standard require?</div>
+<div class='two'>
+<div><div class='lbl'>Talk track</div><ul>
+<li>Build it in front of them. The build is the demonstration, not the agent.</li>
+<li>The second test should return a breach: 5 percent contingency against an 8 percent minimum.</li>
+<li>The third test is the important one. The correct answer is that the review cannot be waived at all.</li>
+</ul></div>
+<div><div class='lbl'>What to watch for</div><ul>
+<li>It cites the clause reference, not a paraphrase.</li>
+<li>It refuses the waiver rather than finding a way to be helpful.</li>
+<li>It applies the more restrictive of two overlapping thresholds.</li>
+</ul></div>
+</div>
+<div class='lbl'>Files</div><div class='files'>
+<span class='file'>SOP-CG-004_Contract_Governance_Standard.docx</span>
+<span class='file'>Group_Delegation_of_Authority_Rev7.docx</span>
+<span class='file'>Bid_Approval_Thresholds.xlsx</span>
+</div>
+<div class='note warn'><b>If it goes wrong.</b> Have the agent pre-built in a second window. Build the first half live, then switch.</div>
+<div class='note'><b>The differentiator in this segment.</b> The agent inherits tenant identity, permissions and audit. Ask what the equivalent looks like when the assistant sits outside the estate.</div>
+</div></div></section>
+<section id='seg8'><div class='seg'>
+<div class='seg-top'>
+<div class='seg-no'>8</div><div>
+<h4>Cowork: multi-artefact pack with live data and web</h4><div class='surf'>Microsoft Copilot Cowork, with browser use and the analytics workspace.</div></div>
+<div class='seg-time'><b>10</b>minutes</div></div>
+<div class='seg-body'>
+<div class='goal'>Show a whole workstream delivered, not a single answer.</div>
+<div class='lbl'>Prompts</div>
+<div class="prompt"><button class="copy" data-t="Take the working brief. Produce all five artefacts it asks for. Use the receivables pack and the contract data in the workspace for the evidence, and go and find current published construction cost indices to test the inflation explanation against an independent source." onclick="cp(this)">Copy</button>Take the working brief. Produce all five artefacts it asks for. Use the receivables pack and the contract data in the workspace for the evidence, and go and find current published construction cost indices to test the inflation explanation against an independent source.</div>
+<div class="prompt"><button class="copy" data-t="The cluster says material cost inflation caused the margin decline. Test that claim against the data. If it does not hold, say so directly and show the comparison that disproves it." onclick="cp(this)">Copy</button>The cluster says material cost inflation caused the margin decline. Test that claim against the data. If it does not hold, say so directly and show the comparison that disproves it.</div>
+<div class="prompt"><button class="copy" data-t="Give me the one page version for the Ministry sponsor team. They are not construction specialists and they will read it once." onclick="cp(this)">Copy</button>Give me the one page version for the Ministry sponsor team. They are not construction specialists and they will read it once.</div>
+<div class='two'>
+<div><div class='lbl'>Talk track</div><ul>
+<li>Set expectations: this segment runs longer and produces several files. Let it work while you talk.</li>
+<li>The moment to wait for is the disproof. It should compare fixed price against reimbursable in the same cost environment.</li>
+<li>Close by opening two of the artefacts. Do not open all five.</li>
+</ul></div>
+<div><div class='lbl'>What to watch for</div><ul>
+<li>It goes to the web for an independent cost index rather than trusting the internal claim.</li>
+<li>It disproves the inflation explanation using the cost-plus comparison.</li>
+<li>It produces genuinely different registers for the board and for the external sponsor.</li>
+</ul></div>
+</div>
+<div class='lbl'>Files</div><div class='files'>
+<span class='file'>Cowork_Working_Brief_Remediation_Pack.docx</span>
+<span class='file'>Arkanusa_Receivables_and_Settlement_Pack.xlsx</span>
+<span class='file'>Fabric IQ dataset, 27 tables</span>
+</div>
+<div class='note warn'><b>If it goes wrong.</b> Pre-run the pack the night before and keep the outputs ready. Run the disproof prompt live, since it is the shortest and most reliable.</div>
+<div class='note'><b>The differentiator in this segment.</b> Multi-artefact, multi-source, and every output lands in the estate where it is governed, retained and discoverable.</div>
+</div></div></section>
+<section id='seg9'><div class='seg'>
+<div class='seg-top'>
+<div class='seg-no'>9</div><div>
+<h4>Scout</h4><div class='surf'>Microsoft Scout on the desktop.</div></div>
+<div class='seg-time'><b>6</b>minutes</div></div>
+<div class='seg-body'>
+<div class='goal'>Show the shift from asking to being told.</div>
+<div class='lbl'>Prompts</div>
+<div class="prompt"><button class="copy" data-t="Watch the Infrastructure and Engineering position. Tell me when any contract moves into forecast negative gross margin, when any subsidiary passes 45 percent fixed price share, and when receivables over 180 days move by more than 10 percent in a month." onclick="cp(this)">Copy</button>Watch the Infrastructure and Engineering position. Tell me when any contract moves into forecast negative gross margin, when any subsidiary passes 45 percent fixed price share, and when receivables over 180 days move by more than 10 percent in a month.</div>
+<div class="prompt"><button class="copy" data-t="Every Monday at seven, give me a one page position on the cluster: what changed, what breached a control, and what needs a decision from me this week." onclick="cp(this)">Copy</button>Every Monday at seven, give me a one page position on the cluster: what changed, what breached a control, and what needs a decision from me this week.</div>
+<div class="prompt"><button class="copy" data-t="Before the Portfolio Performance Committee, prepare me. What will the Audit Committee chair most likely ask, and where am I weakest?" onclick="cp(this)">Copy</button>Before the Portfolio Performance Committee, prepare me. What will the Audit Committee chair most likely ask, and where am I weakest?</div>
+<div class='two'>
+<div><div class='lbl'>Talk track</div><ul>
+<li>Frame the shift plainly. Everything so far required someone to ask. This does not.</li>
+<li>The third prompt is the one executives remember. It rehearses them for the question they are dreading.</li>
+<li>Keep it short. This is a closing note, not a full segment.</li>
+</ul></div>
+<div><div class='lbl'>What to watch for</div><ul>
+<li>It sets up a standing watch rather than answering once.</li>
+<li>The weekly brief is scoped to decisions, not to activity.</li>
+<li>The preparation prompt anticipates challenge rather than summarising material.</li>
+</ul></div>
+</div>
+<div class='lbl'>Files</div><div class='files'>
+<span class='file'>Scout_Scenario_Runsheet.md</span>
+</div>
+<div class='note warn'><b>If it goes wrong.</b> Show a previously configured automation and its last output.</div>
+<div class='note'><b>The differentiator in this segment.</b> This is the end state of the argument. The assistant stops being a place you go and becomes part of how the organisation runs.</div>
+</div></div></section>
+<section id='questions'><h2><span class='num'>04</span>The five questions that decide it</h2>
+<p class='sub'>Do not present a feature comparison. Give them five questions to ask of any assistant, including the ones they already pay for, and let the answers do the work.</p>
+<div class='q'>
+<h4><span>1.</span>Can it see my work?</h4>
+<div class='qrow'><b>Why it decides the outcome</b>An assistant that cannot see the work needs the work pasted into it. That is a tax on every single use, and it is paid by the person with the least time.</div>
+<div class='qrow'><b>How Microsoft 365 Copilot answers</b>Grounded across mail, chat, meetings, files and line of business data, with the user&#x27;s own permissions applied to every retrieval.</div>
+<div class='qrow'><b>What to invite them to ask</b>Ask what happens when the answer depends on a document the user has not found yet, and on a meeting they were not in.</div>
+<div class='qrow'><b>Proved in</b>Segment 2 &middot; Microsoft 365 Copilot and Work IQ</div>
+</div>
+<div class='q'>
+<h4><span>2.</span>Can it act where I work?</h4>
+<div class='qrow'><b>Why it decides the outcome</b>Most knowledge work is not producing text. It is changing a model, revising a deck, or turning a meeting into commitments.</div>
+<div class='qrow'><b>How Microsoft 365 Copilot answers</b>Works inside Word, Excel, PowerPoint, Outlook and Teams. The output is a changed file or a scheduled action, not a message to copy.</div>
+<div class='qrow'><b>What to invite them to ask</b>Ask how many steps sit between the answer appearing and the file actually being updated.</div>
+<div class='qrow'><b>Proved in</b>Segment 5 &middot; Edit in the app: Excel</div>
+</div>
+<div class='q'>
+<h4><span>3.</span>Who can it act as, and who approved that?</h4>
+<div class='qrow'><b>Why it decides the outcome</b>The moment an assistant takes action rather than giving advice, identity stops being a detail and becomes the control.</div>
+<div class='qrow'><b>How Microsoft 365 Copilot answers</b>Agents run with tenant identity, inherit permissions, and are created, approved and retired through admin controls the organisation already operates.</div>
+<div class='qrow'><b>What to invite them to ask</b>Ask who provisioned the agent, whose data it can reach, and how it is decommissioned when its owner leaves.</div>
+<div class='qrow'><b>Proved in</b>Segment 7 &middot; Agent Builder</div>
+</div>
+<div class='q'>
+<h4><span>4.</span>Where does my data go, and can I prove it?</h4>
+<div class='qrow'><b>Why it decides the outcome</b>For a state linked group this is not an IT question. It is a question the audit board will ask, and the answer has to be evidenced rather than asserted.</div>
+<div class='qrow'><b>How Microsoft 365 Copilot answers</b>Prompts and responses stay within the tenant boundary under enterprise data protection, and are subject to the same compliance, retention, eDiscovery and audit tooling as the rest of the estate.</div>
+<div class='qrow'><b>What to invite them to ask</b>Ask to see the audit record of a prompt from six weeks ago, and whether it can be placed under legal hold.</div>
+<div class='qrow'><b>Proved in</b>Segment 7 &middot; Agent Builder</div>
+</div>
+<div class='q'>
+<h4><span>5.</span>What happens when I want five hundred of these?</h4>
+<div class='qrow'><b>Why it decides the outcome</b>One team with a subscription is an experiment. Twenty three companies with different tools is a governance problem and a procurement problem at the same time.</div>
+<div class='qrow'><b>How Microsoft 365 Copilot answers</b>One licence, one identity model, one compliance boundary, one admin surface, across every portfolio company.</div>
+<div class='qrow'><b>What to invite them to ask</b>Ask what the estate looks like in eighteen months if each subsidiary picks its own assistant.</div>
+<div class='qrow'><b>Proved in</b>Segment 8 &middot; Cowork: multi-artefact pack with live data and web</div>
+</div>
+</section>
+<section id='data'><h2><span class='num'>05</span>The data story</h2>
+<p class='sub'>Presenter reference. This is what the dataset proves and the order in which it proves it.</p>
+<div class='note hot'><b>The headline.</b> Infrastructure and Engineering EBITDA margin fell from 11.4 percent in FY2024 to 8.2 percent in FY2025 to 3.1 percent in FY2026 H1, while revenue grew 20 percent. The cluster reports the cause as construction material inflation. The data does not support that.</div>
+<div class='note warn'><b>The decoy: Construction material cost inflation.</b> Composite material and labour inflation over the period was 6.3 percent. It applies equally to cost-plus work, whose gross margin held at 9.5 percent while fixed-price work fell to minus 10.7 percent. A cost shock that hits one contract type and spares the other sitting next to it is not a cost shock.</div>
+<div class='card'><h3>The chain, in the order the data reveals it</h3>
+<div class='chain'>
+<div class='step'><div class='n'>1</div><div><b>Incentive</b><p>The FY2024 growth mandate rewarded order book intake, not delivered margin. Bid win rate rose from 22.4 percent to 41.3 percent.</p></div></div>
+<div class='step'><div class='n'>2</div><div><b>Mix</b><p>The win rate was bought by moving to fixed-price lump-sum turnkey terms. LSTK share of won order value rose from 31 percent to 68 percent.</p></div></div>
+<div class='step'><div class='n'>3</div><div><b>Execution</b><p>LSTK contracts run a mean cost variance of plus 19.0 percent against bid and a gross margin of minus 10.7 percent. Cost-plus contracts run plus 2.3 percent variance and plus 9.5 percent margin.</p></div></div>
+<div class='step'><div class='n'>4</div><div><b>Concentration</b><p>Wisma Karya holds 72 percent of LSTK exposure by value. Regional government clients hold 64 percent of LSTK contract value.</p></div></div>
+<div class='step'><div class='n'>5</div><div><b>Cash</b><p>Regional government days sales outstanding is 192 days against 60 days for private clients, and public sector settlement has slowed every year since FY2023. Receivables over 180 days grew from IDR 96 bn at December 2024 to IDR 623 bn at June 2026.</p></div></div>
+</div></div>
+<div class='note good'><b>The verdict.</b> This is a bidding discipline and incentive design problem that became a working capital problem. Repricing steel will not fix it. Changing what the bid committee is allowed to sign, and what the growth mandate rewards, will.</div>
+<div class='card'><h3>Answer key</h3><div class='keys'>
+<div class='keyf'><b>11.4%</b><span>Cluster margin FY2024</span></div>
+<div class='keyf'><b>8.2%</b><span>Cluster margin FY2025</span></div>
+<div class='keyf'><b>3.1%</b><span>Cluster margin H1 FY2026</span></div>
+<div class='keyf'><b>22.4%</b><span>Bid win rate before mandate</span></div>
+<div class='keyf'><b>41.3%</b><span>Bid win rate at peak</span></div>
+<div class='keyf'><b>31%</b><span>Fixed price share of orders, before</span></div>
+<div class='keyf'><b>68%</b><span>Fixed price share of orders, after</span></div>
+<div class='keyf'><b>+19.0%</b><span>Fixed price cost variance</span></div>
+<div class='keyf'><b>+2.3%</b><span>Cost plus cost variance</span></div>
+<div class='keyf'><b>-10.7%</b><span>Fixed price gross margin</span></div>
+<div class='keyf'><b>+9.5%</b><span>Cost plus gross margin</span></div>
+<div class='keyf'><b>72%</b><span>One subsidiary&#x27;s share of fixed price</span></div>
+<div class='keyf'><b>192 days</b><span>Regional government DSO</span></div>
+<div class='keyf'><b>60 days</b><span>Private client DSO</span></div>
+<div class='keyf'><b>6.3%</b><span>Composite material inflation</span></div>
+<div class='keyf'><b>+34.2%</b><span>Worst single contract variance</span></div>
+<div class='keyf'><b>IDR 96 bn &rarr; 623 bn</b><span>Receivables over 180 days, Dec 2024 to Jun 2026</span></div>
+</div>
+<div class='note'><b>Worst single contract.</b> WK-2024-0417 Provincial Ring Road Package 3, cost variance +34.2%. Approved with 4.1 percent contingency against an 8 percent policy minimum, with geotechnical investigation incomplete at bid.</div>
+</div></section>
+<section id='files'><h2><span class='num'>06</span>Demo files</h2>
+<p class='sub'>Distributed separately. Folder numbers match segment numbers.</p>
+<table><thead><tr><th>Folder</th><th>Contents</th></tr></thead><tbody>
+<tr><td><span class='file'>01_CopilotChat_AgentMode</span></td><td>Unstructured working notes, portfolio review pack, incomplete board deck</td></tr>
+<tr><td><span class='file'>02_WorkIQ_Multimodel</span></td><td>Bid committee minute extracts, chief risk officer memorandum</td></tr>
+<tr><td><span class='file'>03_Researcher_Critique</span></td><td>Draft daily briefing with planted weaknesses, presenter answer key</td></tr>
+<tr><td><span class='file'>04_Researcher_Council</span></td><td>Strategic options brief, valuation pack with tenant and occupancy data</td></tr>
+<tr><td><span class='file'>05_EditInApps</span></td><td>Driver based turnaround model with live formulas and contract evidence</td></tr>
+<tr><td><span class='file'>06_Teams_MeetingRecap</span></td><td>Committee agenda and pre-reads</td></tr>
+<tr><td><span class='file'>07_AgentBuilder</span></td><td>Contract governance standard, delegation of authority, approval thresholds</td></tr>
+<tr><td><span class='file'>08_Cowork</span></td><td>Working brief, receivables and settlement pack, linked analytics dataset</td></tr>
+<tr><td><span class='file'>09_Scout</span></td><td>Scenario run sheet</td></tr>
+<tr><td><span class='file'>03_Fabric_IQ</span></td><td>27 linked tables and pre-aggregated views, plus answer key</td></tr>
+</tbody></table></section>
+<section id='checklist'><h2><span class='num'>07</span>Presenter checklist</h2>
+<p class='sub'>Ticks are local to this browser only.</p>
+<div class='chk'><h4>Before the day</h4>
+<label><input type='checkbox' data-k='c1'><span>Confirm the demo tenant has the sample files in the right folders.</span></label>
+<label><input type='checkbox' data-k='c2'><span>Confirm meeting transcription and recap policy allows the Teams segment.</span></label>
+<label><input type='checkbox' data-k='c3'><span>Pre-build the Agent Builder agent in a second window as a fallback.</span></label>
+<label><input type='checkbox' data-k='c4'><span>Pre-run the Cowork pack and keep the outputs available offline.</span></label>
+<label><input type='checkbox' data-k='c5'><span>Load the Fabric dataset and run two queries to confirm it responds.</span></label>
+<label><input type='checkbox' data-k='c6'><span>Read the critique answer key so you know what Researcher should find.</span></label>
+</div>
+<div class='chk'><h4>In the room</h4>
+<label><input type='checkbox' data-k='c7'><span>State the parity position in the first two minutes and then stop arguing about models.</span></label>
+<label><input type='checkbox' data-k='c8'><span>Never read an output aloud. Point at one number and trace it.</span></label>
+<label><input type='checkbox' data-k='c9'><span>When something is slow, keep talking. Do not narrate the spinner.</span></label>
+<label><input type='checkbox' data-k='c10'><span>If a segment fails, say so and move. The fallback is planned.</span></label>
+<label><input type='checkbox' data-k='c11'><span>Do not send anything. Draft, show, and say you are not sending it.</span></label>
+</div>
+<div class='chk'><h4>Close</h4>
+<label><input type='checkbox' data-k='c12'><span>Return to the five questions and let them answer for their own estate.</span></label>
+<label><input type='checkbox' data-k='c13'><span>Name the one segment that could not be replicated by a browser tab.</span></label>
+<label><input type='checkbox' data-k='c14'><span>Agree a next step that involves their data, not more slides.</span></label>
+</div>
+</section>
+<footer>Demonstration material. Fictional account, synthetic data. Not for external distribution.</footer>
+</main></div></div>
+<script>
+if(sessionStorage.getItem('hub_auth')!=='ok'){location.replace('index.html');}
+function cp(b){
+  navigator.clipboard.writeText(b.dataset.t).then(()=>{
+    const o=b.textContent;b.textContent='Copied';b.classList.add('ok');
+    setTimeout(()=>{b.textContent=o;b.classList.remove('ok')},1400);
+  });
+}
+document.querySelectorAll('.chk input').forEach(i=>{
+  const k='ark_'+i.dataset.k;
+  i.checked=localStorage.getItem(k)==='1';
+  i.addEventListener('change',()=>localStorage.setItem(k,i.checked?'1':'0'));
+});
+const links=[...document.querySelectorAll('nav.side a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')))
+                .filter(Boolean);
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('on'));
+      const m=links.find(l=>l.getAttribute('href')==='#'+e.target.id);
+      if(m)m.classList.add('on');
+    }
+  });
+},{rootMargin:'-15% 0px -75% 0px'});
+secs.forEach(s=>io.observe(s));
+</script>
+</body></html>
