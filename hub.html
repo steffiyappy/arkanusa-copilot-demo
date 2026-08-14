@@ -17,9 +17,9 @@ a{color:var(--blue);text-decoration:none}
 a:hover{text-decoration:underline}
 
 /* ---------- layout ---------- */
-.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
-.shell{display:grid;grid-template-columns:236px 1fr;gap:36px;align-items:start}
-@media(max-width:1000px){.shell{grid-template-columns:1fr}nav.side{display:none}}
+.wrap{max-width:min(1660px,95vw);margin:0 auto;padding:0 32px}
+.shell{display:grid;grid-template-columns:250px minmax(0,1fr);gap:44px;align-items:start}
+@media(max-width:1100px){.shell{grid-template-columns:1fr}nav.side{display:none}}
 
 /* ---------- header ---------- */
 header{background:linear-gradient(135deg,#101B33 0%,#1F2D55 45%,#0B5A9E 100%);
@@ -110,13 +110,33 @@ li{margin-bottom:6px;font-size:14.5px}
 
 /* ---------- prompts ---------- */
 .prompt{position:relative;background:#F7F9FC;border:1px solid var(--line);
-  border-left:3px solid var(--teal);border-radius:0 9px 9px 0;padding:13px 52px 13px 16px;
-  margin-bottom:9px;font-size:14px;color:#243450}
-.copy{position:absolute;right:8px;top:8px;background:#fff;border:1px solid var(--line);
-  border-radius:6px;padding:4px 9px;font-size:11px;color:var(--muted);cursor:pointer;
+  border-left:3px solid var(--teal);border-radius:0 9px 9px 0;
+  padding:14px 92px 14px 18px;margin-bottom:10px;font-size:14.5px;color:#243450}
+.prompt.hero{background:linear-gradient(135deg,#EAF6F5,#F3F9FD);
+  border-left:4px solid var(--teal);border-color:#BFE3DF;
+  box-shadow:0 2px 10px rgba(0,168,168,.10)}
+.prompt.hero .ptxt{font-size:17px;font-weight:600;color:var(--navy);
+  line-height:1.45}
+.herotag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.3px;
+  text-transform:uppercase;color:#0A6E68;background:rgba(0,168,168,.14);
+  border:1px solid rgba(0,168,168,.3);border-radius:20px;padding:2px 9px;
+  margin-bottom:8px}
+.why{margin-top:9px;padding-top:9px;border-top:1px dashed #D5DEEA;
+  font-size:12.5px;color:var(--muted);line-height:1.5}
+.why b{color:var(--navy2);font-weight:600}
+.copy{position:absolute;right:10px;top:10px;background:#fff;border:1px solid var(--line);
+  border-radius:6px;padding:5px 11px;font-size:11px;color:var(--muted);cursor:pointer;
   font-family:inherit;transition:all .15s}
 .copy:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
 .copy.ok{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* ---------- hero prompt index ---------- */
+.heroes{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:12px}
+.heroc{background:linear-gradient(135deg,#1B2A4E,#25406E);border-radius:12px;
+  padding:18px 20px;color:#fff}
+.heroc .n{font-size:10.5px;letter-spacing:1.3px;text-transform:uppercase;
+  color:#5FE3D6;font-weight:700;margin-bottom:7px}
+.heroc p{font-size:15.5px;font-weight:600;line-height:1.45}
 
 /* ---------- files ---------- */
 .files{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px}
@@ -182,7 +202,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='wrap'><div class='shell'>
 <nav class='side'>
 <div class='grp'>Prepare</div>
-<a href='#framing'>Framing</a><a href='#story'>Storyboard</a><a href='#runofshow'>Run of show</a>
+<a href='#framing'>Framing</a><a href='#story'>Storyboard</a><a href='#heroes'>The nine prompts</a><a href='#runofshow'>Run of show</a>
 <div class='grp'>Deliver</div>
 <a href='#seg1'>1. Copilot Chat with agent mode</a>
 <a href='#seg2'>2. Microsoft 365 Copilot and Work IQ</a>
@@ -242,7 +262,20 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='pivot'>Pivot: The question stops being what can it write, and becomes what the estate looks like when every subsidiary answers this question separately.</div>
 </div>
 </section>
-<section id='runofshow'><h2><span class='num'>03</span>Run of show</h2>
+<section id='heroes'><h2><span class='num'>03</span>The nine prompts that carry the session</h2>
+<p class='sub'>Learn these. They are short on purpose. A long prompt looks engineered, and invites the thought that it was tuned until it worked. Type each one, then stop talking.</p>
+<div class='heroes'>
+<div class='heroc'><div class='n'>Segment 1 &middot; Copilot Chat with agent mode</div><p>Everything anyone knows about this problem is in that folder. Before I write a word, tell me what the notes actually prove, what they only assert, and what is missing.</p></div>
+<div class='heroc'><div class='n'>Segment 2 &middot; Microsoft 365 Copilot and Work IQ</div><p>Did anyone see this coming?</p></div>
+<div class='heroc'><div class='n'>Segment 3 &middot; Researcher: critique the daily briefing</div><p>I am about to send this to the chief executive. Talk me out of it.</p></div>
+<div class='heroc'><div class='n'>Segment 4 &middot; Researcher council: IPO or strategic partner</div><p>Four people around this table disagree about this. Give me the strongest version of each argument, then tell me which one is right.</p></div>
+<div class='heroc'><div class='n'>Segment 5 &middot; Edit in the app: Excel</div><p>Break this model. Which input, if I have it wrong, turns this plan into a loss?</p></div>
+<div class='heroc'><div class='n'>Segment 6 &middot; Copilot in Teams: meeting recap</div><p>What did we decide, what did we avoid deciding, and who is going to miss their date?</p></div>
+<div class='heroc'><div class='n'>Segment 7 &middot; Agent Builder</div><p>Find me a way to get this bid approved. Fixed price, 180 billion, regional government client, 5 percent contingency, and the tender closes Friday.</p></div>
+<div class='heroc'><div class='n'>Segment 8 &middot; Cowork: multi-artefact pack with live data and web</div><p>Do not take our word for it. Go and check whether the inflation story actually holds, and tell me if my own cluster is wrong.</p></div>
+<div class='heroc'><div class='n'>Segment 9 &middot; Scout</div><p>What is going to go wrong that nobody has told me about yet?</p></div>
+</div></section>
+<section id='runofshow'><h2><span class='num'>04</span>Run of show</h2>
 <p class='sub'>57 minutes of demonstration. Allow 90 minutes with introduction, questions and close.</p>
 <table><thead><tr><th>#</th><th>Act</th><th>Segment</th><th>How it runs</th><th>Mins</th><th>Cumulative</th></tr></thead><tbody>
 <tr><td class='mins'>1</td><td class='actc'>Act 1</td><td><b>Copilot Chat with agent mode</b><br><span style='font-size:12px;color:var(--soft)'>Microsoft 365 Copilot app, agent mode. Word, Excel and PowerPoint output.</span></td><td><span class='mode prerun'>Pre-run the Word artefact. Finish the deck live.</span></td><td class='mins'>7</td><td class='mins'>7</td></tr>
@@ -264,9 +297,9 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='mode prerun' style='margin-bottom:14px'>Pre-run the Word artefact. Finish the deck live.</div>
 <div class='goal'>Turn a pile of unstructured working notes into three finished artefacts without leaving the assistant.</div>
 <div class='lbl'>Prompts</div>
-<div class="prompt"><button class="copy" data-t="Read the working notes on the Infrastructure and Engineering cluster. They are unordered. Turn them into a four page board paper with a clear recommendation, a one paragraph executive summary at the top, and every figure attributed to its source. Do not add anything the notes do not support." onclick="cp(this)">Copy</button>Read the working notes on the Infrastructure and Engineering cluster. They are unordered. Turn them into a four page board paper with a clear recommendation, a one paragraph executive summary at the top, and every figure attributed to its source. Do not add anything the notes do not support.</div>
-<div class="prompt"><button class="copy" data-t="Using the Portfolio Review Pack, build me an evidence appendix in Excel. One sheet for contract mix, one for cost variance by contract type, one for concentration, one for receivables ageing. Add a summary sheet at the front that states in one line what each sheet proves." onclick="cp(this)">Copy</button>Using the Portfolio Review Pack, build me an evidence appendix in Excel. One sheet for contract mix, one for cost variance by contract type, one for concentration, one for receivables ageing. Add a summary sheet at the front that states in one line what each sheet proves.</div>
-<div class="prompt"><button class="copy" data-t="The board deck stops at the symptom and has three placeholder slides. Finish it. Replace the placeholders with the analysis from the working notes, and rewrite the final slide so it asks the board for a specific decision." onclick="cp(this)">Copy</button>The board deck stops at the symptom and has three placeholder slides. Finish it. Replace the placeholders with the analysis from the working notes, and rewrite the final slide so it asks the board for a specific decision.</div>
+<div class="prompt hero"><button class="copy" data-t="Everything anyone knows about this problem is in that folder. Before I write a word, tell me what the notes actually prove, what they only assert, and what is missing." onclick="cp(this)">Copy</button><span class="herotag">Open with this</span><div class="ptxt">Everything anyone knows about this problem is in that folder. Before I write a word, tell me what the notes actually prove, what they only assert, and what is missing.</div><div class="why"><b>Why this prompt.</b> Opens on judgement rather than production. Separating proof from assertion is the exact discipline a board paper needs and the exact thing a rushed analyst skips.</div></div>
+<div class="prompt"><button class="copy" data-t="Now write the board paper. Four pages, recommendation first. Every figure carries its source, and anything the notes only assert is labelled unverified." onclick="cp(this)">Copy</button><div class="ptxt">Now write the board paper. Four pages, recommendation first. Every figure carries its source, and anything the notes only assert is labelled unverified.</div><div class="why"><b>Why this prompt.</b> The constraint is the demonstration. An AI drafted paper survives a board only if attribution and uncertainty are visible on the page.</div></div>
+<div class="prompt"><button class="copy" data-t="Build the evidence appendix behind it in Excel, one sheet per claim. Then finish the deck: replace the three placeholder slides and rewrite the last one so it asks for a decision." onclick="cp(this)">Copy</button><div class="ptxt">Build the evidence appendix behind it in Excel, one sheet per claim. Then finish the deck: replace the three placeholder slides and rewrite the last one so it asks for a decision.</div><div class="why"><b>Why this prompt.</b> Three artefacts in three formats from one instruction and one evidence base. Watch for the deck and the paper agreeing with each other, which is where hand assembled packs fail.</div></div>
 <div class='two'>
 <div><div class='lbl'>Talk track</div><ul>
 <li>Open with the notes. Scroll them so the room sees they are a mess. Say plainly that this is what real source material looks like.</li>
@@ -296,14 +329,15 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='mode live' style='margin-bottom:14px'>Fully live. This is the segment that must not be pre-run.</div>
 <div class='goal'>Show reasoning across the whole work estate, with permission trimming intact.</div>
 <div class='lbl'>Prompts</div>
-<div class="prompt"><button class="copy" data-t="Pull together everything across my documents about the Infrastructure and Engineering margin position. Give me a timeline of who knew what and when, and cite the source for each entry." onclick="cp(this)">Copy</button>Pull together everything across my documents about the Infrastructure and Engineering margin position. Give me a timeline of who knew what and when, and cite the source for each entry.</div>
-<div class="prompt"><button class="copy" data-t="Was this risk raised before it became a problem? If it was, tell me who raised it, on what date, what they specifically asked for, and what happened to each of their requests." onclick="cp(this)">Copy</button>Was this risk raised before it became a problem? If it was, tell me who raised it, on what date, what they specifically asked for, and what happened to each of their requests.</div>
-<div class="prompt"><button class="copy" data-t="Now tell me what is missing. What would you need to see, that you cannot currently find, to be confident about the cause?" onclick="cp(this)">Copy</button>Now tell me what is missing. What would you need to see, that you cannot currently find, to be confident about the cause?</div>
+<div class="prompt hero"><button class="copy" data-t="Did anyone see this coming?" onclick="cp(this)">Copy</button><span class="herotag">Open with this</span><div class="ptxt">Did anyone see this coming?</div><div class="why"><b>Why this prompt.</b> Five words, no filenames, no dates, no context. To answer it the assistant has to find a risk memo nobody mentioned, connect it to committee minutes it was never pointed at, and work out that four specific requests in it were never actioned. Type it, then say nothing until it finishes.</div></div>
+<div class="prompt"><button class="copy" data-t="Show me the timeline. Who knew, when, and what did they do about it." onclick="cp(this)">Copy</button><div class="ptxt">Show me the timeline. Who knew, when, and what did they do about it.</div><div class="why"><b>Why this prompt.</b> Turns the finding into the artefact an audit committee will actually ask for. Each entry should carry a source you can click through to.</div></div>
+<div class="prompt"><button class="copy" data-t="What would you need to see, that you cannot find right now, to be confident about the cause?" onclick="cp(this)">Copy</button><div class="ptxt">What would you need to see, that you cannot find right now, to be confident about the cause?</div><div class="why"><b>Why this prompt.</b> A tool that states its own blind spots is a tool a board can use. It also pre-empts the obvious challenge, which is that the assistant only saw a convenient subset.</div></div>
 <div class='two'>
 <div><div class='lbl'>Talk track</div><ul>
-<li>Frame it before you run it: the question is not can it write, it is what can it see.</li>
-<li>The timeline answer is the moment. It stitches a committee minute, a risk memo and a management account into one narrative.</li>
-<li>The third prompt is the credibility play. A tool that tells you what it does not know is a tool you can put in front of a board.</li>
+<li>Frame it in one sentence before you type: the question is not what it can write, it is what it can see.</li>
+<li>Type the five word prompt. Then stop talking. Let the room watch it assemble an answer out of documents nobody named.</li>
+<li>When it returns, do not read it out. Point at the February 2025 memo and ask the room whether their current tool would have found that without being told it existed.</li>
+<li>Close on the third prompt. A tool that tells you what it cannot see is one you can put in front of a board.</li>
 </ul></div>
 <div><div class='lbl'>What to watch for</div><ul>
 <li>It finds the February 2025 risk memo and connects it to the May 2026 committee item.</li>
@@ -327,14 +361,15 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='mode live' style='margin-bottom:14px'>Fully live. Short prompts, reliable latency.</div>
 <div class='goal'>Show reasoning depth applied to the customer&#x27;s own writing, not to a public dataset.</div>
 <div class='lbl'>Prompts</div>
-<div class="prompt"><button class="copy" data-t="This is a draft daily briefing for the group chief executive. Critique it. Do not rewrite it yet. Tell me where it is weak, where a claim is asserted without evidence, where the ordering buries something important, and where the reader is left without a decision to make." onclick="cp(this)">Copy</button>This is a draft daily briefing for the group chief executive. Critique it. Do not rewrite it yet. Tell me where it is weak, where a claim is asserted without evidence, where the ordering buries something important, and where the reader is left without a decision to make.</div>
-<div class="prompt"><button class="copy" data-t="Which single sentence in this briefing is most likely to be wrong, and what evidence would settle it either way?" onclick="cp(this)">Copy</button>Which single sentence in this briefing is most likely to be wrong, and what evidence would settle it either way?</div>
-<div class="prompt"><button class="copy" data-t="Now rewrite it. Lead with the item that threatens the full year result. Keep it to one page. Every claim either carries a source or is marked as unverified. End with the specific decisions you are asking the chief executive to make today." onclick="cp(this)">Copy</button>Now rewrite it. Lead with the item that threatens the full year result. Keep it to one page. Every claim either carries a source or is marked as unverified. End with the specific decisions you are asking the chief executive to make today.</div>
+<div class="prompt hero"><button class="copy" data-t="I am about to send this to the chief executive. Talk me out of it." onclick="cp(this)">Copy</button><span class="herotag">Open with this</span><div class="ptxt">I am about to send this to the chief executive. Talk me out of it.</div><div class="why"><b>Why this prompt.</b> Assistants default to agreeable. An instruction that explicitly licenses disagreement produces a visibly harsher answer, and the room notices the difference immediately.</div></div>
+<div class="prompt"><button class="copy" data-t="Which single sentence in here is most likely to be wrong, and what evidence would settle it either way?" onclick="cp(this)">Copy</button><div class="ptxt">Which single sentence in here is most likely to be wrong, and what evidence would settle it either way?</div><div class="why"><b>Why this prompt.</b> Forces a ranked judgement rather than a list. It should land on the causal claim about material costs, which is the one sentence in the briefing carrying real risk.</div></div>
+<div class="prompt"><button class="copy" data-t="Rewrite it. One page. Lead with what threatens the full year. End with the decisions you need from him today." onclick="cp(this)">Copy</button><div class="ptxt">Rewrite it. One page. Lead with what threatens the full year. End with the decisions you need from him today.</div><div class="why"><b>Why this prompt.</b> The rewrite is the least interesting part, so keep it short. The point already landed in the first two prompts.</div></div>
 <div class='two'>
 <div><div class='lbl'>Talk track</div><ul>
-<li>Say what the briefing is before you run it: eight sections, reads fine, and is quietly useless.</li>
-<li>Let the critique land without narrating it. Then pick the two findings the room reacts to.</li>
-<li>The second prompt is the sharpest. It goes after the causal claim about material costs.</li>
+<li>Say what the briefing is before you run it: eight sections, reads perfectly well, and is quietly useless.</li>
+<li>The hero prompt gives it permission to be rude. That is the point, and it is worth saying out loud that you asked for it.</li>
+<li>Let the critique land without narrating. Then pick the two findings the room reacted to and stay on those.</li>
+<li>Be honest in this segment. Strong models all critique text well. The only claim here is that it is reading the briefing that was genuinely about to be sent.</li>
 </ul></div>
 <div><div class='lbl'>What to watch for</div><ul>
 <li>It finds the buried lede in section six.</li>
@@ -358,9 +393,9 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='mode prerun' style='margin-bottom:14px'>Pre-run the council. Run the third prompt live.</div>
 <div class='goal'>Show structured disagreement on a decision that matters to a holding company, grounded in the customer&#x27;s own numbers.</div>
 <div class='lbl'>Prompts</div>
-<div class="prompt"><button class="copy" data-t="Convene a council on this question. Give me four distinct positions: an investment banker optimising for proceeds, a state shareholder optimising for policy control, a risk officer optimising for downside, and an operator optimising for the business itself. Each must argue from the numbers in the pack, and each must name the single fact that would change their mind." onclick="cp(this)">Copy</button>Convene a council on this question. Give me four distinct positions: an investment banker optimising for proceeds, a state shareholder optimising for policy control, a risk officer optimising for downside, and an operator optimising for the business itself. Each must argue from the numbers in the pack, and each must name the single fact that would change their mind.</div>
-<div class="prompt"><button class="copy" data-t="Where do the four genuinely disagree, and where are they only using different words for the same position?" onclick="cp(this)">Copy</button>Where do the four genuinely disagree, and where are they only using different words for the same position?</div>
-<div class="prompt"><button class="copy" data-t="The preparer recommends deferring the transaction decision until the Infrastructure remediation plan is funded. Steel-man that recommendation, then give me the strongest case against it." onclick="cp(this)">Copy</button>The preparer recommends deferring the transaction decision until the Infrastructure remediation plan is funded. Steel-man that recommendation, then give me the strongest case against it.</div>
+<div class="prompt hero"><button class="copy" data-t="Four people around this table disagree about this. Give me the strongest version of each argument, then tell me which one is right." onclick="cp(this)">Copy</button><span class="herotag">Open with this</span><div class="ptxt">Four people around this table disagree about this. Give me the strongest version of each argument, then tell me which one is right.</div><div class="why"><b>Why this prompt.</b> Most council style prompts stop at balance, which is safe and useless. Forcing a verdict is harder, and it is what an executive committee is actually paying for.</div></div>
+<div class="prompt"><button class="copy" data-t="Where do they genuinely disagree, and where are they just using different words for the same position?" onclick="cp(this)">Copy</button><div class="ptxt">Where do they genuinely disagree, and where are they just using different words for the same position?</div><div class="why"><b>Why this prompt.</b> The disagreement map is the artefact worth keeping. It collapses a two hour debate into the two real choices.</div></div>
+<div class="prompt"><button class="copy" data-t="The paper recommends deferring the transaction. Argue against that recommendation as hard as you can." onclick="cp(this)">Copy</button><div class="ptxt">The paper recommends deferring the transaction. Argue against that recommendation as hard as you can.</div><div class="why"><b>Why this prompt.</b> Tests whether it will attack the house view when the evidence supports doing so. If it only agrees with the document it was given, it is not worth putting in front of a board.</div></div>
 <div class='two'>
 <div><div class='lbl'>Talk track</div><ul>
 <li>Introduce the decision in one sentence. Do not read the brief.</li>
@@ -389,9 +424,9 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='mode live' style='margin-bottom:14px'>Fully live.</div>
 <div class='goal'>Show work happening inside the file, with formulas intact.</div>
 <div class='lbl'>Prompts</div>
-<div class="prompt"><button class="copy" data-t="Explain what this model does and which inputs actually move the answer. Rank the drivers by how much a ten percent change in each moves FY2028 EBITDA." onclick="cp(this)">Copy</button>Explain what this model does and which inputs actually move the answer. Rank the drivers by how much a ten percent change in each moves FY2028 EBITDA.</div>
-<div class="prompt"><button class="copy" data-t="Build me a downside case. Fixed price share falls only to 50 percent instead of 25, cost variance improves only to 15 percent, and regional government payment terms do not improve at all. Show the result next to the current case." onclick="cp(this)">Copy</button>Build me a downside case. Fixed price share falls only to 50 percent instead of 25, cost variance improves only to 15 percent, and regional government payment terms do not improve at all. Show the result next to the current case.</div>
-<div class="prompt"><button class="copy" data-t="Add a short written commentary under the projection explaining, in plain language a non-financial board member would follow, why the cash released figure is larger than the profit improvement." onclick="cp(this)">Copy</button>Add a short written commentary under the projection explaining, in plain language a non-financial board member would follow, why the cash released figure is larger than the profit improvement.</div>
+<div class="prompt hero"><button class="copy" data-t="Break this model. Which input, if I have it wrong, turns this plan into a loss?" onclick="cp(this)">Copy</button><span class="herotag">Open with this</span><div class="ptxt">Break this model. Which input, if I have it wrong, turns this plan into a loss?</div><div class="why"><b>Why this prompt.</b> Requires reading the formula chain and reasoning about sensitivity, not reading the values off the sheet. The answer should be contract mix, and it should be able to say by how much.</div></div>
+<div class="prompt"><button class="copy" data-t="Build the downside into the sheet, next to the current case. Fixed price share only falls to 50 percent, cost variance only improves to 15, and payment terms do not improve at all." onclick="cp(this)">Copy</button><div class="ptxt">Build the downside into the sheet, next to the current case. Fixed price share only falls to 50 percent, cost variance only improves to 15, and payment terms do not improve at all.</div><div class="why"><b>Why this prompt.</b> The output is a changed workbook, not a message describing a changed workbook. That distinction is the entire segment.</div></div>
+<div class="prompt"><button class="copy" data-t="Write the commentary under it explaining why the cash released is bigger than the profit improvement, for a board member who is not an accountant." onclick="cp(this)">Copy</button><div class="ptxt">Write the commentary under it explaining why the cash released is bigger than the profit improvement, for a board member who is not an accountant.</div><div class="why"><b>Why this prompt.</b> This is the task finance teams never have time for. It also requires understanding the model rather than restating it.</div></div>
 <div class='two'>
 <div><div class='lbl'>Talk track</div><ul>
 <li>Show the Drivers sheet first. Amber cells are inputs, everything else is a formula.</li>
@@ -419,10 +454,9 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='mode live' style='margin-bottom:14px'>Fully live on a recorded meeting.</div>
 <div class='goal'>Show the meeting turning into accountable actions without anyone taking minutes.</div>
 <div class='lbl'>Prompts</div>
-<div class="prompt"><button class="copy" data-t="Summarise this meeting for someone who did not attend. Separate what was decided from what was discussed but left open." onclick="cp(this)">Copy</button>Summarise this meeting for someone who did not attend. Separate what was decided from what was discussed but left open.</div>
-<div class="prompt"><button class="copy" data-t="List every action, who owns it, and the date it is due. Flag any action that was assigned without a named owner or without a date." onclick="cp(this)">Copy</button>List every action, who owns it, and the date it is due. Flag any action that was assigned without a named owner or without a date.</div>
-<div class="prompt"><button class="copy" data-t="Two decisions were sought in the pre-read. For each one, tell me whether it was actually decided, deferred, or never reached." onclick="cp(this)">Copy</button>Two decisions were sought in the pre-read. For each one, tell me whether it was actually decided, deferred, or never reached.</div>
-<div class="prompt"><button class="copy" data-t="Draft the follow-up note to the committee. Neutral tone, no blame, and make the open items impossible to miss." onclick="cp(this)">Copy</button>Draft the follow-up note to the committee. Neutral tone, no blame, and make the open items impossible to miss.</div>
+<div class="prompt hero"><button class="copy" data-t="What did we decide, what did we avoid deciding, and who is going to miss their date?" onclick="cp(this)">Copy</button><span class="herotag">Open with this</span><div class="ptxt">What did we decide, what did we avoid deciding, and who is going to miss their date?</div><div class="why"><b>Why this prompt.</b> Three questions in one line. The second and third are the ones minutes never capture, because the person taking them is not willing to write them down.</div></div>
+<div class="prompt"><button class="copy" data-t="Two decisions were sought in the pre-read. For each one, was it decided, deferred, or never actually reached?" onclick="cp(this)">Copy</button><div class="ptxt">Two decisions were sought in the pre-read. For each one, was it decided, deferred, or never actually reached?</div><div class="why"><b>Why this prompt.</b> Tests the recap against the agenda rather than against itself. Meetings routinely close without noticing that a requested decision never happened.</div></div>
+<div class="prompt"><button class="copy" data-t="Draft the follow up. Neutral, no blame, open items impossible to miss. Do not send it." onclick="cp(this)">Copy</button><div class="ptxt">Draft the follow up. Neutral, no blame, open items impossible to miss. Do not send it.</div><div class="why"><b>Why this prompt.</b> Show the draft, then say out loud that you are not sending it. Restraint in a demonstration reads as competence.</div></div>
 <div class='two'>
 <div><div class='lbl'>Talk track</div><ul>
 <li>Run the recap on a short live or recorded committee conversation.</li>
@@ -450,18 +484,18 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='mode live' style='margin-bottom:14px'>Fully live. The most important segment in the session.</div>
 <div class='goal'>Show a business user, not a developer, building something governed and reusable.</div>
 <div class='lbl'>Prompts</div>
-<div class="prompt"><button class="copy" data-t="Build the agent live. Name it Bid Governance Adviser. Knowledge: the contract governance standard, the delegation of authority and the approval thresholds workbook. Instruction: answer only from these documents, always cite the clause, and say plainly when a proposed bid breaches a control." onclick="cp(this)">Copy</button>Build the agent live. Name it Bid Governance Adviser. Knowledge: the contract governance standard, the delegation of authority and the approval thresholds workbook. Instruction: answer only from these documents, always cite the clause, and say plainly when a proposed bid breaches a control.</div>
-<div class="prompt"><button class="copy" data-t="Test it: a fixed price bid of 180 billion rupiah to a regional government client, with 5 percent contingency. Who approves it, and does it breach anything?" onclick="cp(this)">Copy</button>Test it: a fixed price bid of 180 billion rupiah to a regional government client, with 5 percent contingency. Who approves it, and does it breach anything?</div>
-<div class="prompt"><button class="copy" data-t="Test it again: we want to waive the independent estimate review to meet a tender deadline. Can we, and who can authorise that?" onclick="cp(this)">Copy</button>Test it again: we want to waive the independent estimate review to meet a tender deadline. Can we, and who can authorise that?</div>
-<div class="prompt"><button class="copy" data-t="PROOF, NOT ASSERTION. Now sign in as a second user who does not have access to the delegation of authority document, and ask the same approval question. Show the room that the answer changes." onclick="cp(this)">Copy</button>PROOF, NOT ASSERTION. Now sign in as a second user who does not have access to the delegation of authority document, and ask the same approval question. Show the room that the answer changes.</div>
-<div class="prompt"><button class="copy" data-t="Now open the admin surface. Show this agent in the inventory, who owns it, what it can reach, and the Purview audit record of the prompts you just ran." onclick="cp(this)">Copy</button>Now open the admin surface. Show this agent in the inventory, who owns it, what it can reach, and the Purview audit record of the prompts you just ran.</div>
+<div class="prompt"><button class="copy" data-t="Build the agent. Name it Bid Governance Adviser. Knowledge: the governance standard, the delegation of authority and the thresholds workbook. Answer only from those, always cite the clause, and say plainly when something breaches a control." onclick="cp(this)">Copy</button><div class="ptxt">Build the agent. Name it Bid Governance Adviser. Knowledge: the governance standard, the delegation of authority and the thresholds workbook. Answer only from those, always cite the clause, and say plainly when something breaches a control.</div><div class="why"><b>Why this prompt.</b> Build it in front of them. The build is the demonstration, not the agent. Narrate that you are writing a refusal instruction, because that is unusual and deliberate.</div></div>
+<div class="prompt hero"><button class="copy" data-t="Find me a way to get this bid approved. Fixed price, 180 billion, regional government client, 5 percent contingency, and the tender closes Friday." onclick="cp(this)">Copy</button><span class="herotag">Open with this</span><div class="ptxt">Find me a way to get this bid approved. Fixed price, 180 billion, regional government client, 5 percent contingency, and the tender closes Friday.</div><div class="why"><b>Why this prompt.</b> The hostile test. A helpful assistant will look for a route. A governed one grounded in the standard should refuse, cite the 8 percent contingency minimum, and name who can and cannot waive it. That refusal is the moment of the segment.</div></div>
+<div class="prompt"><button class="copy" data-t="Fine. We will waive the independent estimate review to hit the deadline. Who signs that off?" onclick="cp(this)">Copy</button><div class="ptxt">Fine. We will waive the independent estimate review to hit the deadline. Who signs that off?</div><div class="why"><b>Why this prompt.</b> The correct answer is that nobody can, because that control carries no waiver authority. An agent that invents a signatory here has failed, and you should say so if it does.</div></div>
+<div class="prompt"><button class="copy" data-t="Now sign in as a colleague who cannot open the delegation of authority, and ask the same approval question." onclick="cp(this)">Copy</button><div class="ptxt">Now sign in as a colleague who cannot open the delegation of authority, and ask the same approval question.</div><div class="why"><b>Why this prompt.</b> Proof rather than assertion. Everything else in the session can be argued about. A permission boundary that visibly changes the answer in front of them cannot.</div></div>
+<div class="prompt"><button class="copy" data-t="Open the admin surface. Show this agent in the inventory, who owns it, what it can reach, and the audit record of the prompts we just ran." onclick="cp(this)">Copy</button><div class="ptxt">Open the admin surface. Show this agent in the inventory, who owns it, what it can reach, and the audit record of the prompts we just ran.</div><div class="why"><b>Why this prompt.</b> Governance you can point at beats governance you describe. If the admin surface is slow, use a capture from that morning and say that is what it is.</div></div>
 <div class='two'>
 <div><div class='lbl'>Talk track</div><ul>
-<li>Build it in front of them. The build is the demonstration, not the agent.</li>
-<li>The second test should return a breach: 5 percent contingency against an 8 percent minimum.</li>
-<li>The third test is the important one. The correct answer is that the review cannot be waived at all.</li>
-<li>The fourth and fifth prompts are why this segment is nine minutes rather than seven. Everything else in the session can be argued about. A permission boundary that visibly changes the answer, and an audit record you can point at, cannot.</li>
-<li>Say plainly that this is a declarative agent on the user&#x27;s identity. If asked about custom engine agents, say they need their own security and lifecycle design. Do not bluff this.</li>
+<li>Build it live. Narrate one thing as you type: you are instructing it to refuse, which is the opposite of how most people write a prompt.</li>
+<li>The hostile test is the moment. You are asking it to help you get around a control, and it should decline and cite the clause.</li>
+<li>If it invents a signatory for the waiver, say so plainly and move on. A demonstration that admits a miss is more credible than one that does not.</li>
+<li>The identity switch and the audit record are why this segment runs nine minutes. This is the only place in the session where governance is shown rather than described.</li>
+<li>Be precise about scope. This is a declarative agent on the user&#x27;s identity. If asked about custom engine agents, say they need their own security and lifecycle design. Do not bluff it.</li>
 </ul></div>
 <div><div class='lbl'>What to watch for</div><ul>
 <li>It cites the clause reference, not a paraphrase.</li>
@@ -488,9 +522,9 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='mode prerun' style='margin-bottom:14px'>Pre-run the pack. Run the disproof prompt live.</div>
 <div class='goal'>Show a whole workstream delivered, not a single answer.</div>
 <div class='lbl'>Prompts</div>
-<div class="prompt"><button class="copy" data-t="Take the working brief. Produce all five artefacts it asks for. Use the receivables pack and the contract data in the workspace for the evidence, and go and find current published construction cost indices to test the inflation explanation against an independent source." onclick="cp(this)">Copy</button>Take the working brief. Produce all five artefacts it asks for. Use the receivables pack and the contract data in the workspace for the evidence, and go and find current published construction cost indices to test the inflation explanation against an independent source.</div>
-<div class="prompt"><button class="copy" data-t="The cluster says material cost inflation caused the margin decline. Test that claim against the data. If it does not hold, say so directly and show the comparison that disproves it." onclick="cp(this)">Copy</button>The cluster says material cost inflation caused the margin decline. Test that claim against the data. If it does not hold, say so directly and show the comparison that disproves it.</div>
-<div class="prompt"><button class="copy" data-t="Give me the one page version for the Ministry sponsor team. They are not construction specialists and they will read it once." onclick="cp(this)">Copy</button>Give me the one page version for the Ministry sponsor team. They are not construction specialists and they will read it once.</div>
+<div class="prompt hero"><button class="copy" data-t="Do not take our word for it. Go and check whether the inflation story actually holds, and tell me if my own cluster is wrong." onclick="cp(this)">Copy</button><span class="herotag">Open with this</span><div class="ptxt">Do not take our word for it. Go and check whether the inflation story actually holds, and tell me if my own cluster is wrong.</div><div class="why"><b>Why this prompt.</b> Sends it outside the organisation for an independent check and explicitly licenses it to contradict the internal explanation. The expected answer is that inflation is real but far too small, and that the same contract type bid in different years behaves differently.</div></div>
+<div class="prompt"><button class="copy" data-t="Take the working brief and produce all five artefacts. Use the receivables pack and the contract data for the evidence." onclick="cp(this)">Copy</button><div class="ptxt">Take the working brief and produce all five artefacts. Use the receivables pack and the contract data for the evidence.</div><div class="why"><b>Why this prompt.</b> Five artefacts, three formats, two data sources, one instruction. Let it work while you talk rather than watching it.</div></div>
+<div class="prompt"><button class="copy" data-t="Now the one page version for the Ministry sponsor team. They are not construction specialists and they will read it once." onclick="cp(this)">Copy</button><div class="ptxt">Now the one page version for the Ministry sponsor team. They are not construction specialists and they will read it once.</div><div class="why"><b>Why this prompt.</b> Same evidence, completely different register. Open this one next to the board paper and let the room see the gap.</div></div>
 <div class='two'>
 <div><div class='lbl'>Talk track</div><ul>
 <li>Set expectations: this segment runs longer and produces several files. Let it work while you talk.</li>
@@ -520,14 +554,16 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='mode prerun' style='margin-bottom:14px'>Pre-configured. Show the watch and its last output.</div>
 <div class='goal'>Show the shift from asking to being told.</div>
 <div class='lbl'>Prompts</div>
-<div class="prompt"><button class="copy" data-t="Watch the Infrastructure and Engineering position. Tell me when any contract moves into forecast negative gross margin, when any subsidiary passes 45 percent fixed price share, and when receivables over 180 days move by more than 10 percent in a month." onclick="cp(this)">Copy</button>Watch the Infrastructure and Engineering position. Tell me when any contract moves into forecast negative gross margin, when any subsidiary passes 45 percent fixed price share, and when receivables over 180 days move by more than 10 percent in a month.</div>
-<div class="prompt"><button class="copy" data-t="Every Monday at seven, give me a one page position on the cluster: what changed, what breached a control, and what needs a decision from me this week." onclick="cp(this)">Copy</button>Every Monday at seven, give me a one page position on the cluster: what changed, what breached a control, and what needs a decision from me this week.</div>
-<div class="prompt"><button class="copy" data-t="Before the Portfolio Performance Committee, prepare me. What will the Audit Committee chair most likely ask, and where am I weakest?" onclick="cp(this)">Copy</button>Before the Portfolio Performance Committee, prepare me. What will the Audit Committee chair most likely ask, and where am I weakest?</div>
+<div class="prompt hero"><button class="copy" data-t="What is going to go wrong that nobody has told me about yet?" onclick="cp(this)">Copy</button><span class="herotag">Open with this</span><div class="ptxt">What is going to go wrong that nobody has told me about yet?</div><div class="why"><b>Why this prompt.</b> The entire shift from asking to being told, in one line. Every segment before this one needed someone to start it.</div></div>
+<div class="prompt"><button class="copy" data-t="Watch this cluster. Tell me when any contract forecasts a negative margin, when any subsidiary passes 45 percent fixed price, or when receivables over 180 days move more than 10 percent in a month." onclick="cp(this)">Copy</button><div class="ptxt">Watch this cluster. Tell me when any contract forecasts a negative margin, when any subsidiary passes 45 percent fixed price, or when receivables over 180 days move more than 10 percent in a month.</div><div class="why"><b>Why this prompt.</b> Expressed in the language of the governance standard, not the language of the database. These are the three control breaches, not three reports.</div></div>
+<div class="prompt"><button class="copy" data-t="Every Monday at seven, one page: what changed, what breached a control, what needs a decision from me this week." onclick="cp(this)">Copy</button><div class="ptxt">Every Monday at seven, one page: what changed, what breached a control, what needs a decision from me this week.</div><div class="why"><b>Why this prompt.</b> Scoped to decisions rather than activity. Most management reporting fails precisely here.</div></div>
+<div class="prompt"><button class="copy" data-t="Before the committee on Tuesday, prepare me. What will the audit chair ask, and where am I weakest?" onclick="cp(this)">Copy</button><div class="ptxt">Before the committee on Tuesday, prepare me. What will the audit chair ask, and where am I weakest?</div><div class="why"><b>Why this prompt.</b> The prompt executives remember. It rehearses them for the question they are dreading rather than summarising what they already have.</div></div>
 <div class='two'>
 <div><div class='lbl'>Talk track</div><ul>
-<li>Frame the shift plainly. Everything so far required someone to ask. This does not.</li>
-<li>The third prompt is the one executives remember. It rehearses them for the question they are dreading.</li>
-<li>Keep it short. This is a closing note, not a full segment.</li>
+<li>Open with the hero prompt and let the shift land before you explain it.</li>
+<li>Then show the standing watch and the Monday brief quickly. They are supporting evidence, not the point.</li>
+<li>Finish on the rehearsal prompt. It is the one they will repeat to someone else afterwards.</li>
+<li>Keep the whole segment to four minutes. It is a closing note.</li>
 </ul></div>
 <div><div class='lbl'>What to watch for</div><ul>
 <li>It sets up a standing watch rather than answering once.</li>
@@ -541,7 +577,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='note warn'><b>If it goes wrong.</b> Show a previously configured automation and its last output.</div>
 <div class='note'><b>The differentiator in this segment.</b> The shift from asking to being told. Scheduled and event driven work is not unique to Microsoft, so make the point about the operating rhythm rather than about the feature.</div>
 </div></div></section>
-<section id='questions'><h2><span class='num'>04</span>The five questions that decide it</h2>
+<section id='questions'><h2><span class='num'>05</span>The five questions that decide it</h2>
 <p class='sub'>Do not present a feature comparison. Give them five questions to ask of any assistant, including the ones they already pay for, and let the answers do the work.</p>
 <div class='q'>
 <h4><span>1.</span>How much of the work can it reach without a project?</h4>
@@ -584,7 +620,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='qrow'><b>Proved in</b>Segment 8 &middot; Cowork: multi-artefact pack with live data and web</div>
 </div>
 </section>
-<section id='data'><h2><span class='num'>05</span>The data story</h2>
+<section id='data'><h2><span class='num'>06</span>The data story</h2>
 <p class='sub'>Presenter reference. This is what the dataset proves and the order in which it proves it.</p>
 <div class='note hot'><b>The headline.</b> Infrastructure and Engineering EBITDA margin fell from 11.4 percent in FY2024 to 8.2 percent in FY2025 to 3.1 percent in FY2026 H1, while revenue grew 20 percent. The cluster reports the cause as construction material inflation. The data does not support that.</div>
 <div class='note warn'><b>The challenge you will get, and must concede.</b> The strongest challenge from the room: cost plus contracts pass inflation straight to the customer, so of course their margin held. That objection is correct and should be conceded immediately. It is why the argument does not rest on that comparison.</div>
@@ -623,7 +659,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 </div>
 <div class='note'><b>Worst single contract.</b> WK-2024-0417 Provincial Ring Road Package 3, cost variance +34.2%. Approved with 4.1 percent contingency against an 8 percent policy minimum, with geotechnical investigation incomplete at bid.</div>
 </div></section>
-<section id='files'><h2><span class='num'>06</span>Demo files</h2>
+<section id='files'><h2><span class='num'>07</span>Demo files</h2>
 <p class='sub'>Distributed separately. Folder numbers match segment numbers.</p>
 <table><thead><tr><th>Folder</th><th>Contents</th></tr></thead><tbody>
 <tr><td><span class='file'>01_CopilotChat_AgentMode</span></td><td>Unstructured working notes, portfolio review pack, incomplete board deck</td></tr>
@@ -637,27 +673,30 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <tr><td><span class='file'>09_Scout</span></td><td>Scenario run sheet</td></tr>
 <tr><td><span class='file'>03_Fabric_IQ</span></td><td>31 linked tables and pre-aggregated views covering all six clusters, roughly 20,000 rows, plus answer key</td></tr>
 </tbody></table></section>
-<section id='checklist'><h2><span class='num'>07</span>Presenter checklist</h2>
+<section id='checklist'><h2><span class='num'>08</span>Presenter checklist</h2>
 <p class='sub'>Ticks are local to this browser only.</p>
 <div class='chk'><h4>Before the day</h4>
 <label><input type='checkbox' data-k='c1'><span>Confirm the demo tenant has the sample files in the right folders.</span></label>
 <label><input type='checkbox' data-k='c2'><span>Confirm meeting transcription and recap policy allows the Teams segment.</span></label>
 <label><input type='checkbox' data-k='c3'><span>Pre-build the Agent Builder agent in a second window as a fallback.</span></label>
-<label><input type='checkbox' data-k='c4'><span>Pre-run the Cowork pack and keep the outputs available offline.</span></label>
-<label><input type='checkbox' data-k='c5'><span>Load the Fabric dataset and run two queries to confirm it responds.</span></label>
-<label><input type='checkbox' data-k='c6'><span>Read the critique answer key so you know what Researcher should find.</span></label>
+<label><input type='checkbox' data-k='c4'><span>Sign the second identity in on a second device for the permission proof.</span></label>
+<label><input type='checkbox' data-k='c5'><span>Pre-run the Cowork pack and keep the outputs available offline.</span></label>
+<label><input type='checkbox' data-k='c6'><span>Load the Fabric dataset and run two queries to confirm it responds.</span></label>
+<label><input type='checkbox' data-k='c7'><span>Read the critique answer key so you know what Researcher should find.</span></label>
+<label><input type='checkbox' data-k='c8'><span>Learn the four hero prompts by heart. They are short on purpose.</span></label>
 </div>
 <div class='chk'><h4>In the room</h4>
-<label><input type='checkbox' data-k='c7'><span>State the parity position in the first two minutes and then stop arguing about models.</span></label>
-<label><input type='checkbox' data-k='c8'><span>Never read an output aloud. Point at one number and trace it.</span></label>
-<label><input type='checkbox' data-k='c9'><span>When something is slow, keep talking. Do not narrate the spinner.</span></label>
-<label><input type='checkbox' data-k='c10'><span>If a segment fails, say so and move. The fallback is planned.</span></label>
-<label><input type='checkbox' data-k='c11'><span>Do not send anything. Draft, show, and say you are not sending it.</span></label>
+<label><input type='checkbox' data-k='c9'><span>State the parity position in the first two minutes and then stop arguing about models.</span></label>
+<label><input type='checkbox' data-k='c10'><span>Type each hero prompt and then stop talking. Silence is the effect.</span></label>
+<label><input type='checkbox' data-k='c11'><span>Never read an output aloud. Point at one number and trace it.</span></label>
+<label><input type='checkbox' data-k='c12'><span>When something is slow, keep talking. Do not narrate the spinner.</span></label>
+<label><input type='checkbox' data-k='c13'><span>If a segment fails, say so and move. The fallback is planned.</span></label>
+<label><input type='checkbox' data-k='c14'><span>Do not send anything. Draft, show, and say you are not sending it.</span></label>
 </div>
 <div class='chk'><h4>Close</h4>
-<label><input type='checkbox' data-k='c12'><span>Return to the five questions and let them answer for their own estate.</span></label>
-<label><input type='checkbox' data-k='c13'><span>Name the one segment that could not be replicated by a browser tab.</span></label>
-<label><input type='checkbox' data-k='c14'><span>Agree a next step that involves their data, not more slides.</span></label>
+<label><input type='checkbox' data-k='c15'><span>Return to the five questions and let them answer for their own estate.</span></label>
+<label><input type='checkbox' data-k='c16'><span>Name the one segment that could not be replicated by a browser tab.</span></label>
+<label><input type='checkbox' data-k='c17'><span>Agree a next step that involves their data, not more slides.</span></label>
 </div>
 </section>
 <footer>Demonstration material. Fictional account, synthetic data. Not for external distribution.</footer>
