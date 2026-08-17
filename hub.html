@@ -193,6 +193,12 @@ li{margin-bottom:6px;font-size:14.5px}
   cursor:pointer}
 .chk input{margin-top:5px;accent-color:var(--blue);flex:0 0 auto}
 
+/* ---------- safety ---------- */
+.safe{padding:11px 0;border-bottom:1px solid var(--line);font-size:14.2px;
+  color:var(--muted);line-height:1.58}
+.safe:last-child{border-bottom:none}
+.safe b{display:block;color:var(--navy);font-size:14.5px;margin-bottom:3px}
+
 footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);font-size:12.5px}
 .pillrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .pill{background:#EEF3FA;border:1px solid #DCE5F2;border-radius:20px;padding:4px 13px;
@@ -204,7 +210,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <p class='lede'>One business question, carried across nine surfaces. The model is not what differs.</p>
 <div class='meta'>
 <div><strong>9</strong>segments</div>
-<div><strong>58 min</strong>demo runtime</div>
+<div><strong>62 min</strong>demo runtime</div>
 <div><strong>4</strong>narrative acts</div>
 <div><strong>31</strong>linked data tables</div>
 <div><strong>19 Aug</strong>session date</div>
@@ -226,7 +232,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='grp'>Argue</div>
 <a href='#questions'>The five questions</a>
 <div class='grp'>Reference</div>
-<a href='#data'>The data story</a><a href='#files'>Demo files</a><a href='#checklist'>Checklist</a>
+<a href='#data'>The data story</a><a href='#files'>Demo files</a><a href='#safety'>Demonstrating Scout safely</a><a href='#checklist'>Checklist</a>
 </nav>
 <main>
 <section id='framing'><h2><span class='num'>01</span>Framing</h2>
@@ -283,10 +289,10 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <div class='heroc'><div class='n'>Segment 6 &middot; Copilot in Teams: meeting recap</div><p>What did we decide, what did we avoid deciding, and who is going to miss their date?</p></div>
 <div class='heroc'><div class='n'>Segment 7 &middot; Agent Builder</div><p>Find me a way to get this bid approved. Fixed price, 180 billion rupiah, regional government client, 5 percent contingency, and the tender closes Friday.</p></div>
 <div class='heroc'><div class='n'>Segment 8 &middot; Cowork: multi-artefact pack with live data and web</div><p>Do not take our word for it. Go and check whether the inflation story actually holds, and tell me if my own cluster is wrong.</p></div>
-<div class='heroc'><div class='n'>Segment 9 &middot; Scout</div><p>What is going to go wrong that nobody has told me about yet?</p></div>
+<div class='heroc'><div class='n'>Segment 9 &middot; Scout</div><p>Open the Arkanusa folder on my machine and tell me what is going wrong in that business. Nobody has briefed you.</p></div>
 </div></section>
 <section id='runofshow'><h2><span class='num'>04</span>Run of show</h2>
-<p class='sub'>58 minutes of demonstration. Allow 90 minutes with introduction, questions and close.</p>
+<p class='sub'>62 minutes of demonstration. Allow 90 minutes with introduction, questions and close.</p>
 <table><thead><tr><th>#</th><th>Act</th><th>Segment</th><th>How it runs</th><th>Mins</th><th>Cumulative</th></tr></thead><tbody>
 <tr><td class='mins'>1</td><td class='actc'>Act 1</td><td><b>Copilot Chat: Word, PowerPoint and Excel agents</b><br><span style='font-size:12px;color:var(--soft)'>Microsoft 365 Copilot Chat, using the Word agent, the Excel agent and the PowerPoint agent in turn.</span></td><td><span class='mode prerun'>Word agent live. Excel and PowerPoint agents pre-run.</span></td><td class='mins'>8</td><td class='mins'>8</td></tr>
 <tr><td class='mins'>2</td><td class='actc'>Act 1</td><td><b>Microsoft 365 Copilot and Work IQ</b><br><span style='font-size:12px;color:var(--soft)'>Microsoft 365 Copilot, grounded across mail, chat, meetings and files, with model choice where the tenant exposes it.</span></td><td><span class='mode live'>Fully live. This is the segment that must not be pre-run.</span></td><td class='mins'>8</td><td class='mins'>16</td></tr>
@@ -296,7 +302,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--soft);fo
 <tr><td class='mins'>6</td><td class='actc'>Act 3</td><td><b>Copilot in Teams: meeting recap</b><br><span style='font-size:12px;color:var(--soft)'>Copilot in Microsoft Teams, meeting recap and follow-up.</span></td><td><span class='mode live'>Fully live on a recorded meeting.</span></td><td class='mins'>5</td><td class='mins'>39</td></tr>
 <tr><td class='mins'>7</td><td class='actc'>Act 3</td><td><b>Agent Builder</b><br><span style='font-size:12px;color:var(--soft)'>Agent built in Microsoft 365 Copilot over governance documents.</span></td><td><span class='mode live'>Fully live. The most important segment in the session.</span></td><td class='mins'>9</td><td class='mins'>48</td></tr>
 <tr><td class='mins'>8</td><td class='actc'>Act 4</td><td><b>Cowork: multi-artefact pack with live data and web</b><br><span style='font-size:12px;color:var(--soft)'>Microsoft Copilot Cowork, with browser use and the analytics workspace.</span></td><td><span class='mode prerun'>Pre-run the pack. Run the disproof prompt live.</span></td><td class='mins'>6</td><td class='mins'>54</td></tr>
-<tr><td class='mins'>9</td><td class='actc'>Act 4</td><td><b>Scout</b><br><span style='font-size:12px;color:var(--soft)'>Microsoft Scout on the desktop.</span></td><td><span class='mode prerun'>Pre-configured. Show the watch and its last output.</span></td><td class='mins'>4</td><td class='mins'>58</td></tr>
+<tr><td class='mins'>9</td><td class='actc'>Act 4</td><td><b>Scout</b><br><span style='font-size:12px;color:var(--soft)'>Microsoft Scout on the presenter&#x27;s desktop, scoped to one folder of fictional material.</span></td><td><span class='mode live'>Fully live, scoped to one folder. Rehearse once beforehand.</span></td><td class='mins'>8</td><td class='mins'>62</td></tr>
 </tbody></table></section>
 <section id='seg1'><div class='seg'>
 <div class='seg-top'>
@@ -822,58 +828,75 @@ Then tell me: what did you deliberately leave out of the Ministry version, and w
 <section id='seg9'><div class='seg'>
 <div class='seg-top'>
 <div class='seg-no'>9</div><div>
-<h4>Scout</h4><div class='surf'>Microsoft Scout on the desktop.</div></div>
-<div class='seg-time'><b>4</b>minutes</div></div>
+<h4>Scout</h4><div class='surf'>Microsoft Scout on the presenter&#x27;s desktop, scoped to one folder of fictional material.</div></div>
+<div class='seg-time'><b>8</b>minutes</div></div>
 <div class='seg-body'>
-<div class='mode prerun' style='margin-bottom:14px'>Pre-configured. Show the watch and its last output.</div>
-<div class='goal'>Show the shift from asking to being told.</div>
+<div class='mode live' style='margin-bottom:14px'>Fully live, scoped to one folder. Rehearse once beforehand.</div>
+<div class='goal'>Show an agent that works on the machine rather than in a tab: it reads local files, writes and runs code, produces artefacts, checks itself against the web, acts under the user&#x27;s identity with approval, and then keeps running without being asked.</div>
+<div class='note good'><b>Business fit.</b> Why this closes the session. Every segment before this one answered a question that somebody typed. This one is handed a folder and finds the problem itself, then hands the result to a colleague. For a holding company supervising 23 subsidiaries, the interesting question is not whether an assistant can write well. It is whether anything is watching the portfolio between board meetings.</div>
 <div class='lbl'>Prompts</div>
-<div class="prompt hero"><div class="pmeta"><span class="plabel">Cold open</span><span class="psurface">Microsoft Scout</span><span class="herotag">Open with this</span></div><div class="ptitle">Stop asking, start being told</div><div class="ptxt">What is going to go wrong that nobody has told me about yet?</div><button class="copy" data-t="What is going to go wrong that nobody has told me about yet?" onclick="cp(this)">Copy prompt</button><div class="why"><b>Why this prompt.</b> Confirm your preview entitlement before you show this segment. If you cannot stand behind an availability answer, cut it and close on scheduled tasks in Cowork instead.</div><div class="why good"><b>What good looks like.</b> The entire shift in one line. Every segment before this one needed someone to start it.</div></div>
-<div class="prompt"><div class="pmeta"><span class="plabel">Task 9.1</span><span class="psurface">Microsoft Scout</span></div><div class="ptitle">A standing watch expressed in policy, not in SQL</div><div class="ptxt">Set up a standing watch on the Infrastructure and Engineering cluster, using the contract and receivables data in the analytics workspace.<br><br>Alert me when any of these happen:<br>1. Any contract moves into forecast negative gross margin for the first time. Tell me the contract, the subsidiary, the client type, the awarded value and the forecast margin.<br>2. Any subsidiary passes 45 percent fixed price share of its order book by value, which is the concentration limit in SOP-CG-004 control CG-4.1.<br>3. Receivables over 180 days move by more than 10 percent in a single month, in either direction.<br>4. Any bid is submitted with contingency below 8 percent, which breaches control CG-3.1.<br><br>For each alert, tell me three things: what happened, which control it touches, and what decision it needs from me. Do not send me anything that does not need a decision.<br><br>Check daily. Notify me in Teams.</div><button class="copy" data-t="Set up a standing watch on the Infrastructure and Engineering cluster, using the contract and receivables data in the analytics workspace.
+<div class="prompt hero"><div class="pmeta"><span class="plabel">Cold open</span><span class="psurface">Microsoft Scout on the desktop</span><span class="herotag">Open with this</span></div><div class="ptitle">Point it at a folder and let it find the problem itself</div><div class="ptxt">Open the Arkanusa folder on my machine and tell me what is going wrong in that business. Nobody has briefed you.</div><button class="copy" data-t="Open the Arkanusa folder on my machine and tell me what is going wrong in that business. Nobody has briefed you." onclick="cp(this)">Copy prompt</button><div class="why"><b>Why this prompt.</b> Say out loud that the folder is on the laptop, not in the cloud, and that you have not told it which of the 31 files matter. Then stop talking.</div><div class="why good"><b>What good looks like.</b> It reads the local files, works out which ones matter, and finds the margin problem without being told where to look. Everything before this segment answered a question. This one is handed a folder.</div></div>
+<div class="prompt"><div class="pmeta"><span class="plabel">Task 9.1</span><span class="psurface">Microsoft Scout</span></div><div class="ptitle">Make it show the code, not just the answer</div><div class="ptxt">Work only inside the Arkanusa demo folder. Do not open my mail, my calendar, my chats or any other folder on this machine.<br><br>Analyse the contract and receivables data in 03_Fabric_IQ. Find the single largest problem in that business, then prove it properly:<br>1. State the finding in one sentence.<br>2. Show me the actual code you ran to establish it, and the output it produced.<br>3. Tell me which files and how many rows you read.<br>4. State the one alternative explanation a finance director would offer, and show me whether the data supports it.<br><br>Do not summarise the files back to me. I want the finding and the working.</div><button class="copy" data-t="Work only inside the Arkanusa demo folder. Do not open my mail, my calendar, my chats or any other folder on this machine.
 
-Alert me when any of these happen:
-1. Any contract moves into forecast negative gross margin for the first time. Tell me the contract, the subsidiary, the client type, the awarded value and the forecast margin.
-2. Any subsidiary passes 45 percent fixed price share of its order book by value, which is the concentration limit in SOP-CG-004 control CG-4.1.
-3. Receivables over 180 days move by more than 10 percent in a single month, in either direction.
-4. Any bid is submitted with contingency below 8 percent, which breaches control CG-3.1.
+Analyse the contract and receivables data in 03_Fabric_IQ. Find the single largest problem in that business, then prove it properly:
+1. State the finding in one sentence.
+2. Show me the actual code you ran to establish it, and the output it produced.
+3. Tell me which files and how many rows you read.
+4. State the one alternative explanation a finance director would offer, and show me whether the data supports it.
 
-For each alert, tell me three things: what happened, which control it touches, and what decision it needs from me. Do not send me anything that does not need a decision.
+Do not summarise the files back to me. I want the finding and the working." onclick="cp(this)">Copy prompt</button><div class="why good"><b>What good looks like.</b> It writes and runs real code against roughly 20,000 rows on local disk, and shows the working. The point to make: this is not a model recalling a document, it is a process on your machine reading your files and computing an answer you can audit.</div><div class="why warn"><b>Reality check.</b> It may take a minute on the first pass while it explores the folder. Talk over it. If it summarises instead of computing, push once: &quot;Do not describe the files. Run the analysis and show me the code.&quot;</div></div>
+<div class="prompt"><div class="pmeta"><span class="plabel">Task 9.2</span><span class="psurface">Microsoft Scout</span></div><div class="ptitle">Turn the finding into something you can hand over</div><div class="ptxt">Build me an interactive HTML dashboard from that analysis, saved into the Arkanusa folder, then open it.<br><br>- Header band in deep navy and teal, with the reporting date on the right<br>- Four KPI cards across the top: cluster margin, fixed price share of order book, mean cost variance on fixed price work, and receivables over 180 days. Each with a red, amber or green band<br>- A chart showing cost variance within fixed price work grouped by the period each contract was bid in<br>- A chart showing receivables over 180 days by month<br>- A short panel headed &quot;What this means&quot;, in plain English, no jargon<br>- One file, all styling inline, no external dependencies so it works offline<br><br>Then tell me where you saved it.</div><button class="copy" data-t="Build me an interactive HTML dashboard from that analysis, saved into the Arkanusa folder, then open it.
 
-Check daily. Notify me in Teams." onclick="cp(this)">Copy prompt</button><div class="why good"><b>What good looks like.</b> Expressed in the language of the governance standard, not the language of the database. These are four control breaches, not four reports. Point that out.</div></div>
-<div class="prompt"><div class="pmeta"><span class="plabel">Task 9.2</span><span class="psurface">Microsoft Scout</span></div><div class="ptitle">The Monday position, scoped to decisions</div><div class="ptxt">Every Monday at seven in the morning, prepare a one page position on the Infrastructure and Engineering cluster and send it to me in Teams.<br><br>Four sections, in this order.<br>1. What changed since last Monday. Only movements large enough to matter, with the number and the direction.<br>2. What breached a control this week, with the control reference.<br>3. What needs a decision from me this week, with the options and your recommendation.<br>4. What I asked for last week that has not happened.<br><br>If a section is empty, say it is empty rather than padding it. If nothing in the whole week needs a decision, send me one line saying so.</div><button class="copy" data-t="Every Monday at seven in the morning, prepare a one page position on the Infrastructure and Engineering cluster and send it to me in Teams.
+- Header band in deep navy and teal, with the reporting date on the right
+- Four KPI cards across the top: cluster margin, fixed price share of order book, mean cost variance on fixed price work, and receivables over 180 days. Each with a red, amber or green band
+- A chart showing cost variance within fixed price work grouped by the period each contract was bid in
+- A chart showing receivables over 180 days by month
+- A short panel headed &quot;What this means&quot;, in plain English, no jargon
+- One file, all styling inline, no external dependencies so it works offline
 
-Four sections, in this order.
-1. What changed since last Monday. Only movements large enough to matter, with the number and the direction.
-2. What breached a control this week, with the control reference.
-3. What needs a decision from me this week, with the options and your recommendation.
-4. What I asked for last week that has not happened.
+Then tell me where you saved it." onclick="cp(this)">Copy prompt</button><div class="why good"><b>What good looks like.</b> A real file appears on disk and opens in the browser. Three capabilities in one instruction: it computed the analysis, wrote a file, and launched it. Note that nothing was uploaded anywhere to make that happen.</div><div class="why warn"><b>Reality check.</b> If the charts render badly, ask for a rebuild rather than defending it: &quot;Rebuild the first chart as a simple column chart with the values labelled.&quot; A demonstration that corrects itself reads better than one that pretends.</div></div>
+<div class="prompt"><div class="pmeta"><span class="plabel">Task 9.3</span><span class="psurface">Microsoft Scout, with web access</span></div><div class="ptitle">Send it outside to check its own conclusion</div><div class="ptxt">Now go to the web and check whether that conclusion survives outside evidence.<br><br>Find current published construction material and labour cost indices for Indonesia covering 2024 to 2026. Cite the publisher and the release date. Compare what you find against the internal figures, and tell me plainly whether the external data supports or undermines the conclusion you reached in the previous step.<br><br>If it undermines it, say so. Do not defend your earlier answer.</div><button class="copy" data-t="Now go to the web and check whether that conclusion survives outside evidence.
 
-If a section is empty, say it is empty rather than padding it. If nothing in the whole week needs a decision, send me one line saying so." onclick="cp(this)">Copy prompt</button><div class="why good"><b>What good looks like.</b> Scoped to decisions rather than activity, and section four is the one that changes behaviour, because it tracks the executive&#x27;s own outstanding requests.</div></div>
-<div class="prompt"><div class="pmeta"><span class="plabel">Task 9.3</span><span class="psurface">Microsoft Scout</span></div><div class="ptitle">Rehearse the hostile question</div><div class="ptxt">The Portfolio Performance Committee meets on Tuesday at ten, and the Audit Committee chair has asked for fifteen minutes afterwards without stating a subject.<br><br>Prepare me. Give me:<br>1. The five questions the audit chair is most likely to ask, ranked by how uncomfortable they would be, with the evidence behind each.<br>2. For each one, the honest answer, and separately the answer I would be tempted to give. Tell me why the tempting one is worse.<br>3. The single weakest point in my current position, and whether I should raise it myself before I am asked.<br>4. Anything in the record that I may not know about, that the audit chair could reasonably have seen.</div><button class="copy" data-t="The Portfolio Performance Committee meets on Tuesday at ten, and the Audit Committee chair has asked for fifteen minutes afterwards without stating a subject.
+Find current published construction material and labour cost indices for Indonesia covering 2024 to 2026. Cite the publisher and the release date. Compare what you find against the internal figures, and tell me plainly whether the external data supports or undermines the conclusion you reached in the previous step.
 
-Prepare me. Give me:
-1. The five questions the audit chair is most likely to ask, ranked by how uncomfortable they would be, with the evidence behind each.
-2. For each one, the honest answer, and separately the answer I would be tempted to give. Tell me why the tempting one is worse.
-3. The single weakest point in my current position, and whether I should raise it myself before I am asked.
-4. Anything in the record that I may not know about, that the audit chair could reasonably have seen." onclick="cp(this)">Copy prompt</button><div class="why good"><b>What good looks like.</b> It should identify the contingency waiver on WK-2024-0417 and the question from the May committee that was never answered in writing, because those are the two places where the record shows a control was bypassed. This is the prompt executives repeat to someone else afterwards.</div></div>
+If it undermines it, say so. Do not defend your earlier answer." onclick="cp(this)">Copy prompt</button><div class="why good"><b>What good looks like.</b> It leaves the machine, finds an independent source, and reconciles it against the local analysis. The instruction not to defend its earlier answer is the interesting part: watch whether it will actually change position.</div><div class="why warn"><b>Reality check.</b> Public sources for this vary in quality. If it cannot find a credible index, it should say so rather than inventing one. That refusal is itself a good outcome to point at.</div></div>
+<div class="prompt"><div class="pmeta"><span class="plabel">Task 9.4</span><span class="psurface">Microsoft Scout, Teams</span></div><div class="ptitle">Hand the work to a colleague, with approval in the loop</div><div class="ptxt">Draft a Teams message to my colleague summarising what you found.<br><br>Four short paragraphs at most. Lead with the finding. Say what the data shows, what the outside check confirmed or contradicted, and what I am asking her to look at before I take it further. Attach nothing.<br><br>Show me the message and tell me exactly who it will go to. Do not send it until I say so.</div><button class="copy" data-t="Draft a Teams message to my colleague summarising what you found.
+
+Four short paragraphs at most. Lead with the finding. Say what the data shows, what the outside check confirmed or contradicted, and what I am asking her to look at before I take it further. Attach nothing.
+
+Show me the message and tell me exactly who it will go to. Do not send it until I say so." onclick="cp(this)">Copy prompt</button><div class="why"><b>Why this prompt.</b> This is the moment the segment exists for. Everything up to here was analysis, which a capable model in a browser tab could arguably approximate. Sending a message as you, into your organisation, under your identity, is a different class of thing.</div><div class="why good"><b>What good looks like.</b> It composes the message, names the recipient, and stops. Read the draft on screen, then approve it out loud and let it send. The room sees a system that acts, and a human who authorised the action.</div><div class="why warn"><b>Reality check.</b> Send this to a Microsoft colleague, never to anyone in the room and never to a customer address. Confirm the recipient on screen before you approve it. If you are at all unsure, use your own self-chat instead and say that is what you are doing.</div></div>
+<div class="prompt"><div class="pmeta"><span class="plabel">Task 9.5</span><span class="psurface">Microsoft Scout</span></div><div class="ptitle">Set the watch, then stop asking</div><div class="ptxt">Set this up to run without me.<br><br>Every Monday at seven, re-run that analysis against whatever is in the folder at the time, and message me only if one of these is true:<br>1. Any contract has moved into forecast negative gross margin since last week.<br>2. Any subsidiary has passed 45 percent fixed price share of its order book.<br>3. Receivables over 180 days have moved more than 10 percent in a month.<br><br>If none of those is true, send me one line saying so. Do not send me a report I did not ask for.</div><button class="copy" data-t="Set this up to run without me.
+
+Every Monday at seven, re-run that analysis against whatever is in the folder at the time, and message me only if one of these is true:
+1. Any contract has moved into forecast negative gross margin since last week.
+2. Any subsidiary has passed 45 percent fixed price share of its order book.
+3. Receivables over 180 days have moved more than 10 percent in a month.
+
+If none of those is true, send me one line saying so. Do not send me a report I did not ask for." onclick="cp(this)">Copy prompt</button><div class="why"><b>Why this prompt.</b> Close here. The argument across the whole session ends on a system that no longer waits to be asked.</div><div class="why good"><b>What good looks like.</b> A standing job, expressed in the language of the governance standard rather than the language of a database, with an explicit instruction not to generate noise. Show the automation in the list once it is created.</div></div>
 <div class='two'>
 <div><div class='lbl'>Talk track</div><ul>
-<li>Open with the cold open and let the shift land before you explain it.</li>
-<li>Show 9.1 and 9.2 quickly. They are supporting evidence, not the point. The thing to point at is that the watch is written in the language of the governance standard, not the database.</li>
-<li>Finish on 9.3. It is the prompt they will repeat to someone else afterwards.</li>
-<li>Keep the whole segment to four minutes. It is a closing note, and you should be careful not to over-promise availability.</li>
+<li>Before you start, show the room the safety setup rather than describing it. One folder of fictional material is open, and nothing else. That takes ten seconds and it earns you the rest of the segment.</li>
+<li>Run the cold open and let it explore. Say out loud that the folder is on the laptop, that it holds 31 files, and that you have not told it which ones matter.</li>
+<li>Task 9.1 is the credibility moment. When it shows the code it ran, point at it. This is not a model recalling a document, it is a process on your machine computing an answer you can audit.</li>
+<li>Task 9.4 is the point of the segment. Read the draft aloud, confirm the recipient on screen, then approve it. The room should see a system that acts and a human who authorised it.</li>
+<li>Close on 9.5. The whole session ends on something that no longer waits to be asked.</li>
 </ul></div>
 <div><div class='lbl'>What to watch for</div><ul>
-<li>It sets up a standing watch rather than answering once.</li>
-<li>The weekly brief is scoped to decisions, not to activity.</li>
-<li>The preparation prompt anticipates challenge rather than summarising material.</li>
+<li>It explores the folder and works out which of the 31 files matter without being told.</li>
+<li>It writes and runs real code, and shows you the code.</li>
+<li>A file appears on disk and opens, without anything being uploaded anywhere.</li>
+<li>It leaves the machine to check an outside source, and is willing to contradict its own earlier answer.</li>
+<li>It drafts, names the recipient, and stops until a human approves.</li>
+<li>The standing watch is expressed in control language, with an explicit instruction not to generate noise.</li>
 </ul></div>
 </div>
 <div class='lbl'>Files</div><div class='files'>
+<span class='file'>The Arkanusa demo folder, copied to a clean local path</span>
+<span class='file'>03_Fabric_IQ, 31 tables, roughly 20,000 rows</span>
 <span class='file'>Scout_Scenario_Runsheet.md</span>
 </div>
-<div class='note warn'><b>If it goes wrong.</b> Show a previously configured automation and its last output.</div>
-<div class='note'><b>The differentiator in this segment.</b> The shift from asking to being told. Scheduled and event driven work is not unique to Microsoft, so make the point about the operating rhythm rather than about the feature.</div>
+<div class='note warn'><b>If it goes wrong.</b> If the live run is slow or the folder behaves oddly, show a previously configured automation and its last output, and say openly that it was set up earlier. Never improvise by pointing it at a real folder to make it more impressive.</div>
+<div class='note'><b>The differentiator in this segment.</b> This is the segment that cannot be replicated in a browser tab, and it is also the one that most needs a visible boundary. It reads local files, executes code, writes artefacts and acts under the user identity. Scheduled work is not unique to Microsoft, so do not claim the feature. Claim the combination: it operates on the machine, inside the identity, with approval in the loop, and you can show all three in eight minutes.</div>
 </div></div></section>
 <section id='questions'><h2><span class='num'>05</span>The five questions that decide it</h2>
 <p class='sub'>Do not present a feature comparison. Give them five questions to ask of any assistant, including the ones they already pay for, and let the answers do the work.</p>
@@ -971,7 +994,30 @@ Prepare me. Give me:
 <tr><td><span class='file'>09_Scout</span></td><td>Scenario run sheet</td></tr>
 <tr><td><span class='file'>03_Fabric_IQ</span></td><td>31 linked tables and pre-aggregated views covering all six clusters, roughly 20,000 rows, plus answer key</td></tr>
 </tbody></table></section>
-<section id='checklist'><h2><span class='num'>08</span>Presenter checklist</h2>
+<section id='safety'><h2><span class='num'>08</span>Demonstrating Scout safely</h2>
+<p class='sub'>Scout runs on the presenter&#x27;s own machine with the presenter&#x27;s own identity. That is exactly what makes it worth showing, and exactly what makes it the one segment that can leak. The rule for the session is simple: Scout may read one folder of fictional material, and it may send one message to one Microsoft colleague. Nothing else is opened and nobody in the room receives anything.</p>
+<div class='card'><h3>Before the room fills</h3>
+<div class='safe'><b>Close everything that is not the demo.</b>Mail, calendar, Teams conversations, MSX, Power BI, any customer folder. If it is not the Arkanusa folder, it should not be open. The risk is not what Scout does, it is what is behind the window you switch to.</div>
+<div class='safe'><b>Put the demo folder somewhere clean.</b>Copy the Arkanusa demo folder to a plain path with nothing else beside it. Do not run the segment from inside a customer directory where a stray filename in a listing identifies an account.</div>
+<div class='safe'><b>Check your notification settings.</b>Teams and Outlook toasts during a screen share have ended more sessions than bad demos have. Turn on focus assist and quit anything that pops.</div>
+<div class='safe'><b>Decide the recipient in advance.</b>One Microsoft colleague who knows the session is happening. Write the name down. Do not choose it live, and never pick a customer address from an autocomplete list in front of the customer.</div>
+<div class='safe'><b>Clear the memory of anything account specific.</b>Scout remembers across sessions. Check what it has stored before you put it on a projector, because a remembered fact about another customer will surface in an unrelated answer.</div>
+<div class='safe'><b>Rehearse once end to end.</b>The exploration step behaves differently on a cold folder. Run it once so you know how long the pause is and what it says first.</div>
+</div>
+<div class='card'><h3>The rule you say out loud</h3>
+<div class='safe'><b>Scope it in the first sentence, in front of them.</b>&quot;It can see one folder, and that folder contains a fictional company.&quot; Saying the boundary before you demonstrate the capability converts the obvious worry into a control they can see you operating.</div>
+<div class='safe'><b>Put the scope in the prompt itself, visibly.</b>The instruction in Task 9.1 tells it not to open mail, calendar, chats or other folders. Leave that line on screen. It is a better governance answer than any slide about data boundaries.</div>
+<div class='safe'><b>Approve the send on screen.</b>The draft, the named recipient, then the approval. Human in the loop is the whole argument for agentic work in a regulated group, and here you can show it rather than assert it.</div>
+</div>
+<div class='card'><h3>Questions you will get, and the honest answer</h3>
+<div class='safe'><b>Could it read anything else on that laptop?</b>Yes, if it were asked to, because it runs with your permissions. That is the point of a desktop agent and it is why scope and approval matter. Do not pretend it is sandboxed away from your files.</div>
+<div class='safe'><b>Where did our data go?</b>In this demonstration, nowhere. It read local files and produced local files. The one outbound action was a message you watched me approve. If a step uses web search, say so plainly when it happens.</div>
+<div class='safe'><b>What stops someone doing this with real customer data?</b>Nothing technical, in the same way nothing technical stops them emailing a spreadsheet. It inherits their identity and their permissions, and it is governed by the same policy and the same training. Do not oversell a control that is really a policy.</div>
+<div class='safe'><b>Is this generally available?</b>Answer only what you can stand behind, and say plainly when something is preview. An honest availability answer costs you nothing here and protects everything you said earlier.</div>
+</div>
+<div class='note hot'><b>On availability.</b> Position Scout carefully. Confirm your own preview entitlement and the preview terms before you show it, and do not present it as something the customer can procure on Monday. If you cannot stand behind an availability answer, cut the segment and close on scheduled and event driven tasks in Cowork instead, which makes the same point about moving from asking to being told.</div>
+</section>
+<section id='checklist'><h2><span class='num'>09</span>Presenter checklist</h2>
 <p class='sub'>Ticks are local to this browser only.</p>
 <div class='chk'><h4>Before the day</h4>
 <label><input type='checkbox' data-k='c1'><span>Confirm the demo tenant has the sample files in the right folders.</span></label>
@@ -982,19 +1028,24 @@ Prepare me. Give me:
 <label><input type='checkbox' data-k='c6'><span>Load the Fabric dataset and run two queries to confirm it responds.</span></label>
 <label><input type='checkbox' data-k='c7'><span>Read the critique answer key so you know what Researcher should find.</span></label>
 <label><input type='checkbox' data-k='c8'><span>Learn the four hero prompts by heart. They are short on purpose.</span></label>
+<label><input type='checkbox' data-k='c9'><span>Scout: copy the demo folder to a clean local path with nothing beside it, and rehearse the segment once end to end.</span></label>
+<label><input type='checkbox' data-k='c10'><span>Scout: decide and write down the one colleague who will receive the handoff message, and tell them it is coming.</span></label>
+<label><input type='checkbox' data-k='c11'><span>Scout: review what it has remembered from previous sessions and clear anything account specific before it goes on a projector.</span></label>
+<label><input type='checkbox' data-k='c12'><span>Close every window that is not part of the demonstration, and turn on focus assist so no notification appears mid-share.</span></label>
 </div>
 <div class='chk'><h4>In the room</h4>
-<label><input type='checkbox' data-k='c9'><span>State the parity position in the first two minutes and then stop arguing about models.</span></label>
-<label><input type='checkbox' data-k='c10'><span>Type each hero prompt and then stop talking. Silence is the effect.</span></label>
-<label><input type='checkbox' data-k='c11'><span>Never read an output aloud. Point at one number and trace it.</span></label>
-<label><input type='checkbox' data-k='c12'><span>When something is slow, keep talking. Do not narrate the spinner.</span></label>
-<label><input type='checkbox' data-k='c13'><span>If a segment fails, say so and move. The fallback is planned.</span></label>
-<label><input type='checkbox' data-k='c14'><span>Do not send anything. Draft, show, and say you are not sending it.</span></label>
+<label><input type='checkbox' data-k='c13'><span>State the parity position in the first two minutes and then stop arguing about models.</span></label>
+<label><input type='checkbox' data-k='c14'><span>Type each hero prompt and then stop talking. Silence is the effect.</span></label>
+<label><input type='checkbox' data-k='c15'><span>Never read an output aloud. Point at one number and trace it.</span></label>
+<label><input type='checkbox' data-k='c16'><span>When something is slow, keep talking. Do not narrate the spinner.</span></label>
+<label><input type='checkbox' data-k='c17'><span>If a segment fails, say so and move. The fallback is planned.</span></label>
+<label><input type='checkbox' data-k='c18'><span>Do not send anything to anyone in the room. The one outbound message goes to a Microsoft colleague, and you approve it on screen.</span></label>
+<label><input type='checkbox' data-k='c19'><span>State Scout&#x27;s scope out loud before you demonstrate it, not after.</span></label>
 </div>
 <div class='chk'><h4>Close</h4>
-<label><input type='checkbox' data-k='c15'><span>Return to the five questions and let them answer for their own estate.</span></label>
-<label><input type='checkbox' data-k='c16'><span>Name the one segment that could not be replicated by a browser tab.</span></label>
-<label><input type='checkbox' data-k='c17'><span>Agree a next step that involves their data, not more slides.</span></label>
+<label><input type='checkbox' data-k='c20'><span>Return to the five questions and let them answer for their own estate.</span></label>
+<label><input type='checkbox' data-k='c21'><span>Name the one segment that could not be replicated by a browser tab.</span></label>
+<label><input type='checkbox' data-k='c22'><span>Agree a next step that involves their data, not more slides.</span></label>
 </div>
 </section>
 <footer>Demonstration material. Fictional account, synthetic data. Not for external distribution.</footer>
