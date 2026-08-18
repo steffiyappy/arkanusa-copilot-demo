@@ -450,7 +450,7 @@ Then compare the two answers side by side and tell me where they agree, where th
 </ul></div>
 </div>
 <div class='lbl'>Files</div><div class='files'>
-<span class='file'>21 email messages, March 2024 to August 2026</span>
+<span class='file'>47 email messages in 14 threads, March 2024 to August 2026</span>
 <span class='file'>Group_Bid_Committee_Minutes_Extracts.docx</span>
 <span class='file'>CRO_Memo_Fixed_Price_Concentration.docx</span>
 </div>
@@ -983,12 +983,12 @@ If none of those is true, send me one line saying so. Do not send me a report I 
 <section id='files'><h2><span class='num'>06</span>Demo files</h2>
 <p class='sub'>Distributed separately. Sixteen files go to OneDrive, the CSVs go to Fabric, and two things stay on the local machine.</p>
 <div class='note good'><b>Start here on the morning.</b> Everything Copilot needs to see has been copied flat into a single folder called <b>_UPLOAD_TO_ONEDRIVE</b>. Drag those sixteen files into one OneDrive folder, no subfolders, then wait about two minutes for indexing. Copilot cannot see files on your Desktop, which is the most common reason a demonstration fails in the first two minutes.</div>
-<div class='note hot'><b>Segment 2 needs email, not just files.</b> There are 21 .eml messages in <code>02_WorkIQ_Multimodel/emails</code>. Drag them into an Outlook folder and allow five minutes for the Graph index to catch up. Without them the hero prompt in segment 2 has nothing to find, because the answer lives in the gaps between messages rather than in any single document. The README in that folder explains the one decision you need to make about the recipient address.</div>
+<div class='note hot'><b>Segment 2 needs email, not just files.</b> There are 47 .eml messages in 14 threads in <code>02_WorkIQ_Multimodel/emails</code>. Drag them into an Outlook folder and allow five minutes for the Graph index to catch up. Without them the hero prompt in segment 2 has nothing to find, because the answer lives in the gaps between messages rather than in any single document. The README in that folder explains the one decision you need to make about the recipient address.</div>
 <div class='note warn'><b>Do not upload these.</b> The filing portal (<code>10_BrowserUse/portal/index.html</code>) is opened from local disk in the browser, and the 34 CSV files go to the Fabric lakehouse rather than OneDrive.</div>
 <h3>What goes where</h3>
 <table><thead><tr><th>Destination</th><th>What</th><th>Why</th></tr></thead><tbody>
 <tr><td><b>OneDrive</b></td><td>16 Office files from _UPLOAD_TO_ONEDRIVE</td><td>Copilot grounds only on OneDrive and SharePoint</td></tr>
-<tr><td><b>Outlook mailbox</b></td><td>21 .eml files from 02_WorkIQ_Multimodel/emails</td><td>Segment 2 searches mail. Without these it has nothing to find</td></tr>
+<tr><td><b>Outlook mailbox</b></td><td>47 .eml files from 02_WorkIQ_Multimodel/emails</td><td>Segment 2 searches mail. Without these it has nothing to find</td></tr>
 <tr><td><b>Fabric lakehouse</b></td><td>34 CSV files from 03_Fabric_IQ/csv</td><td>Become Delta tables, then a semantic model, then the data agent</td></tr>
 <tr><td><b>Local disk only</b></td><td>10_BrowserUse/portal/index.html</td><td>Opened in the browser for the filing task in segments 8 and 9</td></tr>
 <tr><td><b>Local disk only</b></td><td>The whole folder, if running Scout</td><td>Scout reads local files directly, so it does not need OneDrive</td></tr>
@@ -1050,7 +1050,7 @@ If none of those is true, send me one line saying so. Do not send me a report I 
 <p class='sub'>Ticks are local to this browser only.</p>
 <div class='chk'><h4>Before the day</h4>
 <label><input type='checkbox' data-k='c1'><span>Copy the 16 files in _UPLOAD_TO_ONEDRIVE into one OneDrive folder, with no subfolders, and wait two minutes for indexing.</span></label>
-<label><input type='checkbox' data-k='c2'><span>Import the 21 .eml files into an Outlook folder and allow five minutes for the Graph index. Segment 2 fails without them.</span></label>
+<label><input type='checkbox' data-k='c2'><span>Import the 47 .eml files into an Outlook folder and allow five minutes for the Graph index. Segment 2 fails without them.</span></label>
 <label><input type='checkbox' data-k='c3'><span>Confirm meeting transcription and recap policy allows the Teams segment.</span></label>
 <label><input type='checkbox' data-k='c4'><span>Pre-build the Agent Builder agent in a second window as a fallback.</span></label>
 <label><input type='checkbox' data-k='c5'><span>Sign the second identity in on a second device for the permission proof.</span></label>
