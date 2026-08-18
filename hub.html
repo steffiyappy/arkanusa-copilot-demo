@@ -1050,7 +1050,17 @@ If none of those is true, send me one line saying so. Do not send me a report I 
 <div class='note'><b>Worst single contract.</b> WK-2024-0417 Provincial Ring Road Package 3, cost variance +34.2%. Approved with 4.1 percent contingency against an 8 percent policy minimum, with geotechnical investigation incomplete at bid.</div>
 </div></section>
 <section id='files'><h2><span class='num'>07</span>Demo files</h2>
-<p class='sub'>Distributed separately. Folder numbers match segment numbers.</p>
+<p class='sub'>Distributed separately. Sixteen files go to OneDrive, the CSVs go to Fabric, and two things stay on the local machine.</p>
+<div class='note good'><b>Start here on the morning.</b> Everything Copilot needs to see has been copied flat into a single folder called <b>_UPLOAD_TO_ONEDRIVE</b>. Drag those sixteen files into one OneDrive folder, no subfolders, then wait about two minutes for indexing. Copilot cannot see files on your Desktop, which is the most common reason a demonstration fails in the first two minutes.</div>
+<div class='note warn'><b>Do not upload these.</b> The filing portal (<code>10_BrowserUse/portal/index.html</code>) is opened from local disk in the browser, and the 34 CSV files go to the Fabric lakehouse rather than OneDrive.</div>
+<h3>What goes where</h3>
+<table><thead><tr><th>Destination</th><th>What</th><th>Why</th></tr></thead><tbody>
+<tr><td><b>OneDrive</b></td><td>16 Office files from _UPLOAD_TO_ONEDRIVE</td><td>Copilot grounds only on OneDrive and SharePoint</td></tr>
+<tr><td><b>Fabric lakehouse</b></td><td>34 CSV files from 03_Fabric_IQ/csv</td><td>Become Delta tables, then a semantic model, then the data agent</td></tr>
+<tr><td><b>Local disk only</b></td><td>10_BrowserUse/portal/index.html</td><td>Opened in the browser for the filing task in segments 8 and 9</td></tr>
+<tr><td><b>Local disk only</b></td><td>The whole folder, if running Scout</td><td>Scout reads local files directly, so it does not need OneDrive</td></tr>
+</tbody></table>
+<h3>Folder reference</h3>
 <table><thead><tr><th>Folder</th><th>Contents</th></tr></thead><tbody>
 <tr><td><span class='file'>01_CopilotChat_AgentMode</span></td><td>Unstructured working notes, portfolio review pack, incomplete board deck</td></tr>
 <tr><td><span class='file'>02_WorkIQ_Multimodel</span></td><td>Bid committee minute extracts, chief risk officer memorandum</td></tr>
@@ -1093,32 +1103,33 @@ If none of those is true, send me one line saying so. Do not send me a report I 
 <section id='checklist'><h2><span class='num'>09</span>Presenter checklist</h2>
 <p class='sub'>Ticks are local to this browser only.</p>
 <div class='chk'><h4>Before the day</h4>
-<label><input type='checkbox' data-k='c1'><span>Confirm the demo tenant has the sample files in the right folders.</span></label>
+<label><input type='checkbox' data-k='c1'><span>Copy the 16 files in _UPLOAD_TO_ONEDRIVE into one OneDrive folder, with no subfolders, and wait two minutes for indexing.</span></label>
 <label><input type='checkbox' data-k='c2'><span>Confirm meeting transcription and recap policy allows the Teams segment.</span></label>
 <label><input type='checkbox' data-k='c3'><span>Pre-build the Agent Builder agent in a second window as a fallback.</span></label>
 <label><input type='checkbox' data-k='c4'><span>Sign the second identity in on a second device for the permission proof.</span></label>
 <label><input type='checkbox' data-k='c5'><span>Pre-run the Cowork pack and keep the outputs available offline.</span></label>
 <label><input type='checkbox' data-k='c6'><span>Load the Fabric dataset and run two queries to confirm it responds.</span></label>
-<label><input type='checkbox' data-k='c7'><span>Read the critique answer key so you know what Researcher should find.</span></label>
-<label><input type='checkbox' data-k='c8'><span>Learn the four hero prompts by heart. They are short on purpose.</span></label>
-<label><input type='checkbox' data-k='c9'><span>Scout: copy the demo folder to a clean local path with nothing beside it, and rehearse the segment once end to end.</span></label>
-<label><input type='checkbox' data-k='c10'><span>Scout: decide and write down the one colleague who will receive the handoff message, and tell them it is coming.</span></label>
-<label><input type='checkbox' data-k='c11'><span>Scout: review what it has remembered from previous sessions and clear anything account specific before it goes on a projector.</span></label>
-<label><input type='checkbox' data-k='c12'><span>Close every window that is not part of the demonstration, and turn on focus assist so no notification appears mid-share.</span></label>
+<label><input type='checkbox' data-k='c7'><span>Open the filing portal once to confirm it loads, then clear its queue with localStorage.clear() so it shows 23 outstanding again.</span></label>
+<label><input type='checkbox' data-k='c8'><span>Read the critique answer key so you know what Researcher should find.</span></label>
+<label><input type='checkbox' data-k='c9'><span>Learn the nine hero prompts by heart. They are short on purpose.</span></label>
+<label><input type='checkbox' data-k='c10'><span>Scout: copy the demo folder to a clean local path with nothing beside it, and rehearse the segment once end to end.</span></label>
+<label><input type='checkbox' data-k='c11'><span>Scout: decide and write down the one colleague who will receive the handoff message, and tell them it is coming.</span></label>
+<label><input type='checkbox' data-k='c12'><span>Scout: review what it has remembered from previous sessions and clear anything account specific before it goes on a projector.</span></label>
+<label><input type='checkbox' data-k='c13'><span>Close every window that is not part of the demonstration, and turn on focus assist so no notification appears mid-share.</span></label>
 </div>
 <div class='chk'><h4>In the room</h4>
-<label><input type='checkbox' data-k='c13'><span>State the parity position in the first two minutes and then stop arguing about models.</span></label>
-<label><input type='checkbox' data-k='c14'><span>Type each hero prompt and then stop talking. Silence is the effect.</span></label>
-<label><input type='checkbox' data-k='c15'><span>Never read an output aloud. Point at one number and trace it.</span></label>
-<label><input type='checkbox' data-k='c16'><span>When something is slow, keep talking. Do not narrate the spinner.</span></label>
-<label><input type='checkbox' data-k='c17'><span>If a segment fails, say so and move. The fallback is planned.</span></label>
-<label><input type='checkbox' data-k='c18'><span>Do not send anything to anyone in the room. The one outbound message goes to a Microsoft colleague, and you approve it on screen.</span></label>
-<label><input type='checkbox' data-k='c19'><span>State Scout&#x27;s scope out loud before you demonstrate it, not after.</span></label>
+<label><input type='checkbox' data-k='c14'><span>State the parity position in the first two minutes and then stop arguing about models.</span></label>
+<label><input type='checkbox' data-k='c15'><span>Type each hero prompt and then stop talking. Silence is the effect.</span></label>
+<label><input type='checkbox' data-k='c16'><span>Never read an output aloud. Point at one number and trace it.</span></label>
+<label><input type='checkbox' data-k='c17'><span>When something is slow, keep talking. Do not narrate the spinner.</span></label>
+<label><input type='checkbox' data-k='c18'><span>If a segment fails, say so and move. The fallback is planned.</span></label>
+<label><input type='checkbox' data-k='c19'><span>Do not send anything to anyone in the room. The one outbound message goes to a Microsoft colleague, and you approve it on screen.</span></label>
+<label><input type='checkbox' data-k='c20'><span>State Scout&#x27;s scope out loud before you demonstrate it, not after.</span></label>
 </div>
 <div class='chk'><h4>Close</h4>
-<label><input type='checkbox' data-k='c20'><span>Return to the five questions and let them answer for their own estate.</span></label>
-<label><input type='checkbox' data-k='c21'><span>Name the one segment that could not be replicated by a browser tab.</span></label>
-<label><input type='checkbox' data-k='c22'><span>Agree a next step that involves their data, not more slides.</span></label>
+<label><input type='checkbox' data-k='c21'><span>Return to the five questions and let them answer for their own estate.</span></label>
+<label><input type='checkbox' data-k='c22'><span>Name the one segment that could not be replicated by a browser tab.</span></label>
+<label><input type='checkbox' data-k='c23'><span>Agree a next step that involves their data, not more slides.</span></label>
 </div>
 </section>
 <footer>Demonstration material. Fictional account, synthetic data. Not for external distribution.</footer>
