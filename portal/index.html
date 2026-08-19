@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<!--
+  Fictional regulatory filing portal, for demonstration only.
+
+  Self-contained local page. It posts nowhere, stores nothing off the machine,
+  and has no credentials of any kind. It exists so that a browser automation
+  demonstration has somewhere safe to act, rather than pointing an agent at a
+  real system in front of a customer.
+
+  Submissions are held in localStorage so a queue visibly builds up across a
+  session, which is the point: one filing is a party trick, twenty three is a
+  meaningful part of somebody's quarter.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Capital Markets Disclosure Portal - Quarterly Subsidiary Return</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --gov:#12395B;--gov2:#1B4E7A;--line:#C9D4E0;--bg:#EEF2F6;
+    --ink:#1B2733;--muted:#5B6B7C;--ok:#1E7E34;--warn:#B7791F;--err:#B3261E;
+  }
+  body{font-family:Verdana,Geneva,'Segoe UI',sans-serif;background:var(--bg);
+    color:var(--ink);font-size:13px;line-height:1.5}
+  .topbar{background:var(--gov);color:#fff;padding:6px 0;font-size:11px}
+  .topbar .wrap{display:flex;justify-content:space-between}
+  header{background:var(--gov2);color:#fff;padding:16px 0;
+    border-bottom:4px solid #0C2740}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  .brand{display:flex;align-items:center;gap:14px}
+  .crest{width:44px;height:44px;border-radius:50%;background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gov);font-weight:bold;font-size:15px;letter-spacing:.5px}
+  h1{font-size:19px;font-weight:bold}
+  .sub{font-size:11.5px;opacity:.85;margin-top:2px}
+  nav.tabs{background:#fff;border-bottom:1px solid var(--line)}
+  nav.tabs .wrap{display:flex;gap:2px}
+  nav.tabs button{background:none;border:none;border-bottom:3px solid transparent;
+    padding:11px 18px;font-family:inherit;font-size:12.5px;cursor:pointer;
+    color:var(--muted)}
+  nav.tabs button.on{border-bottom-color:var(--gov2);color:var(--gov);
+    font-weight:bold}
+  nav.tabs button:hover{background:#F5F8FB}
+  main{padding:22px 0 60px}
+  .panel{background:#fff;border:1px solid var(--line);margin-bottom:18px}
+  .panel h2{background:#F4F7FA;border-bottom:1px solid var(--line);
+    padding:10px 16px;font-size:13.5px;color:var(--gov)}
+  .panel .body{padding:18px 16px}
+  .notice{background:#FFF8E5;border:1px solid #E8D9A8;padding:10px 14px;
+    margin-bottom:16px;font-size:12px}
+  .notice b{color:var(--warn)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px}
+  .grid.three{grid-template-columns:1fr 1fr 1fr}
+  .field{display:flex;flex-direction:column}
+  .field.full{grid-column:1/-1}
+  label{font-size:11.5px;font-weight:bold;margin-bottom:4px;color:#2B3A47}
+  label .req{color:var(--err)}
+  .hint{font-size:10.5px;color:var(--muted);font-weight:normal;margin-top:2px}
+  input[type=text],input[type=number],input[type=date],select,textarea{
+    border:1px solid #97A9BA;padding:7px 9px;font-family:inherit;font-size:12.5px;
+    background:#fff;width:100%}
+  input:focus,select:focus,textarea:focus{outline:2px solid #7FB3E0;
+    border-color:var(--gov2)}
+  input:disabled{background:#EFF2F5;color:var(--muted)}
+  textarea{min-height:74px;resize:vertical}
+  .calc{background:#F0F6FF !important;border-color:#9CC0E4 !important}
+  .checkrow{display:flex;gap:9px;align-items:flex-start;margin-top:6px}
+  .checkrow input{margin-top:2px}
+  .checkrow label{font-weight:normal;font-size:12px}
+  .actions{display:flex;gap:10px;align-items:center;padding:14px 16px;
+    background:#F4F7FA;border-top:1px solid var(--line)}
+  button.primary{background:var(--gov2);color:#fff;border:1px solid #12395B;
+    padding:9px 22px;font-family:inherit;font-size:13px;cursor:pointer;
+    font-weight:bold}
+  button.primary:hover{background:var(--gov)}
+  button.ghost{background:#fff;border:1px solid #97A9BA;padding:9px 18px;
+    font-family:inherit;font-size:13px;cursor:pointer}
+  button.ghost:hover{background:#F0F4F8}
+  .err{color:var(--err);font-size:11px;margin-top:3px;display:none}
+  .err.show{display:block}
+  .field.bad input,.field.bad select,.field.bad textarea{border-color:var(--err);
+    background:#FFF6F5}
+  .banner{display:none;padding:14px 16px;margin-bottom:16px;font-size:12.5px}
+  .banner.show{display:block}
+  .banner.ok{background:#EDF7EE;border:1px solid #A9D3AE}
+  .banner.bad{background:#FDF0EF;border:1px solid #E3B4B0}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  th{background:var(--gov2);color:#fff;text-align:left;padding:8px 10px;
+    font-size:11.5px}
+  td{padding:8px 10px;border-bottom:1px solid var(--line)}
+  tr:nth-child(even) td{background:#F8FAFC}
+  .pill{display:inline-block;padding:2px 9px;border-radius:10px;font-size:10.5px;
+    font-weight:bold}
+  .pill.done{background:#E4F3E6;color:var(--ok)}
+  .pill.due{background:#FDF1E1;color:var(--warn)}
+  .receipt{font-family:Consolas,monospace;background:#F7F9FB;
+    border:1px dashed #9FB2C4;padding:16px;font-size:12px;line-height:1.8}
+  .receipt b{color:var(--gov)}
+  footer{border-top:1px solid var(--line);background:#fff;padding:16px 0;
+    font-size:11px;color:var(--muted)}
+  .fake{background:#FFF3CD;border-top:2px solid #E0A800;padding:8px 0;
+    text-align:center;font-size:11.5px;color:#6B5200}
+</style>
+</head>
+<body>
+
+<div class="fake">
+  <b>DEMONSTRATION SYSTEM.</b> Fictional portal for a fictional company.
+  Nothing submitted here leaves this machine.
+</div>
+
+<div class="topbar"><div class="wrap">
+  <span>Capital Markets Disclosure Portal</span>
+  <span>Filing agent: <b>ARK-FIN-0142</b> &nbsp;|&nbsp; Session expires 23:59</span>
+</div></div>
+
+<header><div class="wrap"><div class="brand">
+  <div class="crest">FSA</div>
+  <div>
+    <h1>Quarterly Subsidiary Return</h1>
+    <div class="sub">Form QSR-2 &middot; filed under Disclosure Rule 4.2(b)
+      &middot; submission window closes 30 September 2026</div>
+  </div>
+</div></div></header>
+
+<nav class="tabs"><div class="wrap">
+  <button class="on" onclick="tab('form',this)">Submit a return</button>
+  <button onclick="tab('queue',this)">Filing queue</button>
+  <button onclick="tab('help',this)">Guidance notes</button>
+</div></nav>
+
+<main><div class="wrap">
+
+<section id="form">
+  <div class="banner bad" id="berr"></div>
+  <div class="banner ok" id="bok"></div>
+
+  <div class="notice">
+    <b>Before you begin.</b> Figures must agree to the management accounts for
+    the period. Where a return is filed for an entity whose EBITDA margin has
+    moved by more than 3 percentage points against the prior period, a
+    narrative explanation is mandatory and the return will be rejected without
+    it.
+  </div>
+
+  <form id="qsr" onsubmit="return submitForm(event)">
+
+  <div class="panel">
+    <h2>Section A &middot; Reporting entity</h2>
+    <div class="body">
+      <div class="grid">
+        <div class="field">
+          <label for="entity">Reporting entity <span class="req">*</span></label>
+          <select id="entity" name="entity" onchange="autofill()">
+            <option value="">Select an entity</option>
+            <option value="WKA">WKA - PT Wisma Karya</option>
+            <option value="GRK">GRK - PT Graha Rekayasa</option>
+            <option value="TRK">TRK - PT Tirta Rekayasa</option>
+            <option value="CRC">CRC - PT Cipta Rancang</option>
+            <option value="BSV">BSV - PT Bumi Survei</option>
+            <option value="SKA">SKA - PT Sarana Konstruksi Andalas</option>
+          </select>
+          <div class="err" id="e_entity">Select the reporting entity.</div>
+        </div>
+        <div class="field">
+          <label for="regno">Registration number</label>
+          <input type="text" id="regno" name="regno" readonly disabled>
+          <span class="hint">Populated from the entity register.</span>
+        </div>
+        <div class="field">
+          <label for="cluster">Operating cluster</label>
+          <input type="text" id="cluster" name="cluster" readonly disabled>
+        </div>
+        <div class="field">
+          <label for="period">Reporting period <span class="req">*</span></label>
+          <select id="period" name="period">
+            <option value="">Select a period</option>
+            <option value="FY2026-Q1">FY2026 Q1</option>
+            <option value="FY2026-Q2">FY2026 Q2</option>
+            <option value="FY2026-H1">FY2026 H1</option>
+          </select>
+          <div class="err" id="e_period">Select the reporting period.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Section B &middot; Financial position</h2>
+    <div class="body">
+      <div class="grid three">
+        <div class="field">
+          <label for="revenue">Revenue, IDR billion <span class="req">*</span></label>
+          <input type="number" step="0.1" id="revenue" name="revenue"
+                 oninput="recalc()">
+          <div class="err" id="e_revenue">Enter revenue for the period.</div>
+        </div>
+        <div class="field">
+          <label for="ebitda">EBITDA, IDR billion <span class="req">*</span></label>
+          <input type="number" step="0.1" id="ebitda" name="ebitda"
+                 oninput="recalc()">
+          <div class="err" id="e_ebitda">Enter EBITDA for the period.</div>
+        </div>
+        <div class="field">
+          <label for="margin">EBITDA margin, percent</label>
+          <input type="text" id="margin" name="margin" class="calc" readonly>
+          <span class="hint">Calculated. Do not overwrite.</span>
+        </div>
+        <div class="field">
+          <label for="priormargin">Prior period margin, percent
+            <span class="req">*</span></label>
+          <input type="number" step="0.1" id="priormargin" name="priormargin"
+                 oninput="recalc()">
+          <div class="err" id="e_priormargin">Enter the prior period margin.</div>
+        </div>
+        <div class="field">
+          <label for="delta">Movement, percentage points</label>
+          <input type="text" id="delta" name="delta" class="calc" readonly>
+        </div>
+        <div class="field">
+          <label for="headcount">Headcount at period end</label>
+          <input type="number" id="headcount" name="headcount">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Section C &middot; Order book and counterparty exposure</h2>
+    <div class="body">
+      <div class="grid three">
+        <div class="field">
+          <label for="contracts">Contracts in progress <span class="req">*</span></label>
+          <input type="number" id="contracts" name="contracts">
+          <div class="err" id="e_contracts">Enter the number of contracts.</div>
+        </div>
+        <div class="field">
+          <label for="orderbook">Order book value, IDR billion</label>
+          <input type="number" step="0.1" id="orderbook" name="orderbook">
+        </div>
+        <div class="field">
+          <label for="fixedshare">Fixed price share of order book, percent
+            <span class="req">*</span></label>
+          <input type="number" step="0.1" id="fixedshare" name="fixedshare">
+          <div class="err" id="e_fixedshare">Enter the fixed price share.</div>
+          <span class="hint">Lump sum turnkey and design and build combined.</span>
+        </div>
+        <div class="field">
+          <label for="govshare">Public sector share of order book, percent</label>
+          <input type="number" step="0.1" id="govshare" name="govshare">
+        </div>
+        <div class="field">
+          <label for="aged">Receivables over 180 days, IDR billion</label>
+          <input type="number" step="0.1" id="aged" name="aged">
+        </div>
+        <div class="field">
+          <label for="dso">Weighted days sales outstanding</label>
+          <input type="number" id="dso" name="dso">
+        </div>
+      </div>
+      <div class="checkrow">
+        <input type="checkbox" id="breach" name="breach">
+        <label for="breach">This entity has exceeded a concentration limit set
+          in the group contract governance standard during the period.</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Section D &middot; Narrative</h2>
+    <div class="body">
+      <div class="grid">
+        <div class="field full">
+          <label for="narrative">Explanation of material movement
+            <span class="req" id="narreq" style="display:none">*</span></label>
+          <textarea id="narrative" name="narrative"
+            placeholder="Required where the margin movement exceeds 3 percentage points. State the cause, the evidence relied on, and the remedial action."></textarea>
+          <div class="err" id="e_narrative">A narrative explanation is
+            mandatory where the margin has moved more than 3 percentage
+            points.</div>
+          <span class="hint" id="narhint">Not currently required.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>Section E &middot; Declaration</h2>
+    <div class="body">
+      <div class="grid">
+        <div class="field">
+          <label for="officer">Certifying officer <span class="req">*</span></label>
+          <input type="text" id="officer" name="officer" placeholder="Full name">
+          <div class="err" id="e_officer">Enter the certifying officer.</div>
+        </div>
+        <div class="field">
+          <label for="role">Officer role <span class="req">*</span></label>
+          <select id="role" name="role">
+            <option value="">Select a role</option>
+            <option>Chief Financial Officer</option>
+            <option>Group Chief Financial Officer</option>
+            <option>Head of Portfolio Performance</option>
+            <option>Corporate Secretary</option>
+          </select>
+          <div class="err" id="e_role">Select the officer role.</div>
+        </div>
+        <div class="field">
+          <label for="filedate">Date of filing</label>
+          <input type="date" id="filedate" name="filedate">
+        </div>
+        <div class="field">
+          <label for="contact">Contact for queries</label>
+          <input type="text" id="contact" name="contact"
+                 placeholder="name@arkanusa.example">
+        </div>
+      </div>
+      <div class="checkrow">
+        <input type="checkbox" id="declare" name="declare">
+        <label for="declare">I certify that the figures in this return agree to
+          the management accounts for the period, and that all material matters
+          required to be disclosed have been disclosed.
+          <span class="req">*</span></label>
+      </div>
+      <div class="err" id="e_declare">The declaration must be certified.</div>
+    </div>
+    <div class="actions">
+      <button type="submit" class="primary">Submit return</button>
+      <button type="button" class="ghost" onclick="saveDraft()">Save draft</button>
+      <button type="button" class="ghost" onclick="clearForm()">Clear</button>
+      <span class="hint" id="savedmsg"></span>
+    </div>
+  </div>
+  </form>
+
+  <div class="panel" id="receiptPanel" style="display:none">
+    <h2>Submission receipt</h2>
+    <div class="body"><div class="receipt" id="receipt"></div></div>
+  </div>
+</section>
+
+<section id="queue" style="display:none">
+  <div class="panel">
+    <h2>Filing queue &middot; FY2026 H1</h2>
+    <div class="body">
+      <p style="margin-bottom:12px">Returns outstanding for the group. Each
+        entity requires a separate Form QSR-2. The window closes on
+        30 September 2026.</p>
+      <table>
+        <thead><tr><th>Entity</th><th>Cluster</th><th>Period</th>
+          <th>Status</th><th>Reference</th></tr></thead>
+        <tbody id="queueBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="help" style="display:none">
+  <div class="panel">
+    <h2>Guidance notes</h2>
+    <div class="body">
+      <p><b>QSR-2.1</b> A separate return is required for every consolidated
+        subsidiary. Group level returns are not accepted in place of subsidiary
+        returns.</p>
+      <p style="margin-top:10px"><b>QSR-2.2</b> Figures must agree to the
+        management accounts. Where a figure is restated, the prior figure and
+        the reason for restatement must be given in Section D.</p>
+      <p style="margin-top:10px"><b>QSR-2.3</b> Where the EBITDA margin has
+        moved by more than 3 percentage points against the prior period, a
+        narrative explanation is mandatory. Returns without it are rejected
+        automatically and must be refiled.</p>
+      <p style="margin-top:10px"><b>QSR-2.4</b> Fixed price share means lump sum
+        turnkey and design and build contracts combined, measured by order book
+        value.</p>
+      <p style="margin-top:10px"><b>QSR-2.5</b> A concentration limit breach
+        must be declared in Section C whether or not it has been remedied by
+        the filing date.</p>
+    </div>
+  </div>
+</section>
+
+</div></main>
+
+<footer><div class="wrap">
+  Capital Markets Disclosure Portal &middot; fictional demonstration system
+  &middot; no data leaves this machine
+</div></footer>
+
+<script>
+const ENTITIES = {
+  WKA:{name:"PT Wisma Karya",reg:"NIB-2210-004417"},
+  GRK:{name:"PT Graha Rekayasa",reg:"NIB-2210-004418"},
+  TRK:{name:"PT Tirta Rekayasa",reg:"NIB-2210-004419"},
+  CRC:{name:"PT Cipta Rancang",reg:"NIB-2210-004420"},
+  BSV:{name:"PT Bumi Survei",reg:"NIB-2210-004421"},
+  SKA:{name:"PT Sarana Konstruksi Andalas",reg:"NIB-2210-004422"}
+};
+const CLUSTER = "Infrastructure and Engineering";
+const ALL = [
+  ["ASK","Financial Services"],["AIM","Financial Services"],
+  ["AFN","Financial Services"],["AVN","Financial Services"],
+  ["AAM","Special Situations"],["ARS","Special Situations"],
+  ["KIS","Industrial Estates"],["KIB","Industrial Estates"],
+  ["KBA","Industrial Estates"],["KIC","Industrial Estates"],
+  ["PIS","Industrial Estates"],
+  ["WKA",CLUSTER],["GRK",CLUSTER],["TRK",CLUSTER],["CRC",CLUSTER],
+  ["BSV",CLUSTER],["SKA",CLUSTER],
+  ["PSA","Media and Publishing"],["SNU","Media and Publishing"],
+  ["ADM","Media and Publishing"],
+  ["TLA","Manufacturing and Technology"],["IPN","Manufacturing and Technology"],
+  ["EAT","Manufacturing and Technology"]
+];
+
+function tab(id, btn){
+  ["form","queue","help"].forEach(s=>
+    document.getElementById(s).style.display = (s===id?"block":"none"));
+  document.querySelectorAll("nav.tabs button").forEach(b=>b.classList.remove("on"));
+  btn.classList.add("on");
+  if(id==="queue") renderQueue();
+}
+
+function autofill(){
+  const e = document.getElementById("entity").value;
+  const d = ENTITIES[e];
+  document.getElementById("regno").value = d ? d.reg : "";
+  document.getElementById("cluster").value = d ? CLUSTER : "";
+}
+
+function recalc(){
+  const rev = parseFloat(document.getElementById("revenue").value);
+  const ebt = parseFloat(document.getElementById("ebitda").value);
+  const prior = parseFloat(document.getElementById("priormargin").value);
+  let m = null;
+  if(!isNaN(rev) && rev !== 0 && !isNaN(ebt)){
+    m = (ebt/rev)*100;
+    document.getElementById("margin").value = m.toFixed(1);
+  } else {
+    document.getElementById("margin").value = "";
+  }
+  if(m !== null && !isNaN(prior)){
+    const d = m - prior;
+    document.getElementById("delta").value = (d>0?"+":"") + d.toFixed(1);
+    const need = Math.abs(d) > 3;
+    document.getElementById("narreq").style.display = need ? "inline" : "none";
+    document.getElementById("narhint").textContent = need
+      ? "Mandatory: the margin has moved more than 3 percentage points."
+      : "Not currently required.";
+  } else {
+    document.getElementById("delta").value = "";
+  }
+}
+
+function bad(id, on){
+  const el = document.getElementById(id);
+  const f = el ? el.closest(".field") : null;
+  const e = document.getElementById("e_"+id);
+  if(f) f.classList.toggle("bad", on);
+  if(e) e.classList.toggle("show", on);
+}
+
+function submitForm(ev){
+  ev.preventDefault();
+  const req = ["entity","period","revenue","ebitda","priormargin",
+               "contracts","fixedshare","officer","role"];
+  let ok = true, missing = [];
+  req.forEach(id=>{
+    const v = document.getElementById(id).value;
+    const empty = (v === "" || v === null);
+    bad(id, empty);
+    if(empty){ ok = false; missing.push(id); }
+  });
+
+  const delta = parseFloat(document.getElementById("delta").value);
+  const narr = document.getElementById("narrative").value.trim();
+  if(!isNaN(delta) && Math.abs(delta) > 3 && narr.length < 40){
+    bad("narrative", true); ok = false;
+    missing.push("narrative explanation (rule QSR-2.3)");
+  } else { bad("narrative", false); }
+
+  const dec = document.getElementById("declare").checked;
+  document.getElementById("e_declare").classList.toggle("show", !dec);
+  if(!dec){ ok = false; missing.push("declaration"); }
+
+  const berr = document.getElementById("berr");
+  const bok  = document.getElementById("bok");
+  if(!ok){
+    berr.innerHTML = "<b>Return rejected.</b> The following are required: " +
+      missing.join(", ") + ".";
+    berr.classList.add("show"); bok.classList.remove("show");
+    window.scrollTo({top:0,behavior:"smooth"});
+    return false;
+  }
+
+  const ent = document.getElementById("entity").value;
+  const per = document.getElementById("period").value;
+  const ref = "QSR2-" + per.replace("-","") + "-" + ent + "-" +
+              Math.floor(1000+Math.random()*9000);
+  const stamp = new Date().toISOString().replace("T"," ").slice(0,19);
+
+  const log = JSON.parse(localStorage.getItem("qsr_log") || "{}");
+  log[ent] = {ref:ref, period:per, at:stamp};
+  localStorage.setItem("qsr_log", JSON.stringify(log));
+
+  document.getElementById("receipt").innerHTML =
+    "<b>SUBMISSION ACCEPTED</b><br><br>" +
+    "Reference&nbsp;&nbsp;&nbsp;&nbsp; " + ref + "<br>" +
+    "Entity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " + ent + " - " +
+      (ENTITIES[ent]?ENTITIES[ent].name:"") + "<br>" +
+    "Period&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " + per + "<br>" +
+    "Margin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " +
+      document.getElementById("margin").value + " percent (" +
+      document.getElementById("delta").value + " ppt)<br>" +
+    "Certified&nbsp;&nbsp;&nbsp;&nbsp; " + document.getElementById("officer").value + "<br>" +
+    "Received&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " + stamp + " UTC<br><br>" +
+    "Retain this reference. Amendments require a refiling under QSR-2.2.";
+  document.getElementById("receiptPanel").style.display = "block";
+
+  bok.innerHTML = "<b>Return accepted.</b> Reference " + ref +
+    ". A receipt has been generated below.";
+  bok.classList.add("show"); berr.classList.remove("show");
+  window.scrollTo({top:0,behavior:"smooth"});
+  return false;
+}
+
+function saveDraft(){
+  document.getElementById("savedmsg").textContent =
+    "Draft saved at " + new Date().toTimeString().slice(0,8) + ".";
+}
+
+function clearForm(){
+  document.getElementById("qsr").reset();
+  ["margin","delta","regno","cluster"].forEach(i=>{
+    const el = document.getElementById(i); if(el) el.value = "";
+  });
+  document.getElementById("receiptPanel").style.display = "none";
+  document.getElementById("bok").classList.remove("show");
+  document.getElementById("berr").classList.remove("show");
+  document.querySelectorAll(".field").forEach(f=>f.classList.remove("bad"));
+  document.querySelectorAll(".err").forEach(e=>e.classList.remove("show"));
+  document.getElementById("filedate").value =
+    new Date().toISOString().slice(0,10);
+}
+
+function renderQueue(){
+  const log = JSON.parse(localStorage.getItem("qsr_log") || "{}");
+  const tb = document.getElementById("queueBody");
+  tb.innerHTML = "";
+  ALL.forEach(function(row){
+    const code = row[0], cluster = row[1];
+    const done = log[code];
+    const tr = document.createElement("tr");
+    tr.innerHTML =
+      "<td><b>"+code+"</b></td><td>"+cluster+"</td><td>FY2026 H1</td>" +
+      "<td>" + (done
+        ? "<span class='pill done'>Filed</span>"
+        : "<span class='pill due'>Outstanding</span>") + "</td>" +
+      "<td>" + (done ? done.ref : "-") + "</td>";
+    tb.appendChild(tr);
+  });
+}
+
+document.getElementById("filedate").value =
+  new Date().toISOString().slice(0,10);
+renderQueue();
+</script>
+</body>
+</html>
